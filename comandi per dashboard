@@ -1,0 +1,30 @@
+  1. Avvio del Backend (FastAPI)
+  Apri un terminale e vai nella cartella del backend:
+
+   1 cd trading_dashboard/backend
+   2 # Se non l'hai già fatto, installa le dipendenze
+   3 pip install -r requirements.txt
+   4 # Avvia il server
+   5 python main.py
+  Il backend sarà disponibile su http://localhost:8000. Al primo avvio scaricherà i dati storici da Yahoo Finance (può richiedere 3-5 minuti).
+
+  2. Avvio del Frontend (Angular)
+  Apri un secondo terminale e vai nella cartella del frontend:
+
+   1 cd trading_dashboard/frontend
+   2 # Se è la prima volta, installa i moduli (richiede Node.js/npm)
+   3 npm install
+   4 # Avvia il server di sviluppo
+   5 npm start
+  Se npm start non è configurato, usa: npx ng serve --port 4200.
+
+
+
+
+  cd trading_dashboard/backend
+  python main.py
+
+
+
+cd trading_dashboard/frontend
+npm start

@@ -1,0 +1,298 @@
+<div class="dashboard-layout">
+
+  <header class="dashboard-header">
+    <div class="header-left">
+      <h1>{{ 'header.title' | translate }}</h1>
+      <span class="subtitle">
+        {{ 'header.subtitle' | translate }} {{ snapshot?.last_updated | slice:11:16 }}
+      </span>
+      <app-operational-status [data]="operationalStatus"></app-operational-status>
+      <span class="market-indicator" [class]="marketStatus.status">
+        <span class="market-dot"></span>
+        {{ (marketStatus.status === 'open' ? 'header.market_open' : marketStatus.status === 'pre-close' ? 'header.market_pre_close' : 'header.market_closed') | translate }}
+        · {{ marketStatus.time }}
+      </span>
+    </div>
+    <div class="header-right">
+      <button class="header-btn" (click)="langService.toggle()" [title]="'header.toggle_lang' | translate">
+        {{ langService.lang() === 'it' ? '🇬🇧' : '🇮🇹' }}
+      </button>
+      <button class="header-btn" (click)="themeService.toggle()" [title]="'header.toggle_theme' | translate">
+        {{ themeService.isDark() ? '☀️' : '🌙' }}
+      </button>
+      <app-countdown
+        [secondsRemaining]="secondsToFriday">
+      </app-countdown>
+    </div>
+  </header>
+
+  <div class="main-grid">
+
+    <div class="content-col">
+
+      <section class="card card-market">
+        <h2>{{ 'market.title' | translate }}
+          <app-info-tooltip [title]="'market.info_title' | translate"
+            [text]="'market.info_text' | translate">
+          </app-info-tooltip>
+        </h2>
+        <app-top-table
+          [snapshot]="snapshot">
+        </app-top-table>
+      </section>
+
+      <section class="card card-equity">
+        <h2>{{ 'equity.title' | translate }}
+          <app-info-tooltip [title]="'equity.info_title' | translate"
+            [text]="'equity.info_text' | translate">
+          </app-info-tooltip>
+        </h2>
+        <p class="note">
+          {{ 'equity.note_prefix' | translate }} &nbsp;·&nbsp;
+          <span style="color:#dc2626;font-weight:600">{{ 'equity.crisis_bg' | translate }}</span>
+        </p>
+        <app-equity-chart
+          [defaultBacktest]="defaultBacktest"
+          [customBacktest]="customBacktest"
+          [isLoadingCustom]="isLoadingCustom">
+        </app-equity-chart>
+      </section>
+
+      <section class="card card-signals">
+        <h2>{{ 'blotter.title' | translate }}
+          <app-info-tooltip [title]="'blotter.info_title' | translate"
+            [text]="'blotter.info_text' | translate">
+          </app-info-tooltip>
+        </h2>
+        <p class="note">
+          {{ 'blotter.note' | translate }}
+        </p>
+        <app-signal-blotter
+          [data]="signalData"
+          (fridayChanged)="onFridayChanged($event)">
+        </app-signal-blotter>
+      </section>
+
+      <section class="card card-etf-perf">
+        <h2>{{ 'etf_perf.title' | translate }}
+          <app-info-tooltip [title]="'etf_perf.info_title' | translate"
+            [text]="'etf_perf.info_text' | translate">
+          </app-info-tooltip>
+        </h2>
+        <app-etf-performance [data]="etfPerformance"></app-etf-performance>
+      </section>
+
+      <section class="card card-decay">
+        <h2>{{ 'decay.title' | translate }}
+          <app-info-tooltip [title]="'decay.info_title' | translate"
+            [text]="'decay.info_text' | translate">
+          </app-info-tooltip>
+        </h2>
+        <p class="note">
+          {{ 'decay.note' | translate }}
+        </p>
+        <app-decay-chart [data]="decayData"></app-decay-chart>
+      </section>
+
+      <section class="card card-chronos">
+        <h2>{{ 'chronos.title' | translate }}
+          <app-info-tooltip [title]="'chronos.info_title' | translate"
+            [text]="'chronos.info_text' | translate">
+          </app-info-tooltip>
+        </h2>
+        <p class="note">
+          {{ 'chronos.note' | translate }}
+        </p>
+        <app-chronos-bands [data]="chronosData"
+          (fridayChanged)="onChronosFridayChanged($event)">
+        </app-chronos-bands>
+      </section>
+
+      <section class="card card-heatmap">
+        <h2>{{ 'heatmap.title' | translate }}
+          <app-info-tooltip [title]="'heatmap.info_title' | translate"
+            [text]="'heatmap.info_text' | translate">
+          </app-info-tooltip>
+        </h2>
+        <p class="note">
+          {{ 'heatmap.note' | translate }} {{ correlationData?.as_of_date }}
+        </p>
+        <app-correlation-heatmap
+          [data]="correlationData"
+          (windowChanged)="onCorrelationWindowChanged($event)">
+        </app-correlation-heatmap>
+      </section>
+
+    </div>
+
+    <aside class="sidebar-col">
+
+      <div class="card regime-card"
+           [class.crisis]="regime?.is_crisis">
+        <h3>{{ 'regime.title' | translate }}
+          <app-info-tooltip [title]="'regime.info_title' | translate"
+            [text]="'regime.info_text' | translate">
+          </app-info-tooltip>
+        </h3>
+        <div class="regime-badge">
+          {{ (regime ? regime.regime_name : 'regime.loading') | translate }}
+        </div>
+        <div class="regime-sub" *ngIf="regime">
+          {{ 'regime.label' | translate }} {{ regime.regime_id }}
+        </div>
+        <div class="regime-detail" *ngIf="regime">
+          <span>{{ 'regime.last_friday' | translate }}: {{ regime.last_friday }}</span>
+          <span>{{ 'regime.prob_crisis' | translate }}: {{ (regime.prob_crisis * 100).toFixed(1) }}%</span>
+          <span>{{ 'regime.decay_factor' | translate }}: {{ regime.decay_value.toFixed(3) }}</span>
+        </div>
+      </div>
+
+      <div class="card card-regime-stats" *ngIf="regimeStats && regimeStats.regimes.length > 0">
+        <h3>{{ 'regime_stats.title' | translate }}
+          <app-info-tooltip [title]="'regime_stats.info_title' | translate"
+            [text]="'regime_stats.info_text' | translate">
+          </app-info-tooltip>
+        </h3>
+        <app-regime-stats [data]="regimeStats"></app-regime-stats>
+      </div>
+
+      <div class="card metrics-card" *ngIf="defaultBacktest && defaultBacktest.series.length > 0">
+        <h3>{{ 'perf.title' | translate }}
+          <app-info-tooltip [title]="'perf.info_title' | translate"
+            [text]="'perf.info_text' | translate">
+          </app-info-tooltip>
+        </h3>
+        <table class="perf-table">
+          <thead>
+            <tr>
+              <th>{{ 'perf.col_metric' | translate }}</th>
+              <th class="col-algo">{{ 'perf.col_algo' | translate }}</th>
+              <th class="col-spy">{{ 'perf.col_spy' | translate }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ 'perf.cagr' | translate }}</td>
+              <td class="col-algo" [class.winner]="defaultBacktest.cagr >= defaultBacktest.spy_cagr">
+                {{ (defaultBacktest.cagr * 100).toFixed(2) }}%
+              </td>
+              <td class="col-spy" [class.winner]="defaultBacktest.spy_cagr > defaultBacktest.cagr">
+                {{ (defaultBacktest.spy_cagr * 100).toFixed(2) }}%
+              </td>
+            </tr>
+            <tr>
+              <td>{{ 'perf.sharpe' | translate }}</td>
+              <td class="col-algo" [class.winner]="defaultBacktest.sharpe >= defaultBacktest.spy_sharpe">
+                {{ defaultBacktest.sharpe.toFixed(3) }}
+              </td>
+              <td class="col-spy" [class.winner]="defaultBacktest.spy_sharpe > defaultBacktest.sharpe">
+                {{ defaultBacktest.spy_sharpe.toFixed(3) }}
+              </td>
+            </tr>
+            <tr>
+              <td>{{ 'perf.max_dd' | translate }}</td>
+              <td class="col-algo" [class.winner]="defaultBacktest.max_drawdown >= defaultBacktest.spy_max_drawdown">
+                {{ (defaultBacktest.max_drawdown * 100).toFixed(2) }}%
+              </td>
+              <td class="col-spy" [class.winner]="defaultBacktest.spy_max_drawdown > defaultBacktest.max_drawdown">
+                {{ (defaultBacktest.spy_max_drawdown * 100).toFixed(2) }}%
+              </td>
+            </tr>
+            <tr>
+              <td>{{ 'perf.calmar' | translate }}</td>
+              <td class="col-algo" [class.winner]="defaultBacktest.calmar >= defaultBacktest.spy_calmar">
+                {{ defaultBacktest.calmar.toFixed(3) }}
+              </td>
+              <td class="col-spy" [class.winner]="defaultBacktest.spy_calmar > defaultBacktest.calmar">
+                {{ defaultBacktest.spy_calmar.toFixed(3) }}
+              </td>
+            </tr>
+            <tr>
+              <td>{{ 'perf.tot_ret' | translate }}</td>
+              <td class="col-algo" [class.winner]="defaultBacktest.total_return >= defaultBacktest.spy_total_return">
+                {{ (defaultBacktest.total_return * 100).toFixed(2) }}%
+              </td>
+              <td class="col-spy" [class.winner]="defaultBacktest.spy_total_return > defaultBacktest.total_return">
+                {{ (defaultBacktest.spy_total_return * 100).toFixed(2) }}%
+              </td>
+            </tr>
+            <tr>
+              <td>{{ 'perf.crisis_weeks' | translate }}</td>
+              <td class="col-algo crisis-val">
+                {{ defaultBacktest.n_crisis_weeks }}
+              </td>
+              <td class="col-spy">
+                0
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="perf-note">
+          {{ 'perf.note_prefix' | translate }}{{ defaultBacktest.n_crisis_weeks + defaultBacktest.n_normal_weeks }}{{ 'perf.note_suffix' | translate }}
+        </div>
+      </div>
+
+      <div class="card card-yearly" *ngIf="yearlyData && yearlyData.years.length > 0">
+        <app-yearly-breakdown [data]="yearlyData"></app-yearly-breakdown>
+      </div>
+
+      <div class="card card-drawdown">
+        <h3>{{ 'drawdown.title' | translate }}
+          <app-info-tooltip [title]="'drawdown.info_title' | translate"
+            [text]="'drawdown.info_text' | translate">
+          </app-info-tooltip>
+        </h3>
+        <app-drawdown-gauge [data]="drawdownData"></app-drawdown-gauge>
+      </div>
+
+      <div class="card card-allocation">
+        <h3>{{ 'allocation.title' | translate }}
+          <app-info-tooltip [title]="'allocation.info_title' | translate"
+            [text]="'allocation.info_text' | translate">
+          </app-info-tooltip>
+        </h3>
+        <app-allocation-treemap
+          [signals]="signalData"
+          [regime]="regime"
+          (fridayChanged)="onAllocationFridayChanged($event)">
+        </app-allocation-treemap>
+      </div>
+
+      <div class="card card-weekly-decomp" *ngIf="weeklyDecomp && weeklyDecomp.contributions.length > 0">
+        <h3>{{ 'decomp.title' | translate }}
+          <app-info-tooltip [title]="'decomp.info_title' | translate"
+            [text]="'decomp.info_text' | translate">
+          </app-info-tooltip>
+        </h3>
+        <app-weekly-decomposition [data]="weeklyDecomp"></app-weekly-decomposition>
+      </div>
+
+      <app-param-sidebar
+        [defaultParams]="defaultParams"
+        [customBacktest]="customBacktest"
+        [defaultBacktest]="defaultBacktest"
+        [isLoading]="isLoadingCustom"
+        (paramsChanged)="onParamsChanged($event)">
+      </app-param-sidebar>
+
+      <!-- Glossario ETF -->
+      <div class="card card-glossary">
+        <h3 class="card-title">
+          {{ 'glossary.title' | translate }}
+          <app-info-tooltip [text]="'glossary.tooltip_text' | translate"></app-info-tooltip>
+        </h3>
+        <app-etf-glossary></app-etf-glossary>
+      </div>
+
+      <div class="sidebar-actions">
+        <button class="action-btn pdf-btn" (click)="exportService.exportDashboardPdf()">
+          {{ 'header.export_pdf' | translate }}
+        </button>
+      </div>
+
+    </aside>
+  </div>
+
+</div>
+
+<app-toast-container></app-toast-container>

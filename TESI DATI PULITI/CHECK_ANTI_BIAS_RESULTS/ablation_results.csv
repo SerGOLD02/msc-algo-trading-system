@@ -1,0 +1,4 @@
+Strategia,CAGR,MaxDD,Sharpe,Calmar,Win_Rate
+A: Baseline Pura (TFM_t5),15.2,-10.018,1.432,1.517,57.895
+B: Core (TFM + LGBM no Chronos),20.931,-9.72,1.805,2.153,51.316
+C: Full (Chronos + HMM + HRP + Decay),15.789,-5.675,2.247,2.782,56.579

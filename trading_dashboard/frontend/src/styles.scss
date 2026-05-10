@@ -1,0 +1,112 @@
+/* TASTE Design System — Global Styles */
+
+:root {
+  --font-sans: 'Calibri', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'Montserrat', 'Arial', sans-serif;
+  --font-numbers: 'Montserrat', 'Arial', sans-serif;
+
+  --color-bg: #0f1117;
+  --color-surface: #1a1d2e;
+  --color-surface-2: #232640;
+  --color-border: #2d3154;
+  --color-border-subtle: #252845;
+
+  --color-text-primary: #e2e8f0;
+  --color-text-secondary: #a0aec0;
+  --color-text-muted: #8892a4;
+
+  --color-accent: #10b981;
+  --color-accent-light: rgba(16, 185, 129, 0.10);
+  --color-danger: #ef4444;
+  --color-danger-light: rgba(239, 68, 68, 0.10);
+  --color-warning: #f59e0b;
+  --color-success: #10b981;
+  --color-info: #3b82f6;
+
+  --color-header-bg: #141722;
+  --color-header-text: #e2e8f0;
+  --color-header-muted: #8892a4;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.5);
+  --shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.5);
+
+  --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-base: all 0.25s var(--ease-premium);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(107, 114, 128, 0.35);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(107, 114, 128, 0.55);
+}
+
+[data-theme='light'] ::-webkit-scrollbar-thumb {
+  background: rgba(107, 114, 128, 0.25);
+}
+[data-theme='light'] ::-webkit-scrollbar-thumb:hover {
+  background: rgba(107, 114, 128, 0.45);
+}
+
+/* ── Light theme override ── */
+[data-theme='light'] {
+  --color-bg: #f3f4f6;
+  --color-surface: #ffffff;
+  --color-border: #d1d5db;
+  --color-border-subtle: #e5e7eb;
+
+  --color-text-primary: #1f2937;
+  --color-text-secondary: #4b5563;
+  --color-text-muted: #9ca3af;
+
+  --color-accent: #059669;
+  --color-accent-light: rgba(5, 150, 105, 0.10);
+  --color-danger: #dc2626;
+  --color-danger-light: rgba(220, 38, 38, 0.08);
+  --color-warning: #d97706;
+  --color-success: #059669;
+
+  --color-header-bg: #ffffff;
+  --color-header-text: #1f2937;
+  --color-header-muted: #6b7280;
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.10);
+  --shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.10);
+}
+
+/* Numeric font utility — apply to data-heavy elements */
+.num, [data-num] {
+  font-family: var(--font-numbers);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Tabular nums for all numeric data */
+td, th, .metric-value, .ret-val, .timer, .kpi-value, .perf-table td,
+[data-num], .num {
+  font-variant-numeric: tabular-nums;
+}

@@ -1,0 +1,16 @@
+.venv/
+.venv_linux/
+__pycache__/
+*.pyc
+*.pyo
+node_modules/
+dist/
+trading_dashboard/frontend_rotto/
+*.env
+*.png
+*.jpg
+*.jpeg
+TESI DATI PULITI/PLOTS/
+TESI DATI PULITI/.venv/
+trading_dashboard/backend/data/
+TESI DATI PULITI/Dataset/DATI BLOOMBERG COMPLETI.xlsx

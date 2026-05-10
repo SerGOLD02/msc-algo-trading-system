@@ -1,0 +1,5 @@
+Sistema,Sharpe,Sortino,Calmar,IR_vs_EW,IR_vs_SPY,MaxDD,Ulcer_Index,MaxDD_Duration_Weeks,Corr_SPY,Win_Rate,Profit_Factor
+LightGBM,2.251,3.718,2.726,0.068,-0.394,-5.63%,1.667,22,0.271,64.39%,2.364
+EW Benchmark,1.338,1.952,1.486,0.0,-1.036,-9.55%,2.477,28,0.93,60.53%,1.62
+SPY Buy&Hold,1.411,1.939,1.234,1.036,0.0,-16.88%,3.665,20,1.0,59.87%,1.677
+Delta (LGBM - SPY),+0.840,+1.779,+1.492,-0.967,-0.394,+11.25%,-1.998,2,-0.729,+4.53%,+0.687

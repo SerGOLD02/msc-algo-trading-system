@@ -1,0 +1,46 @@
+version: '3.8'
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - "../TESI DATI PULITI/Dataset:/app/models:ro"
+      - "./backend/data:/app/data"
+    env_file:
+      - .env
+    environment:
+        - PROJECT_ROOT=/app
+        - DRIVE_BASE_PATH=/app/models
+    restart: unless-stopped
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "4200:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+  backend-gpu:
+    build: ./backend
+    ports:
+      - "8001:8000"
+    volumes:
+      - "../TESI DATI PULITI/Dataset:/app/models:ro"
+      - "./backend/data:/app/data"
+    env_file:
+      - .env
+    environment:
+      - PROJECT_ROOT=/app
+      - DRIVE_BASE_PATH=/app/models
+    restart: unless-stopped
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    profiles:
+      - gpu

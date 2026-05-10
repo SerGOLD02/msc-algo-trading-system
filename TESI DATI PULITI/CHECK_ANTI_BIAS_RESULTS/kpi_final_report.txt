@@ -1,0 +1,28 @@
+CRUSCOTTO KPI ISTITUZIONALE - SISTEMA LIGHTGBM (Test OOS 2023-2025)
+========================================================
+CATEGORIA RISK-ADJUSTED:
+  Sharpe Ratio:          2.251  [vs EW: 1.338 | vs SPY: 1.411]
+  Sortino Ratio:         3.718  [vs EW: 1.952 | vs SPY: 1.939]
+  Calmar Ratio:          2.726  [vs EW: 1.486 | vs SPY: 1.234]
+  Information Ratio:     0.068  (vs EW) | -0.394 (vs SPY)
+
+CATEGORIA RISCHIO ASSOLUTO:
+  Maximum Drawdown:      -5.63%  [vs EW: -9.55% | vs SPY: -16.88%]
+  Ulcer Index:           1.667  [vs EW: 2.477 | vs SPY: 3.665]
+  MaxDD Duration:        22 settimane [vs EW: 28 | vs SPY: 20]
+  Correlazione vs SPY:   0.271
+
+CATEGORIA OPERATIVE:
+  Win Rate (settimane):  64.4%  [vs EW: 60.5% | vs SPY: 59.9%]
+  Win Rate (trade):      59.7%
+  Profit Factor:         2.364  [vs EW: 1.620 | vs SPY: 1.677]
+  Avg Win / Avg Loss:    1.281
+
+[NOTA METODOLOGICA SULL'INFORMATION RATIO vs SPY]:
+L'Information Ratio negativo contro SPY non rappresenta un'anomalia del sistema.
+Riflette il fatto che SPY ha registrato un rally unidirezionale fortissimo nel
+periodo 2023-2025. Un sistema multi-asset diversificato su 26 ETF (che include
+strutturalmente coperture obbligazionarie e difensive) non è matematicamente
+progettato per battere l'eccesso di rendimento di un indice 100% azionario in un
+mercato toro così estremo, ma per offrire un profilo di rischio/rendimento
+superiore gestendo i drawdown e la volatilità.

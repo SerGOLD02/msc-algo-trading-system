@@ -1,0 +1,25 @@
+{
+    "Check_A_Permutazioni": {
+        "DA_Reale_pct": 48.51973684210527,
+        "DA_Permutati_Media_pct": 50.5,
+        "DA_Permutati_Std_pct": 0.9637428120386855,
+        "P_Value": 0.99
+    },
+    "Check_B_Stabilita_Feature_Importance": {
+        "CV_Medio_Top20": 0.10382862557451358
+    },
+    "Check_C_Directional_Accuracy_Globale": {
+        "P_Value_Globale": 0.950583370482863
+    },
+    "Check_D_Anti_Look_Ahead": {
+        "Check_Passati": 9,
+        "Check_Falliti": 0
+    },
+    "Check_E_Sensibilita_Parametri": {
+        "Max_Drop_Sharpe_pct": 74.76635514018692,
+        "Max_Drop_CAGR_pct": 89.99366687777074
+    },
+    "Check_F_Correlazione_Momentum": {
+        "Correlazione_Pearson": 0.43663460776386387
+    }
+}
