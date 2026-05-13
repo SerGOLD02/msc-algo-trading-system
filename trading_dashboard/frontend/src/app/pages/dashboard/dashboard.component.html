@@ -47,10 +47,12 @@
             [text]="'equity.info_text' | translate">
           </app-info-tooltip>
         </h2>
-        <p class="note">
-          {{ 'equity.note_prefix' | translate }} &nbsp;·&nbsp;
-          <span style="color:#dc2626;font-weight:600">{{ 'equity.crisis_bg' | translate }}</span>
-        </p>
+        <div class="visual-legend">
+          <span class="leg-item"><span class="leg-line-solid" style="background:#059669"></span> {{ 'equity.legend.system' | translate }}</span>
+          <span class="leg-item"><span class="leg-line-dashed" style="border-top-color:#f97316"></span> {{ 'equity.legend.spy' | translate }}</span>
+          <span class="leg-item"><span class="leg-line-dotted" style="border-top-color:#3b82f6"></span> {{ 'equity.legend.interactive' | translate }}</span>
+          <span class="leg-item"><span class="leg-box" style="background:rgba(239, 68, 68, 0.2)"></span> {{ 'equity.legend.crisis' | translate }}</span>
+        </div>
         <app-equity-chart
           [defaultBacktest]="defaultBacktest"
           [customBacktest]="customBacktest"
@@ -88,9 +90,12 @@
             [text]="'decay.info_text' | translate">
           </app-info-tooltip>
         </h2>
-        <p class="note">
-          {{ 'decay.note' | translate }}
-        </p>
+        <div class="visual-legend">
+          <span class="leg-item"><span class="leg-line-solid" style="background:#059669"></span> {{ 'decay_chart.legend_decay' | translate }}</span>
+          <span class="leg-item"><span class="leg-line-dashed" style="border-top-color:#0891b2"></span> {{ 'decay_chart.legend_corr' | translate }}</span>
+          <span class="leg-item"><span class="leg-line-dashed" style="border-top-color:var(--color-text-muted)"></span> {{ 'decay_chart.threshold' | translate }}</span>
+          <span class="leg-item"><span class="leg-box" style="background:rgba(239, 68, 68, 0.2)"></span> Crisis</span>
+        </div>
         <app-decay-chart [data]="decayData"></app-decay-chart>
       </section>
 
@@ -100,9 +105,6 @@
             [text]="'chronos.info_text' | translate">
           </app-info-tooltip>
         </h2>
-        <p class="note">
-          {{ 'chronos.note' | translate }}
-        </p>
         <app-chronos-bands [data]="chronosData"
           (fridayChanged)="onChronosFridayChanged($event)">
         </app-chronos-bands>

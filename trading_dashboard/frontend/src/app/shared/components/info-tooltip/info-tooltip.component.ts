@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslatePipe } from '../../pipes/translate.pipe';
 
@@ -8,11 +8,12 @@ import { TranslatePipe } from '../../pipes/translate.pipe';
   imports: [CommonModule, TranslatePipe],
   template: `
     <span class="info-icon"
-          (mouseenter)="isOpen = true"
-          (mouseleave)="isOpen = false">i</span>
+          (mouseenter)="onEnter()"
+          (mouseleave)="onLeave()">i</span>
     <div class="info-popup" *ngIf="isOpen"
-         (mouseenter)="isOpen = true"
-         (mouseleave)="isOpen = false">
+         [ngClass]="alignmentClass"
+         (mouseenter)="onEnter()"
+         (mouseleave)="onLeave()">
       <div class="info-popup-header">
         <span class="info-popup-title">{{ title | translate }}</span>
       </div>
@@ -63,8 +64,17 @@ import { TranslatePipe } from '../../pipes/translate.pipe';
       border-radius: 10px;
       box-shadow: 0 8px 30px rgba(0,0,0,0.3), 0 2px 8px rgba(0,0,0,0.2);
       animation: fadeIn 0.15s ease;
-      /* Fix 2: HD polish - max bound check */
-      max-width: 90vw;
+      max-width: calc(100vw - 24px);
+    }
+
+    .info-popup.align-right {
+      left: auto;
+      right: -8px;
+    }
+    
+    .info-popup.align-left {
+      left: 0;
+      right: auto;
     }
 
     .info-popup-header {
@@ -96,4 +106,27 @@ export class InfoTooltipComponent {
   @Input() text = '';
   @Input() title = 'Info';
   isOpen = false;
+  alignmentClass = '';
+
+  constructor(private el: ElementRef) {}
+
+  onEnter() {
+    this.isOpen = true;
+    setTimeout(() => {
+      const rect = this.el.nativeElement.getBoundingClientRect();
+      const popupWidth = Math.min(340, window.innerWidth - 24);
+      if (rect.right + popupWidth - 8 > window.innerWidth) {
+        this.alignmentClass = 'align-right';
+      } else if (rect.left - 8 < 0) {
+        this.alignmentClass = 'align-left';
+      } else {
+        this.alignmentClass = '';
+      }
+    });
+  }
+
+  onLeave() {
+    this.isOpen = false;
+  }
 }
+
