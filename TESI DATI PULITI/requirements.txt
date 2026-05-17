@@ -23,3 +23,4 @@ xgboost
 seaborn
 pandas-market-calendars
 yfinance
+pillow
