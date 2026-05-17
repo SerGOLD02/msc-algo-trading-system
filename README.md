@@ -9,11 +9,14 @@
 
 ## 📊 Dashboard Preview
 
-<!-- Add a screenshot of the dashboard here -->
-![Dashboard Preview](docs/screenshot_dashboard.png)
+<img width="1024" height="461" alt="image" src="https://github.com/user-attachments/assets/c852261b-a0f4-45b8-a135-60d9312642ae" />
+<img width="1918" height="792" alt="image" src="https://github.com/user-attachments/assets/bc5a449a-06a7-446a-9d92-c0556b4d5152" />
+
+
 
 <!-- Add a screenshot of the equity curve here -->
-![Equity Curve](docs/screenshot_equity.png)
+<img width="1472" height="698" alt="image" src="https://github.com/user-attachments/assets/cd2846ef-bc12-4180-98ac-bfc16033e49d" />
+
 
 ---
 
