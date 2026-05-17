@@ -45,7 +45,6 @@ export const IT: Record<string, string> = {
   'equity.legend.system': 'Sistema (parametri tesi)',
   'equity.legend.interactive': 'Sistema (parametri correnti)',
   'equity.legend.spy': 'SPY Buy & Hold',
-  'equity.legend.crisis': 'Crisis State',
   'equity_chart.horizon_label': 'Orizzonte:',
   'equity_chart.metrics_title': 'Metriche',
   'equity_chart.metric_sharpe': 'Sharpe',
@@ -161,6 +160,8 @@ export const IT: Record<string, string> = {
 
   // Yearly Breakdown
   'yearly.title': 'Performance Anno per Anno',
+  'yearly.info_title': 'Performance Anno per Anno',
+  'yearly.info_text': 'Analisi del rendimento annualizzato (CAGR), indice di Sharpe e massimo prelievo (Max Drawdown) per ogni singolo anno solare. Permette di valutare la consistenza del sistema nel tempo e la stabilità dei rendimenti.',
   'yearly.col_year': 'Anno',
   'yearly.col_cagr': 'CAGR',
   'yearly.col_sharpe': 'Sharpe',
@@ -204,6 +205,8 @@ export const IT: Record<string, string> = {
   'params.reset': 'Torna ai parametri originali',
   'params.metrics_title': 'Metriche (parametri correnti)',
   'params.loading': 'Calcolo in corso...',
+  'params.tooltip_title': 'Parametri',
+  'params.tooltip_text': 'Modifica i 6 parametri dell\'algoritmo per esplorare scenari alternativi in tempo reale. La linea blu punteggiata mostra l\'equity con questi parametri. <b>Bet Quality</b>: soglia di ammissione trade. <b>HRP Alpha</b>: blending HRP vs Equal Weight. <b>K Sigmoid / C Soglia</b>: steepness e soglia del Decay. <b>K Up / K Down</b>: moltiplicatori Take Profit e Stop Loss intra-settimanale.',
 
   // Glossary
   'glossary.title': 'Glossario ETF',
@@ -401,7 +404,6 @@ export const EN: Record<string, string> = {
   'equity.legend.system': 'System (thesis parameters)',
   'equity.legend.interactive': 'System (current parameters)',
   'equity.legend.spy': 'SPY Buy & Hold',
-  'equity.legend.crisis': 'Crisis State',
   'equity_chart.horizon_label': 'Horizon:',
   'equity_chart.metrics_title': 'Metrics',
   'equity_chart.metric_sharpe': 'Sharpe',
@@ -517,6 +519,8 @@ export const EN: Record<string, string> = {
 
   // Yearly Breakdown
   'yearly.title': 'Performance Year by Year',
+  'yearly.info_title': 'Performance Year by Year',
+  'yearly.info_text': 'Analysis of annualized return (CAGR), Sharpe ratio, and Maximum Drawdown for each calendar year. It allows evaluating the system\'s consistency over time and the stability of results.',
   'yearly.col_year': 'Year',
   'yearly.col_cagr': 'CAGR',
   'yearly.col_sharpe': 'Sharpe',

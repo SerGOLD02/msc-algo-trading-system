@@ -56,25 +56,32 @@ import { TranslatePipe } from '../../pipes/translate.pipe';
     .info-popup {
       position: absolute;
       top: calc(100% + 8px);
-      left: -8px;
+      left: 50%;
+      transform: translateX(-50%);
       z-index: 1000;
-      width: 340px;
+      width: 320px;
       background: var(--color-surface);
       border: 1px solid var(--color-border);
       border-radius: 10px;
       box-shadow: 0 8px 30px rgba(0,0,0,0.3), 0 2px 8px rgba(0,0,0,0.2);
       animation: fadeIn 0.15s ease;
-      max-width: calc(100vw - 24px);
+      max-width: calc(100vw - 32px);
+      visibility: hidden; /* Prevent flickering during measurement */
+    }
+    
+    .info-popup.measured {
+      visibility: visible;
     }
 
     .info-popup.align-right {
       left: auto;
-      right: -8px;
+      right: 0;
+      transform: translateX(0);
     }
     
     .info-popup.align-left {
       left: 0;
-      right: auto;
+      transform: translateX(0);
     }
 
     .info-popup-header {
@@ -100,6 +107,10 @@ import { TranslatePipe } from '../../pipes/translate.pipe';
       from { opacity: 0; transform: translateY(-4px); }
       to { opacity: 1; transform: translateY(0); }
     }
+    
+    /* Support align classes and translate combined */
+    .info-popup.align-left { transform: translateY(0) !important; }
+    .info-popup.align-right { transform: translateY(0) !important; }
   `]
 })
 export class InfoTooltipComponent {
@@ -115,20 +126,23 @@ export class InfoTooltipComponent {
     setTimeout(() => {
       const rect = this.el.nativeElement.getBoundingClientRect();
       const viewportWidth = document.documentElement.clientWidth;
-      const popupWidth = Math.min(340, viewportWidth - 24);
+      const popupWidth = 320; 
       
-      if (rect.right + popupWidth - 16 > viewportWidth) {
-        this.alignmentClass = 'align-right';
-      } else if (rect.left - 16 < 0) {
-        this.alignmentClass = 'align-left';
+      const halfWidth = popupWidth / 2;
+      const center = rect.left + rect.width / 2;
+      
+      if (center + halfWidth + 16 > viewportWidth) {
+        this.alignmentClass = 'align-right measured';
+      } else if (center - halfWidth - 16 < 0) {
+        this.alignmentClass = 'align-left measured';
       } else {
-        this.alignmentClass = '';
+        this.alignmentClass = 'measured';
       }
     });
   }
 
   onLeave() {
     this.isOpen = false;
+    this.alignmentClass = '';
   }
 }
-
