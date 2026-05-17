@@ -11,8 +11,8 @@ import { InfoTooltipComponent } from '../info-tooltip/info-tooltip.component';
   template: `
     <div class="yearly-card" *ngIf="data && data.years.length > 0">
       <h3>{{ 'yearly.title' | translate }}
-        <app-info-tooltip [title]="'yearly.tooltip_title' | translate"
-          [text]="'yearly.tooltip_text' | translate">
+        <app-info-tooltip [title]="'yearly.info_title' | translate"
+          [text]="'yearly.info_text' | translate">
         </app-info-tooltip>
       </h3>
       <table class="yearly-table">

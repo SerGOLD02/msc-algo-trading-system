@@ -114,10 +114,12 @@ export class InfoTooltipComponent {
     this.isOpen = true;
     setTimeout(() => {
       const rect = this.el.nativeElement.getBoundingClientRect();
-      const popupWidth = Math.min(340, window.innerWidth - 24);
-      if (rect.right + popupWidth - 8 > window.innerWidth) {
+      const viewportWidth = document.documentElement.clientWidth;
+      const popupWidth = Math.min(340, viewportWidth - 24);
+      
+      if (rect.right + popupWidth - 16 > viewportWidth) {
         this.alignmentClass = 'align-right';
-      } else if (rect.left - 8 < 0) {
+      } else if (rect.left - 16 < 0) {
         this.alignmentClass = 'align-left';
       } else {
         this.alignmentClass = '';
