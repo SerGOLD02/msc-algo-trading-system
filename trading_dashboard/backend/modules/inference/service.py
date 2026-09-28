@@ -21,7 +21,7 @@ def _seed_inference_cache(db: Session) -> None:
         df = pd.read_parquet(INFERENCE_PATH)
         print(f"[inference] Seeding cache from {INFERENCE_PATH} ({len(df)} rows)...")
 
-        count = 0
+        records = []
         for _, row in df.iterrows():
             date_val = row.get("Date")
             if date_val is None:
@@ -37,19 +37,21 @@ def _seed_inference_cache(db: Session) -> None:
             # Normalize "R01_Risk Sentiment" -> "R01"
             ratio_id = str(ratio_id).split("_")[0]
 
-            db.merge(InferenceCache(
-                friday_date=friday_str,
-                ratio_id=str(ratio_id),
-                tfm_t1=float(row.get("TFM_t1", 0)) if not pd.isna(row.get("TFM_t1", np.nan)) else None,
-                tfm_t5=float(row.get("TFM_t5", 0)) if not pd.isna(row.get("TFM_t5", np.nan)) else None,
-                tfm_t20=float(row.get("TFM_t20", 0)) if not pd.isna(row.get("TFM_t20", np.nan)) else None,
-                chr_median_t5=float(row.get("CHR_Median_t5", 0)) if not pd.isna(row.get("CHR_Median_t5", np.nan)) else None,
-                chr_width_t5=float(row.get("CHR_Width_t5", 0)) if not pd.isna(row.get("CHR_Width_t5", np.nan)) else None,
-            ))
-            count += 1
+            records.append({
+                "friday_date": friday_str,
+                "ratio_id": ratio_id,
+                "tfm_t1": float(row.get("TFM_t1", 0)) if not pd.isna(row.get("TFM_t1", np.nan)) else None,
+                "tfm_t5": float(row.get("TFM_t5", 0)) if not pd.isna(row.get("TFM_t5", np.nan)) else None,
+                "tfm_t20": float(row.get("TFM_t20", 0)) if not pd.isna(row.get("TFM_t20", np.nan)) else None,
+                "chr_median_t5": float(row.get("CHR_Median_t5", 0)) if not pd.isna(row.get("CHR_Median_t5", np.nan)) else None,
+                "chr_width_t5": float(row.get("CHR_Width_t5", 0)) if not pd.isna(row.get("CHR_Width_t5", np.nan)) else None,
+            })
 
-        db.commit()
-        print(f"[inference] Seeded {count} inference records.")
+        if records:
+            from sqlalchemy import insert
+            db.execute(insert(InferenceCache), records)
+            db.commit()
+            print(f"[inference] Seeded {len(records)} inference records via bulk insert.")
 
     except Exception as e:
         print(f"[inference] Failed to seed cache: {e}")

@@ -61,6 +61,13 @@ type HorizonKey = '1M' | '3M' | '6M' | '1A' | 'YTD' | 'MAX';
             {{ customReturn >= 0 ? '+' : '' }}{{ customReturn.toFixed(2) }}%
           </span>
         </div>
+        <div *ngIf="hasTfm3" class="ret-row tfm3">
+          <span class="ret-dot" style="background:#8b5cf6"></span>
+          <span class="ret-label">TimesFM 3.0</span>
+          <span class="ret-val" [class.positive]="tfm3Return >= 0" [class.negative]="tfm3Return < 0">
+            {{ tfm3Return >= 0 ? '+' : '' }}{{ tfm3Return.toFixed(2) }}%
+          </span>
+        </div>
       </div>
 
       <div *ngIf="hasData" class="metrics-overlay-box">
@@ -92,6 +99,12 @@ type HorizonKey = '1M' | '3M' | '6M' | '1A' | 'YTD' | 'MAX';
                 <td>{{ metrics.custom.sharpe.toFixed(2) }}</td>
                 <td class="m-neg">{{ metrics.custom.maxDD.toFixed(1) }}%</td>
                 <td>{{ metrics.custom.calmar.toFixed(2) }}</td>
+              </tr>
+              <tr *ngIf="hasTfm3">
+                <td class="m-name">TimesFM 3.0</td>
+                <td>{{ metrics.tfm3.sharpe.toFixed(2) }}</td>
+                <td class="m-neg">{{ metrics.tfm3.maxDD.toFixed(1) }}%</td>
+                <td>{{ metrics.tfm3.calmar.toFixed(2) }}</td>
               </tr>
             </tbody>
          </table>
@@ -137,29 +150,29 @@ type HorizonKey = '1M' | '3M' | '6M' | '1A' | 'YTD' | 'MAX';
       position: absolute; top: -52px; right: 0px; z-index: 5;
       background: var(--color-surface, rgba(35,38,53,0.95)); backdrop-filter: blur(8px);
       border: 1px solid var(--color-border); border-radius: 8px;
-      padding: 6px 12px; display: flex; flex-direction: column; gap: 3px;
+      padding: 4px 10px; display: flex; flex-direction: column; gap: 2px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.3);
     }
     .ret-row {
-      display: flex; align-items: center; gap: 6px; font-size: 11px;
+      display: flex; align-items: center; gap: 5px; font-size: 9.5px;
       font-family: var(--font-numbers, monospace);
     }
-    .ret-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
-    .ret-label { color: var(--color-text-muted); font-weight: 500; min-width: 68px; }
-    .ret-val { font-weight: 700; font-size: 12px; }
+    .ret-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+    .ret-label { color: var(--color-text-muted); font-weight: 500; min-width: 58px; }
+    .ret-val { font-weight: 700; font-size: 10.5px; }
     .ret-val.positive { color: #10b981; }
     .ret-val.negative { color: #ef4444; }
 
     .metrics-overlay-box {
-      position: absolute; top: -52px; right: 190px; z-index: 5;
+      position: absolute; top: -52px; right: 155px; z-index: 5;
       background: var(--color-surface, rgba(35,38,53,0.95)); backdrop-filter: blur(8px);
       border: 1px solid var(--color-border); border-radius: 8px;
-      padding: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      padding: 6px 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.3);
     }
-    .metrics-title { font-size: 10px; font-weight: 700; text-transform: uppercase; color: var(--color-text-muted); margin-bottom: 6px; letter-spacing: 0.5px; }
-    .metrics-mini-table { border-collapse: collapse; width: 100%; font-size: 11px; }
-    .metrics-mini-table th { padding: 4px 8px; text-align: right; color: var(--color-text-muted); font-weight: 600; border-bottom: 1px solid var(--color-border); font-size: 9px; }
-    .metrics-mini-table td { padding: 4px 8px; text-align: right; color: var(--color-text-secondary); font-family: var(--font-numbers); font-weight: 600; }
+    .metrics-title { font-size: 9px; font-weight: 700; text-transform: uppercase; color: var(--color-text-muted); margin-bottom: 4px; letter-spacing: 0.5px; }
+    .metrics-mini-table { border-collapse: collapse; width: 100%; font-size: 9.5px; }
+    .metrics-mini-table th { padding: 3px 5px; text-align: right; color: var(--color-text-muted); font-weight: 600; border-bottom: 1px solid var(--color-border); font-size: 8px; }
+    .metrics-mini-table td { padding: 3px 5px; text-align: right; color: var(--color-text-secondary); font-family: var(--font-numbers); font-weight: 600; }
     .m-name { text-align: left !important; color: var(--color-text-muted) !important; font-family: var(--font-sans) !important; font-weight: 500 !important; }
     .m-neg { color: #ef4444 !important; }
 
@@ -182,6 +195,7 @@ export class EquityChartComponent implements OnChanges {
 
   @Input() defaultBacktest: BacktestResponse | null = null;
   @Input() customBacktest: BacktestResponse | null = null;
+  @Input() timesfm3Backtest: any = null;
   @Input() isLoadingCustom = false;
 
   chartOptions: EChartsOption = {};
@@ -191,12 +205,15 @@ export class EquityChartComponent implements OnChanges {
   algoReturn = 0;
   spyReturn = 0;
   customReturn = 0;
+  tfm3Return = 0;
   hasCustom = false;
+  hasTfm3 = false;
 
   metrics = {
-    algo: { sharpe: 0, maxDD: 0, calmar: 0 },
-    spy: { sharpe: 0, maxDD: 0, calmar: 0 },
-    custom: { sharpe: 0, maxDD: 0, calmar: 0 }
+    algo:   { sharpe: 0, maxDD: 0, calmar: 0 },
+    spy:    { sharpe: 0, maxDD: 0, calmar: 0 },
+    custom: { sharpe: 0, maxDD: 0, calmar: 0 },
+    tfm3:   { sharpe: 0, maxDD: 0, calmar: 0 },
   };
 
   horizons: { key: HorizonKey; label: string; weeks: number }[] = [
@@ -285,20 +302,29 @@ export class EquityChartComponent implements OnChanges {
       return series.map(p => ((p as any)[key] || 1) / first);
     };
 
-    const defValues = rebaseVal(defaultSeries, 'portfolio_value');
-    const spyValues = rebaseVal(spySeries, 'value');
+    const defValues  = rebaseVal(defaultSeries, 'portfolio_value');
+    const spyValues  = rebaseVal(spySeries, 'value');
     const custValues = customSeries.length > 0 ? rebaseVal(customSeries, 'portfolio_value') : [];
 
-    this.algoReturn = defValues.length > 0 ? (defValues[defValues.length - 1] - 1) * 100 : 0;
-    this.spyReturn = spyValues.length > 0 ? (spyValues[spyValues.length - 1] - 1) * 100 : 0;
-    this.hasCustom = custValues.length > 0;
+    const allTfm3    = (this.timesfm3Backtest?.series ?? []) as any[];
+    const tfm3Series = this.filterByHorizon(allTfm3) as any[];
+    const tfm3Values = tfm3Series.length > 0
+      ? (() => { const first = tfm3Series[0].value || 1; return tfm3Series.map((p: any) => (p.value || 1) / first); })()
+      : [];
+
+    this.algoReturn   = defValues.length  > 0 ? (defValues[defValues.length - 1] - 1) * 100 : 0;
+    this.spyReturn    = spyValues.length  > 0 ? (spyValues[spyValues.length - 1] - 1) * 100 : 0;
+    this.hasCustom    = custValues.length > 0;
     this.customReturn = custValues.length > 0 ? (custValues[custValues.length - 1] - 1) * 100 : 0;
+    this.hasTfm3      = tfm3Values.length > 0;
+    this.tfm3Return   = tfm3Values.length > 0 ? (tfm3Values[tfm3Values.length - 1] - 1) * 100 : 0;
 
-    this.metrics.algo = this.computeMetrics(defValues);
-    this.metrics.spy = this.computeMetrics(spyValues);
+    this.metrics.algo   = this.computeMetrics(defValues);
+    this.metrics.spy    = this.computeMetrics(spyValues);
     if (this.hasCustom) this.metrics.custom = this.computeMetrics(custValues);
+    if (this.hasTfm3)   this.metrics.tfm3   = this.computeMetrics(tfm3Values);
 
-    const allValues = [...defValues, ...spyValues, ...custValues].filter(v => !isNaN(v));
+    const allValues = [...defValues, ...spyValues, ...custValues, ...tfm3Values].filter(v => !isNaN(v));
     const dataMin = Math.min(...allValues, 1.0); // Ensure 0% is reachable
     const dataMax = Math.max(...allValues, 1.0);
     const range = dataMax - dataMin || 0.01;
@@ -350,6 +376,7 @@ export class EquityChartComponent implements OnChanges {
         itemGap: 20,
         data: [t('equity.legend.system'),
                ...(custValues.length > 0 ? [t('equity.legend.interactive')] : []),
+               ...(tfm3Values.length > 0 ? ['TimesFM 3.0'] : []),
                t('equity.legend.spy')]
       },
       grid: { left: '4%', right: '4%', top: '6%', bottom: '13%', containLabel: true },
@@ -410,6 +437,15 @@ export class EquityChartComponent implements OnChanges {
           data: custValues,
           lineStyle: { color: '#3b82f6', width: 2, type: 'dotted' as const },
           itemStyle: { color: '#3b82f6' },
+          symbol: 'none',
+          smooth: 0.3,
+        }] : []),
+        ...(tfm3Values.length > 0 ? [{
+          name: 'TimesFM 3.0',
+          type: 'line' as const,
+          data: tfm3Values,
+          lineStyle: { color: '#8b5cf6', width: 2, type: 'dashed' as const },
+          itemStyle: { color: '#8b5cf6' },
           symbol: 'none',
           smooth: 0.3,
         }] : []),

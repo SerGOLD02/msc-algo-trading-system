@@ -7,6 +7,7 @@ import { Observable, Subject, takeUntil } from 'rxjs';
 import { MarketService } from '../../core/services/market.service';
 import { BacktestService } from '../../core/services/backtest.service';
 import { AnalyticsService } from '../../core/services/analytics.service';
+import { ApiService } from '../../core/services/api.service';
 import { ExportService } from '../../core/services/export.service';
 import { ThemeService } from '../../core/services/theme.service';
 import { LanguageService } from '../../core/services/language.service';
@@ -78,6 +79,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   snapshot: MarketSnapshot | null = null;
   defaultBacktest: BacktestResponse | null = null;
   customBacktest: BacktestResponse | null = null;
+  timesfm3Backtest: any = null;
   regime: RegimeStatus | null = null;
   isLoadingCustom = false;
   secondsToFriday = 0;
@@ -105,6 +107,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     private marketService: MarketService,
     private backtestService: BacktestService,
     private analyticsService: AnalyticsService,
+    private api: ApiService,
     private cdr: ChangeDetectorRef,
     private toastService: ToastService,
     public exportService: ExportService,
@@ -128,6 +131,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
       });
 
     this._sub(this.backtestService.getDefault(), bt => this.defaultBacktest = bt);
+    this._sub(this.api.get<any>('/backtest/timesfm3'), bt => { this.timesfm3Backtest = bt; this.cdr.markForCheck(); });
 
     // Regime HMM — special case: toast notification on regime change
     this.backtestService.getCurrentRegime()

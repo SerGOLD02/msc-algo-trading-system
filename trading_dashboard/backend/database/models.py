@@ -80,6 +80,55 @@ class BacktestResult(Base):
     )
 
 
+class TimesFM3BacktestResult(Base):
+    """
+    Risultati backtest settimanali calcolati con inferenze TimesFM 3.0.
+    Pipeline ML identica (HMM → LightGBM → HRP → TP/SL) ma con segnali
+    generati da TimesFM 3.0 al posto del metodo OLS.
+    """
+    __tablename__ = "timesfm3_backtest_results"
+
+    id              = Column(Integer, primary_key=True, autoincrement=True)
+    friday_date     = Column(String(10), nullable=False, unique=True)
+    portfolio_value = Column(Float, nullable=False)
+    weekly_return   = Column(Float)
+    regime          = Column(Integer)
+    decay_value     = Column(Float)
+    n_trades        = Column(Integer)
+    is_crisis       = Column(Boolean)
+    cagr            = Column(Float)
+    sharpe          = Column(Float)
+    max_drawdown    = Column(Float)
+    calmar          = Column(Float)
+    total_return    = Column(Float)
+    created_at      = Column(DateTime, server_default=func.now())
+
+    __table_args__ = (
+        Index("ix_tfm3_backtest_date", "friday_date", unique=True),
+    )
+
+
+class TimesFM3InferenceCache(Base):
+    """
+    Inferenze TimesFM 3.0 per ogni (venerdì, ratio).
+    Calcolate tramite google/timesfm-3.0-pytorch checkpoint.
+    """
+    __tablename__ = "timesfm3_inference_cache"
+
+    id           = Column(Integer, primary_key=True, autoincrement=True)
+    friday_date  = Column(String(10), nullable=False)
+    ratio_id     = Column(String(5),  nullable=False)
+    tfm3_t1      = Column(Float)
+    tfm3_t5      = Column(Float)
+    tfm3_t20     = Column(Float)
+    created_at   = Column(DateTime, server_default=func.now())
+
+    __table_args__ = (
+        Index("ix_tfm3_inference_date_ratio",
+              "friday_date", "ratio_id", unique=True),
+    )
+
+
 class SystemParams(Base):
     """
     Parametri di configurazione del sistema.

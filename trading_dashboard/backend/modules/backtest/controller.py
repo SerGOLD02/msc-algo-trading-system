@@ -44,3 +44,10 @@ def default_backtest(
         start_date=start_date,
     )
     return get_or_compute_backtest(params, db)
+
+
+@router.get("/timesfm3")
+def timesfm3_backtest(db: Session = Depends(get_db)):
+    """Restituisce il backtest calcolato con le inferenze di TimesFM 3.0."""
+    from modules.timesfm3.service import get_timesfm3_backtest_from_db
+    return get_timesfm3_backtest_from_db(db)

@@ -74,12 +74,6 @@
   align-items: start;
 }
 
-@media (max-width: 1200px) {
-  .main-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
 .content-col {
   display: flex;
   flex-direction: column;
@@ -122,54 +116,6 @@
     margin: -6px 0 14px;
     line-height: 1.4;
   }
-  
-  .visual-legend {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    font-size: 11px;
-    color: var(--color-text-muted);
-    margin: -4px 0 16px;
-    line-height: 1.4;
-    align-items: center;
-  }
-  
-  .visual-legend .leg-item {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  
-  .visual-legend .leg-box {
-    width: 12px;
-    height: 12px;
-    border-radius: 3px;
-  }
-  
-  .visual-legend .leg-line-solid {
-    width: 16px;
-    height: 2px;
-  }
-  
-  .visual-legend .leg-line-dashed {
-    width: 16px;
-    height: 0;
-    border-top-style: dashed;
-    border-top-width: 2px;
-  }
-  
-  .visual-legend .leg-line-dotted {
-    width: 16px;
-    height: 0;
-    border-top-style: dotted;
-    border-top-width: 2px;
-  }
-  
-  .visual-legend .leg-bar {
-    width: 16px;
-    height: 6px;
-    border-radius: 2px;
-  }
 }
 
 /* Card accent borders — single accent color (emerald) */
@@ -179,6 +125,10 @@
 
 .card-equity {
   border-top: 2px solid var(--color-accent);
+
+  .note {
+    margin-right: 330px;
+  }
 }
 
 .card-signals {
