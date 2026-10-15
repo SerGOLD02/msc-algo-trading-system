@@ -4,7 +4,17 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-DRIVE_PATH = Path(os.getenv("DRIVE_BASE_PATH", "/app/models"))
+BACKEND_DIR = Path(__file__).resolve().parent
+REPO_ROOT   = BACKEND_DIR.parent.parent if BACKEND_DIR.name == "backend" and BACKEND_DIR.parent.name == "trading_dashboard" else BACKEND_DIR.parent
+DEFAULT_DATASET = REPO_ROOT / "TESI DATI PULITI" / "Dataset"
+
+env_drive = os.getenv("DRIVE_BASE_PATH")
+if env_drive and Path(env_drive).exists():
+    DRIVE_PATH = Path(env_drive)
+elif DEFAULT_DATASET.exists():
+    DRIVE_PATH = DEFAULT_DATASET
+else:
+    DRIVE_PATH = Path(os.getenv("DRIVE_BASE_PATH", "/app/models"))
 
 # Percorsi modelli
 LGB_MODEL_PATH      = DRIVE_PATH / os.getenv("MODEL_LGB", "LGB_FINAL_MODEL")
@@ -19,7 +29,11 @@ TRIPLE_BARRIER_PATH = DRIVE_PATH / "TRIPLE_BARRIER_LABELS_OPTIMAL.parquet"
 
 
 # Database
-SQLITE_PATH = os.getenv("SQLITE_PATH", "backend/database/trading.db")
+env_sqlite = os.getenv("SQLITE_PATH")
+if env_sqlite:
+    SQLITE_PATH = Path(env_sqlite) if Path(env_sqlite).is_absolute() else BACKEND_DIR / env_sqlite
+else:
+    SQLITE_PATH = BACKEND_DIR / "database" / "trading.db"
 DATABASE_URL = f"sqlite:///{SQLITE_PATH}"
 
 # Parametri sistema (fissi, mai riallenati)

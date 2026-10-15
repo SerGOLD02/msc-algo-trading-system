@@ -20,3 +20,4 @@ torch>=2.1.0
 pandas_market_calendars>=4.4.0
 matplotlib
 seaborn
+xgboost>=2.0.0

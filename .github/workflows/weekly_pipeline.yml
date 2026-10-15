@@ -1,0 +1,58 @@
+name: Weekly Trading Pipeline Update
+
+on:
+  schedule:
+    # Esegue ogni venerdì alle 22:00 UTC (dopo la chiusura dei mercati USA)
+    - cron: '0 22 * * 5'
+  workflow_dispatch:
+    # Consente di avviare l'aggiornamento manualmente dall'interfaccia di GitHub
+
+permissions:
+  contents: write
+
+jobs:
+  update-pipeline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+          cache-dependency-path: 'trading_dashboard/backend/requirements.txt'
+
+      - name: Install dependencies (CPU optimized)
+        run: |
+          python -m pip install --upgrade pip
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install -r trading_dashboard/backend/requirements.txt
+
+      - name: Run Weekly Pipeline Update
+        run: |
+          python trading_dashboard/backend/scripts/weekly_pipeline_update.py
+
+      - name: Commit and push updated mock-data and database
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Stage solo i file aggiornati dalla pipeline
+          git add trading_dashboard/frontend/src/app/core/utils/mock-data.ts
+          git add trading_dashboard/backend/database/trading.db
+          
+          # Se ci sono cambiamenti, fai commit e push
+          if git diff --staged --quiet; then
+            echo "Nessuna nuova variazione da committare."
+          else
+            echo "Nuove variazioni rilevate. Esecuzione commit e push..."
+            git commit -m "chore(auto): weekly pipeline update $(date +'%Y-%m-%d') [skip ci]"
+            git push origin main
+          fi
