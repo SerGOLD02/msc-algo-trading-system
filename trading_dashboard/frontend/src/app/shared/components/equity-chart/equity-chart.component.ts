@@ -39,6 +39,7 @@ type HorizonKey = '1M' | '3M' | '6M' | '1A' | 'YTD' | 'MAX';
           {{ h.label }}
         </button>
       </div>
+
       <div *ngIf="hasData" class="returns-box">
         <div class="ret-row algo">
           <span class="ret-dot" style="background:#059669"></span>
@@ -66,6 +67,20 @@ type HorizonKey = '1M' | '3M' | '6M' | '1A' | 'YTD' | 'MAX';
           <span class="ret-label">TimesFM 3.0</span>
           <span class="ret-val" [class.positive]="tfm3Return >= 0" [class.negative]="tfm3Return < 0">
             {{ tfm3Return >= 0 ? '+' : '' }}{{ tfm3Return.toFixed(2) }}%
+          </span>
+        </div>
+        <div *ngIf="hasTfm3XgbOptuna" class="ret-row tfm3-xgb">
+          <span class="ret-dot" style="background:#a855f7"></span>
+          <span class="ret-label">TFM3 + XGB Optuna</span>
+          <span class="ret-val" [class.positive]="tfm3XgbOptunaReturn >= 0" [class.negative]="tfm3XgbOptunaReturn < 0">
+            {{ tfm3XgbOptunaReturn >= 0 ? '+' : '' }}{{ tfm3XgbOptunaReturn.toFixed(2) }}%
+          </span>
+        </div>
+        <div *ngIf="hasTfm25XgbBase" class="ret-row tfm25-xgb">
+          <span class="ret-dot" style="background:#06b6d4"></span>
+          <span class="ret-label">TFM2.5 + XGB Base</span>
+          <span class="ret-val" [class.positive]="tfm25XgbBaseReturn >= 0" [class.negative]="tfm25XgbBaseReturn < 0">
+            {{ tfm25XgbBaseReturn >= 0 ? '+' : '' }}{{ tfm25XgbBaseReturn.toFixed(2) }}%
           </span>
         </div>
       </div>
@@ -105,6 +120,18 @@ type HorizonKey = '1M' | '3M' | '6M' | '1A' | 'YTD' | 'MAX';
                 <td>{{ metrics.tfm3.sharpe.toFixed(2) }}</td>
                 <td class="m-neg">{{ metrics.tfm3.maxDD.toFixed(1) }}%</td>
                 <td>{{ metrics.tfm3.calmar.toFixed(2) }}</td>
+              </tr>
+              <tr *ngIf="hasTfm3XgbOptuna">
+                <td class="m-name">TFM3 + XGB Optuna</td>
+                <td>{{ metrics.tfm3XgbOptuna.sharpe.toFixed(2) }}</td>
+                <td class="m-neg">{{ metrics.tfm3XgbOptuna.maxDD.toFixed(1) }}%</td>
+                <td>{{ metrics.tfm3XgbOptuna.calmar.toFixed(2) }}</td>
+              </tr>
+              <tr *ngIf="hasTfm25XgbBase">
+                <td class="m-name">TFM2.5 + XGB Base</td>
+                <td>{{ metrics.tfm25XgbBase.sharpe.toFixed(2) }}</td>
+                <td class="m-neg">{{ metrics.tfm25XgbBase.maxDD.toFixed(1) }}%</td>
+                <td>{{ metrics.tfm25XgbBase.calmar.toFixed(2) }}</td>
               </tr>
             </tbody>
          </table>
@@ -158,13 +185,13 @@ type HorizonKey = '1M' | '3M' | '6M' | '1A' | 'YTD' | 'MAX';
       font-family: var(--font-numbers, monospace);
     }
     .ret-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
-    .ret-label { color: var(--color-text-muted); font-weight: 500; min-width: 58px; }
+    .ret-label { color: var(--color-text-muted); font-weight: 500; min-width: 90px; }
     .ret-val { font-weight: 700; font-size: 10.5px; }
     .ret-val.positive { color: #10b981; }
     .ret-val.negative { color: #ef4444; }
 
     .metrics-overlay-box {
-      position: absolute; top: -52px; right: 155px; z-index: 5;
+      position: absolute; top: -52px; right: 200px; z-index: 5;
       background: var(--color-surface, rgba(35,38,53,0.95)); backdrop-filter: blur(8px);
       border: 1px solid var(--color-border); border-radius: 8px;
       padding: 6px 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.3);
@@ -196,6 +223,8 @@ export class EquityChartComponent implements OnChanges {
   @Input() defaultBacktest: BacktestResponse | null = null;
   @Input() customBacktest: BacktestResponse | null = null;
   @Input() timesfm3Backtest: any = null;
+  @Input() tfm3XgbOptunaBacktest: any = null;
+  @Input() tfm25XgbBaseBacktest: any = null;
   @Input() isLoadingCustom = false;
 
   chartOptions: EChartsOption = {};
@@ -206,14 +235,20 @@ export class EquityChartComponent implements OnChanges {
   spyReturn = 0;
   customReturn = 0;
   tfm3Return = 0;
+  tfm3XgbOptunaReturn = 0;
+  tfm25XgbBaseReturn = 0;
   hasCustom = false;
   hasTfm3 = false;
+  hasTfm3XgbOptuna = false;
+  hasTfm25XgbBase = false;
 
   metrics = {
-    algo:   { sharpe: 0, maxDD: 0, calmar: 0 },
-    spy:    { sharpe: 0, maxDD: 0, calmar: 0 },
-    custom: { sharpe: 0, maxDD: 0, calmar: 0 },
-    tfm3:   { sharpe: 0, maxDD: 0, calmar: 0 },
+    algo:            { sharpe: 0, maxDD: 0, calmar: 0 },
+    spy:             { sharpe: 0, maxDD: 0, calmar: 0 },
+    custom:          { sharpe: 0, maxDD: 0, calmar: 0 },
+    tfm3:            { sharpe: 0, maxDD: 0, calmar: 0 },
+    tfm3XgbOptuna:   { sharpe: 0, maxDD: 0, calmar: 0 },
+    tfm25XgbBase:    { sharpe: 0, maxDD: 0, calmar: 0 },
   };
 
   horizons: { key: HorizonKey; label: string; weeks: number }[] = [
@@ -221,7 +256,7 @@ export class EquityChartComponent implements OnChanges {
     { key: '3M',  label: '3M',  weeks: 13 },
     { key: '6M',  label: '6M',  weeks: 26 },
     { key: '1A',  label: '1A',  weeks: 52 },
-    { key: 'YTD', label: 'YTD', weeks: 0 }, // Special handling
+    { key: 'YTD', label: 'YTD', weeks: 0 },
     { key: 'MAX', label: 'MAX', weeks: 9999 },
   ];
 
@@ -312,20 +347,38 @@ export class EquityChartComponent implements OnChanges {
       ? (() => { const first = tfm3Series[0].value || 1; return tfm3Series.map((p: any) => (p.value || 1) / first); })()
       : [];
 
-    this.algoReturn   = defValues.length  > 0 ? (defValues[defValues.length - 1] - 1) * 100 : 0;
-    this.spyReturn    = spyValues.length  > 0 ? (spyValues[spyValues.length - 1] - 1) * 100 : 0;
-    this.hasCustom    = custValues.length > 0;
-    this.customReturn = custValues.length > 0 ? (custValues[custValues.length - 1] - 1) * 100 : 0;
-    this.hasTfm3      = tfm3Values.length > 0;
-    this.tfm3Return   = tfm3Values.length > 0 ? (tfm3Values[tfm3Values.length - 1] - 1) * 100 : 0;
+    const allTfm3XgbOptuna = (this.tfm3XgbOptunaBacktest?.series ?? []) as any[];
+    const tfm3XgbOptunaSeries = this.filterByHorizon(allTfm3XgbOptuna) as any[];
+    const tfm3XgbOptunaValues = tfm3XgbOptunaSeries.length > 0
+      ? (() => { const first = tfm3XgbOptunaSeries[0].value || 1; return tfm3XgbOptunaSeries.map((p: any) => (p.value || 1) / first); })()
+      : [];
 
-    this.metrics.algo   = this.computeMetrics(defValues);
-    this.metrics.spy    = this.computeMetrics(spyValues);
-    if (this.hasCustom) this.metrics.custom = this.computeMetrics(custValues);
-    if (this.hasTfm3)   this.metrics.tfm3   = this.computeMetrics(tfm3Values);
+    const allTfm25XgbBase = (this.tfm25XgbBaseBacktest?.series ?? []) as any[];
+    const tfm25XgbBaseSeries = this.filterByHorizon(allTfm25XgbBase) as any[];
+    const tfm25XgbBaseValues = tfm25XgbBaseSeries.length > 0
+      ? (() => { const first = tfm25XgbBaseSeries[0].value || 1; return tfm25XgbBaseSeries.map((p: any) => (p.value || 1) / first); })()
+      : [];
 
-    const allValues = [...defValues, ...spyValues, ...custValues, ...tfm3Values].filter(v => !isNaN(v));
-    const dataMin = Math.min(...allValues, 1.0); // Ensure 0% is reachable
+    this.algoReturn          = defValues.length  > 0 ? (defValues[defValues.length - 1] - 1) * 100 : 0;
+    this.spyReturn           = spyValues.length  > 0 ? (spyValues[spyValues.length - 1] - 1) * 100 : 0;
+    this.hasCustom           = custValues.length > 0;
+    this.customReturn        = custValues.length > 0 ? (custValues[custValues.length - 1] - 1) * 100 : 0;
+    this.hasTfm3             = tfm3Values.length > 0;
+    this.tfm3Return          = tfm3Values.length > 0 ? (tfm3Values[tfm3Values.length - 1] - 1) * 100 : 0;
+    this.hasTfm3XgbOptuna    = tfm3XgbOptunaValues.length > 0;
+    this.tfm3XgbOptunaReturn = tfm3XgbOptunaValues.length > 0 ? (tfm3XgbOptunaValues[tfm3XgbOptunaValues.length - 1] - 1) * 100 : 0;
+    this.hasTfm25XgbBase     = tfm25XgbBaseValues.length > 0;
+    this.tfm25XgbBaseReturn  = tfm25XgbBaseValues.length > 0 ? (tfm25XgbBaseValues[tfm25XgbBaseValues.length - 1] - 1) * 100 : 0;
+
+    this.metrics.algo          = this.computeMetrics(defValues);
+    this.metrics.spy           = this.computeMetrics(spyValues);
+    if (this.hasCustom)          this.metrics.custom          = this.computeMetrics(custValues);
+    if (this.hasTfm3)            this.metrics.tfm3            = this.computeMetrics(tfm3Values);
+    if (this.hasTfm3XgbOptuna)   this.metrics.tfm3XgbOptuna   = this.computeMetrics(tfm3XgbOptunaValues);
+    if (this.hasTfm25XgbBase)    this.metrics.tfm25XgbBase    = this.computeMetrics(tfm25XgbBaseValues);
+
+    const allValues = [...defValues, ...spyValues, ...custValues, ...tfm3Values, ...tfm3XgbOptunaValues, ...tfm25XgbBaseValues].filter(v => !isNaN(v));
+    const dataMin = Math.min(...allValues, 1.0);
     const dataMax = Math.max(...allValues, 1.0);
     const range = dataMax - dataMin || 0.01;
     const yMin = dataMin - range * 0.15;
@@ -372,11 +425,13 @@ export class EquityChartComponent implements OnChanges {
       },
       legend: {
         bottom: 4,
-        textStyle: { color: c.textSecondary, fontSize: 12, fontFamily: 'Inter, sans-serif' },
-        itemGap: 20,
+        textStyle: { color: c.textSecondary, fontSize: 11, fontFamily: 'Inter, sans-serif' },
+        itemGap: 14,
         data: [t('equity.legend.system'),
                ...(custValues.length > 0 ? [t('equity.legend.interactive')] : []),
                ...(tfm3Values.length > 0 ? ['TimesFM 3.0'] : []),
+               ...(tfm3XgbOptunaValues.length > 0 ? ['TFM 3.0 + XGB (Optuna)'] : []),
+               ...(tfm25XgbBaseValues.length > 0 ? ['TFM 2.5 + XGB (Base)'] : []),
                t('equity.legend.spy')]
       },
       grid: { left: '4%', right: '4%', top: '6%', bottom: '13%', containLabel: true },
@@ -446,6 +501,24 @@ export class EquityChartComponent implements OnChanges {
           data: tfm3Values,
           lineStyle: { color: '#8b5cf6', width: 2, type: 'dashed' as const },
           itemStyle: { color: '#8b5cf6' },
+          symbol: 'none',
+          smooth: 0.3,
+        }] : []),
+        ...(tfm3XgbOptunaValues.length > 0 ? [{
+          name: 'TFM 3.0 + XGB (Optuna)',
+          type: 'line' as const,
+          data: tfm3XgbOptunaValues,
+          lineStyle: { color: '#a855f7', width: 2.5, type: 'solid' as const },
+          itemStyle: { color: '#a855f7' },
+          symbol: 'none',
+          smooth: 0.3,
+        }] : []),
+        ...(tfm25XgbBaseValues.length > 0 ? [{
+          name: 'TFM 2.5 + XGB (Base)',
+          type: 'line' as const,
+          data: tfm25XgbBaseValues,
+          lineStyle: { color: '#06b6d4', width: 2, type: 'dashed' as const },
+          itemStyle: { color: '#06b6d4' },
           symbol: 'none',
           smooth: 0.3,
         }] : []),
