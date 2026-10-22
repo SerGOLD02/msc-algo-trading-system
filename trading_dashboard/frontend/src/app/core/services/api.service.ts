@@ -48,6 +48,8 @@ export class ApiService {
         return MOCK_DATA.tfm3XgbOptunaBacktest;
       case '/backtest/tfm25-xgb-base':
         return MOCK_DATA.tfm25XgbBaseBacktest;
+      case '/backtest/timestral-xgb-base':
+        return MOCK_DATA.timestralXgbBaseBacktest;
       case '/hmm/current':
         return MOCK_DATA.currentRegime;
       case '/market/snapshot':

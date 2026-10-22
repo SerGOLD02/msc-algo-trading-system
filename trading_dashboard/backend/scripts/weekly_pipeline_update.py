@@ -54,6 +54,9 @@ from modules.timesfm3.service import (
     backfill_timesfm3_inference, load_timesfm3_inference_cache,
     compute_and_save_timesfm3_backtest, get_timesfm3_backtest_from_db
 )
+from modules.timestral.service import (
+    backfill_timestral_inference, load_timestral_inference_cache
+)
 from modules.hrp.service import compute_blended_weights
 from modules.market_data.service import get_market_snapshot
 from modules.signals.service import get_weekly_signals, get_available_fridays
@@ -370,9 +373,10 @@ def main():
         update_prices_from_yfinance(db)
 
         # Step 2: Inferenze Foundation Models
-        print("[2/5] Checking and backfilling inferences (Chronos, TimesFM 2.5, TimesFM 3.0)...")
+        print("[2/5] Checking and backfilling inferences (Chronos, TimesFM 2.5, TimesFM 3.0, Timestral)...")
         backfill_inference(db)
         backfill_timesfm3_inference(db)
+        backfill_timestral_inference(db)
 
         # Step 3: Backtest di sistema
         print("[3/5] Computing Default LGBM and TimesFM 3.0 backtests...")
@@ -391,14 +395,16 @@ def main():
         timesfm3_backtest = jsonable_encoder(get_timesfm3_backtest_from_db(db))
 
         # Step 4: Addestramento ed esecuzione XGBoost
-        print("[4/5] Training and evaluating XGBoost models...")
+        print("[4/5] Training and evaluating XGBoost models (TimesFM 3.0 Optuna, TimesFM 2.5 Base, Timestral Base)...")
         xgb_optuna_tfm3, xgb_baseline, df_ml_cols, all_meta_cols = train_xgb_models()
 
         tfm25_cache = load_inference_cache(db)
         tfm30_cache = load_timesfm3_inference_cache(db)
+        timestral_cache = load_timestral_inference_cache(db)
 
         tfm3_xgb_optuna = jsonable_encoder(generate_xgb_series(db, xgb_optuna_tfm3, tfm30_cache, df_ml_cols, all_meta_cols))
         tfm25_xgb_base = jsonable_encoder(generate_xgb_series(db, xgb_baseline, tfm25_cache, df_ml_cols, all_meta_cols))
+        timestral_xgb_base = jsonable_encoder(generate_xgb_series(db, xgb_baseline, timestral_cache, df_ml_cols, all_meta_cols))
 
         # Step 5: Generazione Mock Data completo per il frontend
         print("[5/5] Extracting dashboard widgets and serializing mock-data.ts...")
@@ -428,6 +434,7 @@ def main():
             "timesfm3Backtest": timesfm3_backtest,
             "tfm3XgbOptunaBacktest": tfm3_xgb_optuna,
             "tfm25XgbBaseBacktest": tfm25_xgb_base,
+            "timestralXgbBaseBacktest": timestral_xgb_base,
             "currentRegime": current_regime,
             "marketSnapshot": market_snapshot,
             "weeklySignals": weekly_signals,

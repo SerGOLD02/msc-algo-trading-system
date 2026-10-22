@@ -21,3 +21,4 @@ pandas_market_calendars>=4.4.0
 matplotlib
 seaborn
 xgboost>=2.0.0
+timestral>=1.0.0

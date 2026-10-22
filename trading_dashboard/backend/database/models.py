@@ -129,6 +129,29 @@ class TimesFM3InferenceCache(Base):
     )
 
 
+class TimestralInferenceCache(Base):
+    """
+    Inferenze Timestral per ogni (venerdì, ratio).
+    Calcolate tramite mistralai/Timestral-209M checkpoint.
+    """
+    __tablename__ = "timestral_inference_cache"
+
+    id           = Column(Integer, primary_key=True, autoincrement=True)
+    friday_date  = Column(String(10), nullable=False)
+    ratio_id     = Column(String(5),  nullable=False)
+    tstral_t1    = Column(Float)
+    tstral_t5    = Column(Float)
+    tstral_t20   = Column(Float)
+    chr_median_t5= Column(Float)
+    chr_width_t5 = Column(Float)
+    created_at   = Column(DateTime, server_default=func.now())
+
+    __table_args__ = (
+        Index("ix_tstral_inference_date_ratio",
+              "friday_date", "ratio_id", unique=True),
+    )
+
+
 class SystemParams(Base):
     """
     Parametri di configurazione del sistema.
