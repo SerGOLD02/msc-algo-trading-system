@@ -2,8 +2,9 @@ name: Weekly Trading Pipeline Update
 
 on:
   schedule:
-    # Esegue ogni venerdì alle 22:00 UTC (dopo la chiusura dei mercati USA)
-    - cron: '0 22 * * 5'
+    # Esegue il venerdì alle 23:30 UTC e di backup il sabato alle 04:00 UTC (garantisce dati EOD completi)
+    - cron: '30 23 * * 5'
+    - cron: '0 4 * * 6'
   workflow_dispatch:
     # Consente di avviare l'aggiornamento manualmente dall'interfaccia di GitHub
 
@@ -53,6 +54,6 @@ jobs:
             echo "Nessuna nuova variazione da committare."
           else
             echo "Nuove variazioni rilevate. Esecuzione commit e push..."
-            git commit -m "chore(auto): weekly pipeline update $(date +'%Y-%m-%d') [skip ci]"
+            git commit -m "chore(auto): weekly pipeline update $(date +'%Y-%m-%d')"
             git push origin main
           fi

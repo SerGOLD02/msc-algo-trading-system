@@ -75,7 +75,7 @@ def update_prices_from_yfinance(db):
     ))
     
     last_date = db.execute(text("SELECT MAX(date) FROM price_cache")).fetchone()[0]
-    start_date = "2026-09-01" if not last_date else str((pd.Timestamp(last_date) - pd.Timedelta(days=7)).date())
+    start_date = "2026-09-01" if not last_date else str((pd.Timestamp(last_date) - pd.Timedelta(days=14)).date())
     print(f"[1/5] Updating prices from YFinance since {start_date}...")
     
     try:
@@ -89,11 +89,7 @@ def update_prices_from_yfinance(db):
         )
     except Exception as e:
         print(f"YFinance download error: {e}")
-        return
-
-    if raw is None or raw.empty:
-        print("YFinance returned empty dataframe.")
-        return
+        raw = None
 
     updated, inserted = 0, 0
     for ticker in tickers:
@@ -105,13 +101,25 @@ def update_prices_from_yfinance(db):
         elif ticker == "^TNX": clean_ticker = "TNX"
         elif ticker == "^IRX": clean_ticker = "IRX"
 
-        if isinstance(raw.columns, pd.MultiIndex):
-            if ticker in raw.columns.get_level_values(0):
-                df = raw[ticker].dropna(subset=["Close"])
+        df = None
+        if raw is not None and not raw.empty:
+            if isinstance(raw.columns, pd.MultiIndex):
+                if ticker in raw.columns.get_level_values(0):
+                    df = raw[ticker].dropna(subset=["Close"])
             else:
-                continue
-        else:
-            df = raw.dropna(subset=["Close"])
+                df = raw.dropna(subset=["Close"])
+
+        # Fallback individual download se il batch ha saltato questo ticker
+        if df is None or len(df) == 0:
+            try:
+                df = yf.download(ticker, start=start_date, auto_adjust=True, progress=False)
+                if df is not None and not df.empty:
+                    df = df.dropna(subset=["Close"])
+            except Exception:
+                df = None
+
+        if df is None or len(df) == 0:
+            continue
 
         for idx_date, row in df.iterrows():
             date_str = str(idx_date.date())
