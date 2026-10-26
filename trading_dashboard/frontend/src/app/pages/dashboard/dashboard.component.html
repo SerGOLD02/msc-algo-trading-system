@@ -54,10 +54,9 @@
         <app-equity-chart
           [defaultBacktest]="defaultBacktest"
           [customBacktest]="customBacktest"
-          [timesfm3Backtest]="timesfm3Backtest"
           [tfm3XgbOptunaBacktest]="tfm3XgbOptunaBacktest"
           [tfm25XgbBaseBacktest]="tfm25XgbBaseBacktest"
-          [timestralXgbBaseBacktest]="timestralXgbBaseBacktest"
+          [timestralXgbOptunaBacktest]="timestralXgbOptunaBacktest || timestralXgbBaseBacktest"
           [isLoadingCustom]="isLoadingCustom">
         </app-equity-chart>
       </section>

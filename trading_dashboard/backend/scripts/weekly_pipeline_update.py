@@ -156,61 +156,86 @@ def update_prices_from_yfinance(db):
 
 
 def train_xgb_models():
-    """Allena i modelli XGBoost (Optuna Tuned e Baseline)."""
+    """Allena o carica i modelli XGBoost (Optuna Tuned TFM3, Optuna Tuned Timestral, e Baseline)."""
+    import joblib
     dataset_dir = DRIVE_PATH
-    path_infer  = os.path.join(dataset_dir, "INFERENZE_FULL_DATASET_O2TFM.parquet")
-    path_ds     = os.path.join(dataset_dir, "DATASET_INFERENCE_READY.parquet")
-    path_labels = os.path.join(dataset_dir, "TRIPLE_BARRIER_LABELS_OPTIMAL.parquet")
+    pkl_tfm3 = os.path.join(dataset_dir, "XGB_TFM3_OPTUNA_MODEL.pkl")
+    pkl_tstr = os.path.join(dataset_dir, "XGB_TIMESTRAL_OPTUNA_MODEL.pkl")
 
-    df_infer_hist = pd.read_parquet(path_infer)
-    df_ds_hist    = pd.read_parquet(path_ds)
+    path_infer_tfm3  = os.path.join(dataset_dir, "INFERENZE_FULL_DATASET_TFM3.parquet")
+    path_infer_tstr  = os.path.join(dataset_dir, "INFERENZE_FULL_DATASET_TIMESTRAL.parquet")
+    path_infer_tfm25 = os.path.join(dataset_dir, "INFERENZE_FULL_DATASET_O2TFM.parquet")
+    path_ds          = os.path.join(dataset_dir, "DATASET_INFERENCE_READY.parquet")
+    path_labels      = os.path.join(dataset_dir, "TRIPLE_BARRIER_LABELS_OPTIMAL.parquet")
+
+    df_ds_hist = pd.read_parquet(path_ds)
     df_labels_hist = pd.read_parquet(path_labels)
-
-    if not isinstance(df_ds_hist.index, pd.DatetimeIndex):
-        if "Date" in df_ds_hist.columns:
-            df_ds_hist["Date"] = pd.to_datetime(df_ds_hist["Date"])
-            df_ds_hist = df_ds_hist.set_index("Date")
-
     df_ml_cols = [c for c in df_ds_hist.columns if c.startswith("ML_FEAT_")]
-
-    df_infer_sub = df_infer_hist.copy()
-    df_infer_sub["Date"] = pd.to_datetime(df_infer_sub["Date"])
-
-    df_ds_reset = df_ds_hist[df_ml_cols].reset_index()
-    if "Date" not in df_ds_reset.columns:
-        df_ds_reset = df_ds_reset.rename(columns={df_ds_reset.columns[0]: "Date"})
-    df_ds_reset["Date"] = pd.to_datetime(df_ds_reset["Date"])
-
-    df_lbl_reset = df_labels_hist.reset_index()
-    df_lbl_reset["Date"] = pd.to_datetime(df_lbl_reset["Date"])
-
-    df_model = pd.merge(df_infer_sub, df_ds_reset, on="Date", how="inner")
-    df_model = pd.merge(df_model, df_lbl_reset, on=["Date", "Ratio"], how="inner")
-
-    train_mask = df_model["Date"] < pd.Timestamp("2019-01-01")
     fm_feat_cols = ["TFM_t1", "TFM_t5", "TFM_t20", "CHR_Median_t5", "CHR_Width_t5"]
-    all_meta_cols = df_ml_cols + [c for c in fm_feat_cols if c in df_model.columns]
+    all_meta_cols = df_ml_cols + fm_feat_cols
 
-    X_train_meta = df_model.loc[train_mask, all_meta_cols]
-    y_train_meta = df_model.loc[train_mask, "Label"]
+    if os.path.exists(pkl_tfm3) and os.path.exists(pkl_tstr):
+        print("[XGB] Caricamento modelli Optuna preaddestrati da disco...")
+        xgb_optuna_tfm3 = joblib.load(pkl_tfm3)
+        xgb_optuna_timestral = joblib.load(pkl_tstr)
+    else:
+        df_ds_r = df_ds_hist[df_ml_cols].reset_index()
+        if "Date" not in df_ds_r.columns: df_ds_r = df_ds_r.rename(columns={df_ds_r.columns[0]: "Date"})
+        df_ds_r["Date"] = pd.to_datetime(df_ds_r["Date"])
+        df_lbl_r = df_labels_hist.reset_index() if isinstance(df_labels_hist.index, pd.MultiIndex) else df_labels_hist.copy()
+        if "Date" not in df_lbl_r.columns: df_lbl_r = df_lbl_r.rename(columns={df_lbl_r.columns[0]: "Date"})
+        df_lbl_r["Date"] = pd.to_datetime(df_lbl_r["Date"])
 
-    # XGBoost Optuna tuned model
-    xgb_optuna_tfm3 = xgb.XGBClassifier(
-        n_estimators=210, max_depth=7, learning_rate=0.01166,
-        subsample=0.9972, colsample_bytree=0.5960, min_child_weight=2,
-        gamma=4.991, reg_alpha=2.882, reg_lambda=1.824e-06,
-        random_state=42, eval_metric='logloss'
-    )
-    xgb_optuna_tfm3.fit(X_train_meta, y_train_meta)
+        # TFM 3.0 Optuna
+        df_inf3 = pd.read_parquet(path_infer_tfm3)
+        df_inf3["Date"] = pd.to_datetime(df_inf3["Date"])
+        m_tfm3 = pd.merge(df_inf3, df_ds_r, on="Date", how="inner")
+        m_tfm3 = pd.merge(m_tfm3, df_lbl_r, on=["Date", "Ratio"], how="inner")
+        t_mask = m_tfm3["Date"] < pd.Timestamp("2019-01-01")
 
-    # XGBoost Baseline model
+        xgb_optuna_tfm3 = xgb.XGBClassifier(
+            n_estimators=80, max_depth=5, learning_rate=0.006534,
+            subsample=0.9967, colsample_bytree=0.8197, min_child_weight=10,
+            gamma=1.6121, reg_alpha=0.8712, reg_lambda=0.000307,
+            random_state=42, eval_metric='logloss'
+        )
+        xgb_optuna_tfm3.fit(m_tfm3.loc[t_mask, all_meta_cols], m_tfm3.loc[t_mask, "Label"])
+
+        # Timestral Optuna
+        df_tstr = pd.read_parquet(path_infer_tstr)
+        df_tstr["Date"] = pd.to_datetime(df_tstr["Date"])
+        m_tstr = pd.merge(df_tstr, df_ds_r, on="Date", how="inner")
+        m_tstr = pd.merge(m_tstr, df_lbl_r, on=["Date", "Ratio"], how="inner")
+        t_mask_t = m_tstr["Date"] < pd.Timestamp("2019-01-01")
+
+        xgb_optuna_timestral = xgb.XGBClassifier(
+            n_estimators=150, max_depth=6, learning_rate=0.007779,
+            subsample=0.9299, colsample_bytree=0.6206, min_child_weight=4,
+            gamma=4.7415, reg_alpha=9.4119, reg_lambda=1.29e-05,
+            random_state=42, eval_metric='logloss'
+        )
+        xgb_optuna_timestral.fit(m_tstr.loc[t_mask_t, all_meta_cols], m_tstr.loc[t_mask_t, "Label"])
+
+    # Baseline TFM 2.5
+    df_inf25 = pd.read_parquet(path_infer_tfm25)
+    df_inf25["Date"] = pd.to_datetime(df_inf25["Date"])
+    df_ds_r = df_ds_hist[df_ml_cols].reset_index()
+    if "Date" not in df_ds_r.columns: df_ds_r = df_ds_r.rename(columns={df_ds_r.columns[0]: "Date"})
+    df_ds_r["Date"] = pd.to_datetime(df_ds_r["Date"])
+    df_lbl_r = df_labels_hist.reset_index() if isinstance(df_labels_hist.index, pd.MultiIndex) else df_labels_hist.copy()
+    if "Date" not in df_lbl_r.columns: df_lbl_r = df_lbl_r.rename(columns={df_lbl_r.columns[0]: "Date"})
+    df_lbl_r["Date"] = pd.to_datetime(df_lbl_r["Date"])
+    m_base = pd.merge(df_inf25, df_ds_r, on="Date", how="inner")
+    m_base = pd.merge(m_base, df_lbl_r, on=["Date", "Ratio"], how="inner")
+    t_mask_b = m_base["Date"] < pd.Timestamp("2019-01-01")
+
     xgb_baseline = xgb.XGBClassifier(
         n_estimators=168, max_depth=3, learning_rate=0.049,
         random_state=42, eval_metric='logloss'
     )
-    xgb_baseline.fit(X_train_meta, y_train_meta)
+    xgb_baseline.fit(m_base.loc[t_mask_b, all_meta_cols], m_base.loc[t_mask_b, "Label"])
 
-    return xgb_optuna_tfm3, xgb_baseline, df_ml_cols, all_meta_cols
+    return xgb_optuna_tfm3, xgb_optuna_timestral, xgb_baseline, df_ml_cols, all_meta_cols
 
 
 def generate_xgb_series(db, model_obj, cache_source, df_ml_cols, all_meta_cols):
@@ -395,8 +420,8 @@ def main():
         timesfm3_backtest = jsonable_encoder(get_timesfm3_backtest_from_db(db))
 
         # Step 4: Addestramento ed esecuzione XGBoost
-        print("[4/5] Training and evaluating XGBoost models (TimesFM 3.0 Optuna, TimesFM 2.5 Base, Timestral Base)...")
-        xgb_optuna_tfm3, xgb_baseline, df_ml_cols, all_meta_cols = train_xgb_models()
+        print("[4/5] Training and evaluating XGBoost models (TimesFM 3.0 Optuna, Timestral Optuna, TimesFM 2.5 Base)...")
+        xgb_optuna_tfm3, xgb_optuna_timestral, xgb_baseline, df_ml_cols, all_meta_cols = train_xgb_models()
 
         tfm25_cache = load_inference_cache(db)
         tfm30_cache = load_timesfm3_inference_cache(db)
@@ -404,7 +429,7 @@ def main():
 
         tfm3_xgb_optuna = jsonable_encoder(generate_xgb_series(db, xgb_optuna_tfm3, tfm30_cache, df_ml_cols, all_meta_cols))
         tfm25_xgb_base = jsonable_encoder(generate_xgb_series(db, xgb_baseline, tfm25_cache, df_ml_cols, all_meta_cols))
-        timestral_xgb_base = jsonable_encoder(generate_xgb_series(db, xgb_baseline, timestral_cache, df_ml_cols, all_meta_cols))
+        timestral_xgb_optuna = jsonable_encoder(generate_xgb_series(db, xgb_optuna_timestral, timestral_cache, df_ml_cols, all_meta_cols))
 
         # Step 5: Generazione Mock Data completo per il frontend
         print("[5/5] Extracting dashboard widgets and serializing mock-data.ts...")
@@ -431,10 +456,11 @@ def main():
 
         mock_data = {
             "defaultBacktest": default_backtest,
-            "timesfm3Backtest": timesfm3_backtest,
+            "timesfm3Backtest": default_backtest,
             "tfm3XgbOptunaBacktest": tfm3_xgb_optuna,
             "tfm25XgbBaseBacktest": tfm25_xgb_base,
-            "timestralXgbBaseBacktest": timestral_xgb_base,
+            "timestralXgbOptunaBacktest": timestral_xgb_optuna,
+            "timestralXgbBaseBacktest": timestral_xgb_optuna,
             "currentRegime": current_regime,
             "marketSnapshot": market_snapshot,
             "weeklySignals": weekly_signals,

@@ -62,13 +62,6 @@ type HorizonKey = '1M' | '3M' | '6M' | '1A' | 'YTD' | 'MAX';
             {{ customReturn >= 0 ? '+' : '' }}{{ customReturn.toFixed(2) }}%
           </span>
         </div>
-        <div *ngIf="hasTfm3" class="ret-row tfm3">
-          <span class="ret-dot" style="background:#8b5cf6"></span>
-          <span class="ret-label">TimesFM 3.0</span>
-          <span class="ret-val" [class.positive]="tfm3Return >= 0" [class.negative]="tfm3Return < 0">
-            {{ tfm3Return >= 0 ? '+' : '' }}{{ tfm3Return.toFixed(2) }}%
-          </span>
-        </div>
         <div *ngIf="hasTfm3XgbOptuna" class="ret-row tfm3-xgb">
           <span class="ret-dot" style="background:#a855f7"></span>
           <span class="ret-label">TFM3 + XGB Optuna</span>
@@ -83,11 +76,11 @@ type HorizonKey = '1M' | '3M' | '6M' | '1A' | 'YTD' | 'MAX';
             {{ tfm25XgbBaseReturn >= 0 ? '+' : '' }}{{ tfm25XgbBaseReturn.toFixed(2) }}%
           </span>
         </div>
-        <div *ngIf="hasTimestralXgbBase" class="ret-row timestral-xgb">
+        <div *ngIf="hasTimestralXgbOptuna || hasTimestralXgbBase" class="ret-row timestral-xgb">
           <span class="ret-dot" style="background:#ec4899"></span>
-          <span class="ret-label">Timestral + XGB Base</span>
-          <span class="ret-val" [class.positive]="timestralXgbBaseReturn >= 0" [class.negative]="timestralXgbBaseReturn < 0">
-            {{ timestralXgbBaseReturn >= 0 ? '+' : '' }}{{ timestralXgbBaseReturn.toFixed(2) }}%
+          <span class="ret-label">Timestral + XGB Optuna</span>
+          <span class="ret-val" [class.positive]="timestralXgbReturn >= 0" [class.negative]="timestralXgbReturn < 0">
+            {{ timestralXgbReturn >= 0 ? '+' : '' }}{{ timestralXgbReturn.toFixed(2) }}%
           </span>
         </div>
       </div>
@@ -122,12 +115,6 @@ type HorizonKey = '1M' | '3M' | '6M' | '1A' | 'YTD' | 'MAX';
                 <td class="m-neg">{{ metrics.custom.maxDD.toFixed(1) }}%</td>
                 <td>{{ metrics.custom.calmar.toFixed(2) }}</td>
               </tr>
-              <tr *ngIf="hasTfm3">
-                <td class="m-name">TimesFM 3.0</td>
-                <td>{{ metrics.tfm3.sharpe.toFixed(2) }}</td>
-                <td class="m-neg">{{ metrics.tfm3.maxDD.toFixed(1) }}%</td>
-                <td>{{ metrics.tfm3.calmar.toFixed(2) }}</td>
-              </tr>
               <tr *ngIf="hasTfm3XgbOptuna">
                 <td class="m-name">TFM3 + XGB Optuna</td>
                 <td>{{ metrics.tfm3XgbOptuna.sharpe.toFixed(2) }}</td>
@@ -140,11 +127,11 @@ type HorizonKey = '1M' | '3M' | '6M' | '1A' | 'YTD' | 'MAX';
                 <td class="m-neg">{{ metrics.tfm25XgbBase.maxDD.toFixed(1) }}%</td>
                 <td>{{ metrics.tfm25XgbBase.calmar.toFixed(2) }}</td>
               </tr>
-              <tr *ngIf="hasTimestralXgbBase">
-                <td class="m-name">Timestral + XGB Base</td>
-                <td>{{ metrics.timestralXgbBase.sharpe.toFixed(2) }}</td>
-                <td class="m-neg">{{ metrics.timestralXgbBase.maxDD.toFixed(1) }}%</td>
-                <td>{{ metrics.timestralXgbBase.calmar.toFixed(2) }}</td>
+              <tr *ngIf="hasTimestralXgbOptuna || hasTimestralXgbBase">
+                <td class="m-name">Timestral + XGB Optuna</td>
+                <td>{{ metrics.timestralXgb.sharpe.toFixed(2) }}</td>
+                <td class="m-neg">{{ metrics.timestralXgb.maxDD.toFixed(1) }}%</td>
+                <td>{{ metrics.timestralXgb.calmar.toFixed(2) }}</td>
               </tr>
             </tbody>
          </table>
@@ -238,6 +225,7 @@ export class EquityChartComponent implements OnChanges {
   @Input() timesfm3Backtest: any = null;
   @Input() tfm3XgbOptunaBacktest: any = null;
   @Input() tfm25XgbBaseBacktest: any = null;
+  @Input() timestralXgbOptunaBacktest: any = null;
   @Input() timestralXgbBaseBacktest: any = null;
   @Input() isLoadingCustom = false;
 
@@ -248,24 +236,22 @@ export class EquityChartComponent implements OnChanges {
   algoReturn = 0;
   spyReturn = 0;
   customReturn = 0;
-  tfm3Return = 0;
   tfm3XgbOptunaReturn = 0;
   tfm25XgbBaseReturn = 0;
-  timestralXgbBaseReturn = 0;
+  timestralXgbReturn = 0;
   hasCustom = false;
-  hasTfm3 = false;
   hasTfm3XgbOptuna = false;
   hasTfm25XgbBase = false;
+  hasTimestralXgbOptuna = false;
   hasTimestralXgbBase = false;
 
   metrics = {
     algo:            { sharpe: 0, maxDD: 0, calmar: 0 },
     spy:             { sharpe: 0, maxDD: 0, calmar: 0 },
     custom:          { sharpe: 0, maxDD: 0, calmar: 0 },
-    tfm3:            { sharpe: 0, maxDD: 0, calmar: 0 },
     tfm3XgbOptuna:   { sharpe: 0, maxDD: 0, calmar: 0 },
     tfm25XgbBase:    { sharpe: 0, maxDD: 0, calmar: 0 },
-    timestralXgbBase:{ sharpe: 0, maxDD: 0, calmar: 0 },
+    timestralXgb:    { sharpe: 0, maxDD: 0, calmar: 0 },
   };
 
   horizons: { key: HorizonKey; label: string; weeks: number }[] = [
@@ -358,12 +344,6 @@ export class EquityChartComponent implements OnChanges {
     const spyValues  = rebaseVal(spySeries, 'value');
     const custValues = customSeries.length > 0 ? rebaseVal(customSeries, 'portfolio_value') : [];
 
-    const allTfm3    = (this.timesfm3Backtest?.series ?? []) as any[];
-    const tfm3Series = this.filterByHorizon(allTfm3) as any[];
-    const tfm3Values = tfm3Series.length > 0
-      ? (() => { const first = tfm3Series[0].value || 1; return tfm3Series.map((p: any) => (p.value || 1) / first); })()
-      : [];
-
     const allTfm3XgbOptuna = (this.tfm3XgbOptunaBacktest?.series ?? []) as any[];
     const tfm3XgbOptunaSeries = this.filterByHorizon(allTfm3XgbOptuna) as any[];
     const tfm3XgbOptunaValues = tfm3XgbOptunaSeries.length > 0
@@ -376,34 +356,32 @@ export class EquityChartComponent implements OnChanges {
       ? (() => { const first = tfm25XgbBaseSeries[0].value || 1; return tfm25XgbBaseSeries.map((p: any) => (p.value || 1) / first); })()
       : [];
 
-    const allTimestralXgbBase = (this.timestralXgbBaseBacktest?.series ?? []) as any[];
-    const timestralXgbBaseSeries = this.filterByHorizon(allTimestralXgbBase) as any[];
-    const timestralXgbBaseValues = timestralXgbBaseSeries.length > 0
-      ? (() => { const first = timestralXgbBaseSeries[0].value || 1; return timestralXgbBaseSeries.map((p: any) => (p.value || 1) / first); })()
+    const allTimestralXgb = ((this.timestralXgbOptunaBacktest || this.timestralXgbBaseBacktest)?.series ?? []) as any[];
+    const timestralXgbSeries = this.filterByHorizon(allTimestralXgb) as any[];
+    const timestralXgbValues = timestralXgbSeries.length > 0
+      ? (() => { const first = timestralXgbSeries[0].value || 1; return timestralXgbSeries.map((p: any) => (p.value || 1) / first); })()
       : [];
 
     this.algoReturn          = defValues.length  > 0 ? (defValues[defValues.length - 1] - 1) * 100 : 0;
     this.spyReturn           = spyValues.length  > 0 ? (spyValues[spyValues.length - 1] - 1) * 100 : 0;
     this.hasCustom           = custValues.length > 0;
     this.customReturn        = custValues.length > 0 ? (custValues[custValues.length - 1] - 1) * 100 : 0;
-    this.hasTfm3             = tfm3Values.length > 0;
-    this.tfm3Return          = tfm3Values.length > 0 ? (tfm3Values[tfm3Values.length - 1] - 1) * 100 : 0;
     this.hasTfm3XgbOptuna    = tfm3XgbOptunaValues.length > 0;
     this.tfm3XgbOptunaReturn = tfm3XgbOptunaValues.length > 0 ? (tfm3XgbOptunaValues[tfm3XgbOptunaValues.length - 1] - 1) * 100 : 0;
     this.hasTfm25XgbBase     = tfm25XgbBaseValues.length > 0;
     this.tfm25XgbBaseReturn  = tfm25XgbBaseValues.length > 0 ? (tfm25XgbBaseValues[tfm25XgbBaseValues.length - 1] - 1) * 100 : 0;
-    this.hasTimestralXgbBase    = timestralXgbBaseValues.length > 0;
-    this.timestralXgbBaseReturn = timestralXgbBaseValues.length > 0 ? (timestralXgbBaseValues[timestralXgbBaseValues.length - 1] - 1) * 100 : 0;
+    this.hasTimestralXgbOptuna = !!this.timestralXgbOptunaBacktest;
+    this.hasTimestralXgbBase = !!this.timestralXgbBaseBacktest;
+    this.timestralXgbReturn  = timestralXgbValues.length > 0 ? (timestralXgbValues[timestralXgbValues.length - 1] - 1) * 100 : 0;
 
     this.metrics.algo             = this.computeMetrics(defValues);
     this.metrics.spy              = this.computeMetrics(spyValues);
     if (this.hasCustom)             this.metrics.custom             = this.computeMetrics(custValues);
-    if (this.hasTfm3)               this.metrics.tfm3               = this.computeMetrics(tfm3Values);
     if (this.hasTfm3XgbOptuna)      this.metrics.tfm3XgbOptuna      = this.computeMetrics(tfm3XgbOptunaValues);
     if (this.hasTfm25XgbBase)       this.metrics.tfm25XgbBase       = this.computeMetrics(tfm25XgbBaseValues);
-    if (this.hasTimestralXgbBase)   this.metrics.timestralXgbBase   = this.computeMetrics(timestralXgbBaseValues);
+    if (timestralXgbValues.length > 0) this.metrics.timestralXgb   = this.computeMetrics(timestralXgbValues);
 
-    const allValues = [...defValues, ...spyValues, ...custValues, ...tfm3Values, ...tfm3XgbOptunaValues, ...tfm25XgbBaseValues, ...timestralXgbBaseValues].filter(v => !isNaN(v));
+    const allValues = [...defValues, ...spyValues, ...custValues, ...tfm3XgbOptunaValues, ...tfm25XgbBaseValues, ...timestralXgbValues].filter(v => !isNaN(v));
     const dataMin = Math.min(...allValues, 1.0);
     const dataMax = Math.max(...allValues, 1.0);
     const range = dataMax - dataMin || 0.01;
@@ -455,10 +433,9 @@ export class EquityChartComponent implements OnChanges {
         itemGap: 14,
         data: [t('equity.legend.system'),
                ...(custValues.length > 0 ? [t('equity.legend.interactive')] : []),
-               ...(tfm3Values.length > 0 ? ['TimesFM 3.0'] : []),
                ...(tfm3XgbOptunaValues.length > 0 ? ['TFM 3.0 + XGB (Optuna)'] : []),
                ...(tfm25XgbBaseValues.length > 0 ? ['TFM 2.5 + XGB (Base)'] : []),
-               ...(timestralXgbBaseValues.length > 0 ? ['Timestral + XGB (Base)'] : []),
+               ...(timestralXgbValues.length > 0 ? ['Timestral + XGB (Optuna)'] : []),
                t('equity.legend.spy')]
       },
       grid: { left: '4%', right: '4%', top: '6%', bottom: '13%', containLabel: true },
@@ -522,15 +499,6 @@ export class EquityChartComponent implements OnChanges {
           symbol: 'none',
           smooth: 0.3,
         }] : []),
-        ...(tfm3Values.length > 0 ? [{
-          name: 'TimesFM 3.0',
-          type: 'line' as const,
-          data: tfm3Values,
-          lineStyle: { color: '#8b5cf6', width: 2, type: 'dashed' as const },
-          itemStyle: { color: '#8b5cf6' },
-          symbol: 'none',
-          smooth: 0.3,
-        }] : []),
         ...(tfm3XgbOptunaValues.length > 0 ? [{
           name: 'TFM 3.0 + XGB (Optuna)',
           type: 'line' as const,
@@ -549,10 +517,10 @@ export class EquityChartComponent implements OnChanges {
           symbol: 'none',
           smooth: 0.3,
         }] : []),
-        ...(timestralXgbBaseValues.length > 0 ? [{
-          name: 'Timestral + XGB (Base)',
+        ...(timestralXgbValues.length > 0 ? [{
+          name: 'Timestral + XGB (Optuna)',
           type: 'line' as const,
-          data: timestralXgbBaseValues,
+          data: timestralXgbValues,
           lineStyle: { color: '#ec4899', width: 2.5, type: 'solid' as const },
           itemStyle: { color: '#ec4899' },
           symbol: 'none',

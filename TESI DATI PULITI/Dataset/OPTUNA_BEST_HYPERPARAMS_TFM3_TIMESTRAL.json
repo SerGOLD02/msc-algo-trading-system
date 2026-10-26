@@ -1,0 +1,28 @@
+{
+  "timesfm3_xgb_optuna": {
+    "n_estimators": 80,
+    "max_depth": 5,
+    "learning_rate": 0.006534131231853253,
+    "subsample": 0.9967127332929422,
+    "colsample_bytree": 0.8196545794452443,
+    "min_child_weight": 10,
+    "gamma": 1.6121101598703294,
+    "reg_alpha": 0.871201724697018,
+    "reg_lambda": 0.0003072060069208079,
+    "random_state": 42,
+    "eval_metric": "logloss"
+  },
+  "timestral_xgb_optuna": {
+    "n_estimators": 150,
+    "max_depth": 6,
+    "learning_rate": 0.0077791116540123564,
+    "subsample": 0.9298511164779877,
+    "colsample_bytree": 0.6206109750354483,
+    "min_child_weight": 4,
+    "gamma": 4.741508529056434,
+    "reg_alpha": 9.411884351195047,
+    "reg_lambda": 1.290599589141967e-05,
+    "random_state": 42,
+    "eval_metric": "logloss"
+  }
+}
