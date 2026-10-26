@@ -51,6 +51,10 @@ export class ApiService {
       case '/backtest/timestral-xgb-optuna':
       case '/backtest/timestral-xgb-base':
         return MOCK_DATA.timestralXgbOptunaBacktest || MOCK_DATA.timestralXgbBaseBacktest;
+      case '/backtest/timestral-chr-xgb-optuna':
+        return MOCK_DATA.timestralChrXgbOptunaBacktest;
+      case '/backtest/vwce':
+        return MOCK_DATA.vwceBacktest;
       case '/hmm/current':
         return MOCK_DATA.currentRegime;
       case '/market/snapshot':

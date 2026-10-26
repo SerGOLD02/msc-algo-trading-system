@@ -34,6 +34,12 @@ export interface BacktestResponse {
   spy_max_drawdown: number;
   spy_calmar: number;
   spy_total_return: number;
+  vwce_series?: { date: string; value: number }[];
+  vwce_cagr?: number;
+  vwce_sharpe?: number;
+  vwce_max_drawdown?: number;
+  vwce_calmar?: number;
+  vwce_total_return?: number;
 }
 
 export interface RegimeStatus {

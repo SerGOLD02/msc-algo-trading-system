@@ -83,6 +83,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
   tfm25XgbBaseBacktest: any = null;
   timestralXgbOptunaBacktest: any = null;
   timestralXgbBaseBacktest: any = null;
+  timestralChrXgbOptunaBacktest: any = null;
+  vwceBacktest: any = null;
   regime: RegimeStatus | null = null;
   isLoadingCustom = false;
   secondsToFriday = 0;
@@ -137,6 +139,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this._sub(this.api.get<any>('/backtest/tfm3-xgb-optuna'), bt => { this.tfm3XgbOptunaBacktest = bt; this.cdr.markForCheck(); });
     this._sub(this.api.get<any>('/backtest/tfm25-xgb-base'), bt => { this.tfm25XgbBaseBacktest = bt; this.cdr.markForCheck(); });
     this._sub(this.api.get<any>('/backtest/timestral-xgb-optuna'), bt => { this.timestralXgbOptunaBacktest = bt; this.cdr.markForCheck(); });
+    this._sub(this.api.get<any>('/backtest/timestral-chr-xgb-optuna'), bt => { this.timestralChrXgbOptunaBacktest = bt; this.cdr.markForCheck(); });
+    this._sub(this.api.get<any>('/backtest/vwce'), bt => { this.vwceBacktest = bt; this.cdr.markForCheck(); });
 
     // Regime HMM — special case: toast notification on regime change
     this.backtestService.getCurrentRegime()

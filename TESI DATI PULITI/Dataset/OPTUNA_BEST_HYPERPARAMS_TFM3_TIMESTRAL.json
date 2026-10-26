@@ -24,5 +24,18 @@
     "reg_lambda": 1.290599589141967e-05,
     "random_state": 42,
     "eval_metric": "logloss"
+  },
+  "timestral_chr_xgb_optuna": {
+    "n_estimators": 110,
+    "max_depth": 6,
+    "learning_rate": 0.005804492929417487,
+    "subsample": 0.967782664351516,
+    "colsample_bytree": 0.7422903960033799,
+    "min_child_weight": 2,
+    "gamma": 4.648699453149609,
+    "reg_alpha": 2.832600494785756,
+    "reg_lambda": 0.005597841373093483,
+    "random_state": 42,
+    "eval_metric": "logloss"
   }
 }

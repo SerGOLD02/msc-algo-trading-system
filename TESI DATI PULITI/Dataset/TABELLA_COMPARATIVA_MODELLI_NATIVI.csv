@@ -1,17 +1,29 @@
 Periodo,Setup,CAGR (%),Total Return (%),Sharpe,MaxDD (%),Calmar,Win Rate (%),N Weeks
-Training Set (2006-2018),Algoritmo (TFM 2.5 + LightGBM),6.38,114.68,0.71,-24.18,0.26,44.08,642
-Training Set (2006-2018),TFM 3.0 + XGBoost (Optuna Nativo),22.2,1088.7,2.1,-13.64,1.63,60.75,642
-Training Set (2006-2018),Timestral + XGBoost (Optuna Nativo),23.48,1251.06,2.24,-14.74,1.59,54.83,642
-Training Set (2006-2018),TFM 2.5 + XGBoost (Baseline),14.22,416.52,1.35,-18.24,0.78,48.91,642
-Validation Set (2019-2022),Algoritmo (TFM 2.5 + LightGBM),15.23,72.5,1.4,-14.68,1.04,52.0,200
-Validation Set (2019-2022),TFM 3.0 + XGBoost (Optuna Nativo),22.38,117.44,1.98,-11.84,1.89,60.5,200
-Validation Set (2019-2022),Timestral + XGBoost (Optuna Nativo),27.6,155.37,2.34,-8.67,3.18,59.0,200
-Validation Set (2019-2022),TFM 2.5 + XGBoost (Baseline),13.03,60.18,1.18,-18.67,0.7,50.5,200
-Test Set OOS (2023-2025),Algoritmo (TFM 2.5 + LightGBM),21.79,77.26,2.08,-7.6,2.87,59.6,151
-Test Set OOS (2023-2025),TFM 3.0 + XGBoost (Optuna Nativo),27.47,102.33,2.5,-5.68,4.83,64.24,151
-Test Set OOS (2023-2025),Timestral + XGBoost (Optuna Nativo),26.98,100.08,2.57,-6.38,4.23,59.6,151
-Test Set OOS (2023-2025),TFM 2.5 + XGBoost (Baseline),15.53,52.07,1.47,-8.48,1.83,52.98,151
-2026 YTD (Live),Algoritmo (TFM 2.5 + LightGBM),3.06,2.29,0.4,-5.43,0.56,58.97,39
-2026 YTD (Live),TFM 3.0 + XGBoost (Optuna Nativo),8.6,6.38,1.1,-4.72,1.82,56.41,39
-2026 YTD (Live),Timestral + XGBoost (Optuna Nativo),10.97,8.12,1.49,-3.29,3.33,61.54,39
-2026 YTD (Live),TFM 2.5 + XGBoost (Baseline),13.6,10.03,1.98,-3.22,4.22,61.54,39
+Training Set (2006-2018),TFM 2.5 + CHR + LGB,6.1,107.72,0.68,-24.23,0.25,43.61,642
+Training Set (2006-2018),TFM 2.5 + CHR + XGB (Base),13.99,403.64,1.33,-18.24,0.77,48.75,642
+Training Set (2006-2018),TFM 3.0 + CHR + XGB (Opt),22.17,1085.15,2.1,-13.6,1.63,60.59,642
+Training Set (2006-2018),Timestral + XGB (Opt),23.42,1243.45,2.24,-14.76,1.59,54.83,642
+Training Set (2006-2018),Timestral + CHR + XGB (Opt),24.5,1395.58,2.28,-13.99,1.75,58.26,642
+Training Set (2006-2018),S&P 500,7.6,147.11,0.49,-54.04,0.14,59.66,642
+Training Set (2006-2018),VWCE (Acc),4.15,65.2,0.32,-49.31,0.08,46.26,642
+Validation Set (2019-2022),TFM 2.5 + CHR + LGB,15.0,71.18,1.39,-14.77,1.02,52.0,200
+Validation Set (2019-2022),TFM 2.5 + CHR + XGB (Base),13.2,61.12,1.19,-18.56,0.71,50.0,200
+Validation Set (2019-2022),TFM 3.0 + CHR + XGB (Opt),22.54,118.54,1.99,-11.67,1.93,60.5,200
+Validation Set (2019-2022),Timestral + XGB (Opt),27.89,157.61,2.36,-8.67,3.22,59.0,200
+Validation Set (2019-2022),Timestral + CHR + XGB (Opt),28.53,162.59,2.43,-9.37,3.04,63.5,200
+Validation Set (2019-2022),S&P 500,13.78,64.33,0.76,-27.72,0.5,60.5,200
+Validation Set (2019-2022),VWCE (Acc),9.42,41.35,0.54,-30.2,0.31,58.0,200
+Test Set OOS (2023-2025),TFM 2.5 + CHR + LGB,21.68,76.8,2.08,-7.78,2.79,59.6,151
+Test Set OOS (2023-2025),TFM 2.5 + CHR + XGB (Base),15.45,51.76,1.47,-8.43,1.83,53.64,151
+Test Set OOS (2023-2025),TFM 3.0 + CHR + XGB (Opt),27.33,101.69,2.48,-5.95,4.59,64.24,151
+Test Set OOS (2023-2025),Timestral + XGB (Opt),26.68,98.72,2.53,-6.35,4.2,59.6,151
+Test Set OOS (2023-2025),Timestral + CHR + XGB (Opt),29.2,110.42,2.63,-5.26,5.55,63.58,151
+Test Set OOS (2023-2025),S&P 500,24.23,87.78,1.64,-14.03,1.73,60.93,151
+Test Set OOS (2023-2025),VWCE (Acc),20.64,72.43,1.46,-12.59,1.64,59.6,151
+2026 YTD (Live),TFM 2.5 + CHR + LGB,3.06,2.29,0.4,-5.43,0.56,58.97,39
+2026 YTD (Live),TFM 2.5 + CHR + XGB (Base),13.83,10.2,2.01,-3.22,4.29,61.54,39
+2026 YTD (Live),TFM 3.0 + CHR + XGB (Opt),9.21,6.83,1.17,-4.72,1.95,56.41,39
+2026 YTD (Live),Timestral + XGB (Opt),10.66,7.89,1.44,-3.3,3.23,61.54,39
+2026 YTD (Live),Timestral + CHR + XGB (Opt),10.66,7.89,1.44,-3.3,3.23,61.54,39
+2026 YTD (Live),S&P 500,16.47,12.11,1.15,-8.39,1.96,51.28,39
+2026 YTD (Live),VWCE (Acc),15.19,11.19,1.11,-8.34,1.82,53.85,39

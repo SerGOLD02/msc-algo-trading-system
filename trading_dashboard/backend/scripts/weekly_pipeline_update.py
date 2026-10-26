@@ -161,6 +161,7 @@ def train_xgb_models():
     dataset_dir = DRIVE_PATH
     pkl_tfm3 = os.path.join(dataset_dir, "XGB_TFM3_OPTUNA_MODEL.pkl")
     pkl_tstr = os.path.join(dataset_dir, "XGB_TIMESTRAL_OPTUNA_MODEL.pkl")
+    pkl_tstr_chr = os.path.join(dataset_dir, "XGB_TIMESTRAL_CHR_OPTUNA_MODEL.pkl")
 
     path_infer_tfm3  = os.path.join(dataset_dir, "INFERENZE_FULL_DATASET_TFM3.parquet")
     path_infer_tstr  = os.path.join(dataset_dir, "INFERENZE_FULL_DATASET_TIMESTRAL.parquet")
@@ -174,10 +175,11 @@ def train_xgb_models():
     fm_feat_cols = ["TFM_t1", "TFM_t5", "TFM_t20", "CHR_Median_t5", "CHR_Width_t5"]
     all_meta_cols = df_ml_cols + fm_feat_cols
 
-    if os.path.exists(pkl_tfm3) and os.path.exists(pkl_tstr):
+    if os.path.exists(pkl_tfm3) and os.path.exists(pkl_tstr) and os.path.exists(pkl_tstr_chr):
         print("[XGB] Caricamento modelli Optuna preaddestrati da disco...")
         xgb_optuna_tfm3 = joblib.load(pkl_tfm3)
         xgb_optuna_timestral = joblib.load(pkl_tstr)
+        xgb_optuna_tstr_chr = joblib.load(pkl_tstr_chr)
     else:
         df_ds_r = df_ds_hist[df_ml_cols].reset_index()
         if "Date" not in df_ds_r.columns: df_ds_r = df_ds_r.rename(columns={df_ds_r.columns[0]: "Date"})
@@ -216,6 +218,14 @@ def train_xgb_models():
         )
         xgb_optuna_timestral.fit(m_tstr.loc[t_mask_t, all_meta_cols], m_tstr.loc[t_mask_t, "Label"])
 
+        xgb_optuna_tstr_chr = xgb.XGBClassifier(
+            n_estimators=110, max_depth=6, learning_rate=0.0058,
+            subsample=0.9678, colsample_bytree=0.7423, min_child_weight=2,
+            gamma=4.6487, reg_alpha=2.8326, reg_lambda=0.005598,
+            random_state=42, eval_metric='logloss'
+        )
+        xgb_optuna_tstr_chr.fit(m_tstr.loc[t_mask_t, all_meta_cols], m_tstr.loc[t_mask_t, "Label"])
+
     # Baseline TFM 2.5
     df_inf25 = pd.read_parquet(path_infer_tfm25)
     df_inf25["Date"] = pd.to_datetime(df_inf25["Date"])
@@ -235,7 +245,7 @@ def train_xgb_models():
     )
     xgb_baseline.fit(m_base.loc[t_mask_b, all_meta_cols], m_base.loc[t_mask_b, "Label"])
 
-    return xgb_optuna_tfm3, xgb_optuna_timestral, xgb_baseline, df_ml_cols, all_meta_cols
+    return xgb_optuna_tfm3, xgb_optuna_timestral, xgb_optuna_tstr_chr, xgb_baseline, df_ml_cols, all_meta_cols
 
 
 def generate_xgb_series(db, model_obj, cache_source, df_ml_cols, all_meta_cols):
@@ -420,16 +430,29 @@ def main():
         timesfm3_backtest = jsonable_encoder(get_timesfm3_backtest_from_db(db))
 
         # Step 4: Addestramento ed esecuzione XGBoost
-        print("[4/5] Training and evaluating XGBoost models (TimesFM 3.0 Optuna, Timestral Optuna, TimesFM 2.5 Base)...")
-        xgb_optuna_tfm3, xgb_optuna_timestral, xgb_baseline, df_ml_cols, all_meta_cols = train_xgb_models()
+        print("[4/5] Training and evaluating XGBoost models (TimesFM 3.0 Optuna, Timestral Optuna, Timestral+CHR Optuna, TimesFM 2.5 Base)...")
+        xgb_optuna_tfm3, xgb_optuna_timestral, xgb_optuna_tstr_chr, xgb_baseline, df_ml_cols, all_meta_cols = train_xgb_models()
 
         tfm25_cache = load_inference_cache(db)
         tfm30_cache = load_timesfm3_inference_cache(db)
         timestral_cache = load_timestral_inference_cache(db)
 
+        # Cache ibrido per Timestral + CHR
+        tstr_chr_cache = {}
+        for k, t_val in timestral_cache.items():
+            chr_val = tfm30_cache.get(k, {})
+            tstr_chr_cache[k] = {
+                "tfm_t1": t_val.get("tfm_t1", 0.0),
+                "tfm_t5": t_val.get("tfm_t5", 0.0),
+                "tfm_t20": t_val.get("tfm_t20", 0.0),
+                "chr_median_t5": chr_val.get("chr_median_t5", t_val.get("chr_median_t5", 0.0)),
+                "chr_width_t5": chr_val.get("chr_width_t5", t_val.get("chr_width_t5", 0.0)),
+            }
+
         tfm3_xgb_optuna = jsonable_encoder(generate_xgb_series(db, xgb_optuna_tfm3, tfm30_cache, df_ml_cols, all_meta_cols))
         tfm25_xgb_base = jsonable_encoder(generate_xgb_series(db, xgb_baseline, tfm25_cache, df_ml_cols, all_meta_cols))
         timestral_xgb_optuna = jsonable_encoder(generate_xgb_series(db, xgb_optuna_timestral, timestral_cache, df_ml_cols, all_meta_cols))
+        timestral_chr_xgb_optuna = jsonable_encoder(generate_xgb_series(db, xgb_optuna_tstr_chr, tstr_chr_cache, df_ml_cols, all_meta_cols))
 
         # Step 5: Generazione Mock Data completo per il frontend
         print("[5/5] Extracting dashboard widgets and serializing mock-data.ts...")
@@ -461,6 +484,7 @@ def main():
             "tfm25XgbBaseBacktest": tfm25_xgb_base,
             "timestralXgbOptunaBacktest": timestral_xgb_optuna,
             "timestralXgbBaseBacktest": timestral_xgb_optuna,
+            "timestralChrXgbOptunaBacktest": timestral_chr_xgb_optuna,
             "currentRegime": current_regime,
             "marketSnapshot": market_snapshot,
             "weeklySignals": weekly_signals,
