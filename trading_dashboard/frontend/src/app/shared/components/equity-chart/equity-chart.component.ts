@@ -68,7 +68,7 @@ type HorizonKey = '1M' | '3M' | '6M' | '1A' | 'YTD' | 'MAX';
                   <td>{{ metrics.spy.calmar.toFixed(2) }}</td>
                 </tr>
                 <tr *ngIf="hasVwce">
-                  <td class="m-name">VWCE (Acc)</td>
+                  <td class="m-name">VWCE (Acc) (Vanguard All-World)</td>
                   <td>{{ metrics.vwce.sharpe.toFixed(2) }}</td>
                   <td class="m-neg">{{ metrics.vwce.maxDD.toFixed(1) }}%</td>
                   <td>{{ metrics.vwce.calmar.toFixed(2) }}</td>
@@ -86,16 +86,16 @@ type HorizonKey = '1M' | '3M' | '6M' | '1A' | 'YTD' | 'MAX';
                   <td>{{ metrics.tfm3XgbOptuna.calmar.toFixed(2) }}</td>
                 </tr>
                 <tr *ngIf="hasTimestralXgbOptuna || hasTimestralXgbBase">
-                  <td class="m-name">Timestral + XGB (Opt)</td>
+                  <td class="m-name">Timestral + Timestral + XGB (Opt)</td>
                   <td>{{ metrics.timestralXgb.sharpe.toFixed(2) }}</td>
                   <td class="m-neg">{{ metrics.timestralXgb.maxDD.toFixed(1) }}%</td>
                   <td>{{ metrics.timestralXgb.calmar.toFixed(2) }}</td>
                 </tr>
                 <tr *ngIf="hasTimestralChrXgbOptuna">
-                  <td class="m-name" style="font-weight: 700 !important; color: #f59e0b !important;">Timestral + CHR + XGB (Opt)</td>
-                  <td style="color: #f59e0b;">{{ metrics.timestralChrXgb.sharpe.toFixed(2) }}</td>
+                  <td class="m-name">Timestral + CHR + XGB (Opt)</td>
+                  <td>{{ metrics.timestralChrXgb.sharpe.toFixed(2) }}</td>
                   <td class="m-neg">{{ metrics.timestralChrXgb.maxDD.toFixed(1) }}%</td>
-                  <td style="color: #f59e0b;">{{ metrics.timestralChrXgb.calmar.toFixed(2) }}</td>
+                  <td>{{ metrics.timestralChrXgb.calmar.toFixed(2) }}</td>
                 </tr>
               </tbody>
             </table>
@@ -120,7 +120,7 @@ type HorizonKey = '1M' | '3M' | '6M' | '1A' | 'YTD' | 'MAX';
             </div>
             <div *ngIf="hasVwce" class="ret-row vwce">
               <span class="ret-dot" style="background:#38bdf8"></span>
-              <span class="ret-label">VWCE (Acc)</span>
+              <span class="ret-label">VWCE (Acc) (Vanguard All-World)</span>
               <span class="ret-val" [class.positive]="vwceReturn >= 0" [class.negative]="vwceReturn < 0">
                 {{ vwceReturn >= 0 ? '+' : '' }}{{ vwceReturn.toFixed(2) }}%
               </span>
@@ -141,14 +141,14 @@ type HorizonKey = '1M' | '3M' | '6M' | '1A' | 'YTD' | 'MAX';
             </div>
             <div *ngIf="hasTimestralXgbOptuna || hasTimestralXgbBase" class="ret-row timestral-xgb">
               <span class="ret-dot" style="background:#ec4899"></span>
-              <span class="ret-label">Timestral + XGB (Opt)</span>
+              <span class="ret-label">Timestral + Timestral + XGB (Opt)</span>
               <span class="ret-val" [class.positive]="timestralXgbReturn >= 0" [class.negative]="timestralXgbReturn < 0">
                 {{ timestralXgbReturn >= 0 ? '+' : '' }}{{ timestralXgbReturn.toFixed(2) }}%
               </span>
             </div>
             <div *ngIf="hasTimestralChrXgbOptuna" class="ret-row timestral-chr-xgb">
               <span class="ret-dot" style="background:#f59e0b"></span>
-              <span class="ret-label" style="font-weight: 700; color: #f59e0b;">Timestral + CHR + XGB (Opt)</span>
+              <span class="ret-label">Timestral + CHR + XGB (Opt)</span>
               <span class="ret-val" [class.positive]="timestralChrXgbReturn >= 0" [class.negative]="timestralChrXgbReturn < 0">
                 {{ timestralChrXgbReturn >= 0 ? '+' : '' }}{{ timestralChrXgbReturn.toFixed(2) }}%
               </span>
@@ -217,7 +217,7 @@ type HorizonKey = '1M' | '3M' | '6M' | '1A' | 'YTD' | 'MAX';
       background: var(--color-surface, rgba(35,38,53,0.95)); backdrop-filter: blur(8px);
       border: 1px solid var(--color-border); border-radius: 8px;
       padding: 8px 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.18);
-      min-width: 290px;
+      min-width: 350px;
     }
     .metrics-title, .ret-header-title {
       font-size: 9.5px; font-weight: 700; text-transform: uppercase;
@@ -236,7 +236,7 @@ type HorizonKey = '1M' | '3M' | '6M' | '1A' | 'YTD' | 'MAX';
       border: 1px solid var(--color-border); border-radius: 8px;
       padding: 8px 12px; display: flex; flex-direction: column; gap: 4px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.18);
-      min-width: 260px;
+      min-width: 330px;
     }
     .ret-row {
       display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 10px;
@@ -508,10 +508,10 @@ export class EquityChartComponent implements OnChanges {
         data: [
           t('equity.legend.system'),
           'S&P 500',
-          ...(vwceValues.length > 0 ? ['VWCE (Acc)'] : []),
+          ...(vwceValues.length > 0 ? ['VWCE (Acc) (Vanguard All-World)'] : []),
           ...(tfm25XgbBaseValues.length > 0 ? ['TFM 2.5 + CHR + XGB (Base)'] : []),
           ...(tfm3XgbOptunaValues.length > 0 ? ['TFM 3.0 + CHR + XGB (Opt)'] : []),
-          ...(timestralXgbValues.length > 0 ? ['Timestral + XGB (Opt)'] : []),
+          ...(timestralXgbValues.length > 0 ? ['Timestral + Timestral + XGB (Opt)'] : []),
           ...(timestralChrXgbValues.length > 0 ? ['Timestral + CHR + XGB (Opt)'] : []),
           ...(custValues.length > 0 ? [t('equity.legend.interactive')] : []),
         ]
@@ -549,7 +549,7 @@ export class EquityChartComponent implements OnChanges {
           smooth: 0.3,
         },
         ...(vwceValues.length > 0 ? [{
-          name: 'VWCE (Acc)',
+          name: 'VWCE (Acc) (Vanguard All-World)',
           type: 'line' as const,
           data: vwceValues,
           lineStyle: { color: '#38bdf8', width: 2, type: 'dashed' as const },
@@ -596,7 +596,7 @@ export class EquityChartComponent implements OnChanges {
           smooth: 0.3,
         }] : []),
         ...(timestralXgbValues.length > 0 ? [{
-          name: 'Timestral + XGB (Opt)',
+          name: 'Timestral + Timestral + XGB (Opt)',
           type: 'line' as const,
           data: timestralXgbValues,
           lineStyle: { color: '#ec4899', width: 2.5, type: 'solid' as const },
