@@ -42,6 +42,7 @@ jobs:
           python trading_dashboard/backend/scripts/weekly_pipeline_update.py
 
       - name: Commit and push updated mock-data and database
+        id: commit_step
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
@@ -53,8 +54,21 @@ jobs:
           # Se ci sono cambiamenti, fai commit e push
           if git diff --staged --quiet; then
             echo "Nessuna nuova variazione da committare."
+            echo "has_changes=false" >> $GITHUB_OUTPUT
           else
             echo "Nuove variazioni rilevate. Esecuzione commit e push..."
             git commit -m "chore(auto): weekly pipeline update $(date +'%Y-%m-%d')"
             git push origin main
+            echo "has_changes=true" >> $GITHUB_OUTPUT
           fi
+
+      - name: Deploy to Vercel Production
+        if: steps.commit_step.outputs.has_changes == 'true'
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+        run: |
+          npm install -g vercel@latest
+          cd trading_dashboard/frontend
+          vercel --prod --yes --token $VERCEL_TOKEN
