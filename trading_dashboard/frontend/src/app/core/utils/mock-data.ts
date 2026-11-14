@@ -375,20 +375,29 @@ export const MOCK_DATA: any = {
       },
       {
         "date": "2026-11-06",
-        "portfolio_value": 1.033751,
+        "portfolio_value": 1.03375,
         "weekly_return": 0.011977,
         "regime": 4,
-        "decay_value": 0.9817,
+        "decay_value": 0.9818,
+        "n_trades": 4,
+        "is_crisis": true
+      },
+      {
+        "date": "2026-11-13",
+        "portfolio_value": 1.022329,
+        "weekly_return": -0.011049,
+        "regime": 4,
+        "decay_value": 0.9799,
         "n_trades": 4,
         "is_crisis": true
       }
     ],
-    "cagr": 0.043,
-    "sharpe": 0.5159,
+    "cagr": 0.0277,
+    "sharpe": 0.3506,
     "max_drawdown": -0.0667,
-    "calmar": 0.6445,
-    "total_return": 0.0338,
-    "n_crisis_weeks": 9,
+    "calmar": 0.4155,
+    "total_return": 0.0223,
+    "n_crisis_weeks": 10,
     "n_normal_weeks": 32,
     "spy_series": [
       {
@@ -558,13 +567,17 @@ export const MOCK_DATA: any = {
       {
         "date": "2026-11-06",
         "value": 1.084698
+      },
+      {
+        "date": "2026-11-13",
+        "value": 1.112845
       }
     ],
-    "spy_cagr": 0.1086,
-    "spy_sharpe": 0.7949,
+    "spy_cagr": 0.1415,
+    "spy_sharpe": 0.9971,
     "spy_max_drawdown": -0.0839,
-    "spy_calmar": 1.2943,
-    "spy_total_return": 0.0847
+    "spy_calmar": 1.6865,
+    "spy_total_return": 0.1128
   },
   "timesfm3Backtest": {
     "params_hash": "9c1396bffbe6a834",
@@ -941,20 +954,29 @@ export const MOCK_DATA: any = {
       },
       {
         "date": "2026-11-06",
-        "portfolio_value": 1.033751,
+        "portfolio_value": 1.03375,
         "weekly_return": 0.011977,
         "regime": 4,
-        "decay_value": 0.9817,
+        "decay_value": 0.9818,
+        "n_trades": 4,
+        "is_crisis": true
+      },
+      {
+        "date": "2026-11-13",
+        "portfolio_value": 1.022329,
+        "weekly_return": -0.011049,
+        "regime": 4,
+        "decay_value": 0.9799,
         "n_trades": 4,
         "is_crisis": true
       }
     ],
-    "cagr": 0.043,
-    "sharpe": 0.5159,
+    "cagr": 0.0277,
+    "sharpe": 0.3506,
     "max_drawdown": -0.0667,
-    "calmar": 0.6445,
-    "total_return": 0.0338,
-    "n_crisis_weeks": 9,
+    "calmar": 0.4155,
+    "total_return": 0.0223,
+    "n_crisis_weeks": 10,
     "n_normal_weeks": 32,
     "spy_series": [
       {
@@ -1124,13 +1146,17 @@ export const MOCK_DATA: any = {
       {
         "date": "2026-11-06",
         "value": 1.084698
+      },
+      {
+        "date": "2026-11-13",
+        "value": 1.112845
       }
     ],
-    "spy_cagr": 0.1086,
-    "spy_sharpe": 0.7949,
+    "spy_cagr": 0.1415,
+    "spy_sharpe": 0.9971,
     "spy_max_drawdown": -0.0839,
-    "spy_calmar": 1.2943,
-    "spy_total_return": 0.0847
+    "spy_calmar": 1.6865,
+    "spy_total_return": 0.1128
   },
   "tfm3XgbOptunaBacktest": {
     "series": [
@@ -1140,174 +1166,178 @@ export const MOCK_DATA: any = {
       },
       {
         "date": "2026-01-09",
-        "value": 1.015269
+        "value": 1.015278
       },
       {
         "date": "2026-01-16",
-        "value": 1.021217
+        "value": 1.021653
       },
       {
         "date": "2026-01-23",
-        "value": 1.020318
+        "value": 1.020753
       },
       {
         "date": "2026-01-30",
-        "value": 1.020444
+        "value": 1.020879
       },
       {
         "date": "2026-02-06",
-        "value": 1.032133
+        "value": 1.032573
       },
       {
         "date": "2026-02-13",
-        "value": 1.026938
+        "value": 1.027254
       },
       {
         "date": "2026-02-20",
-        "value": 1.034524
+        "value": 1.034918
       },
       {
         "date": "2026-02-27",
-        "value": 1.036509
+        "value": 1.036904
       },
       {
         "date": "2026-03-06",
-        "value": 1.05267
+        "value": 1.053071
       },
       {
         "date": "2026-03-13",
-        "value": 1.05424
+        "value": 1.054642
       },
       {
         "date": "2026-03-20",
-        "value": 1.05887
+        "value": 1.059273
       },
       {
         "date": "2026-03-27",
-        "value": 1.066559
+        "value": 1.066965
       },
       {
         "date": "2026-04-10",
-        "value": 1.04335
+        "value": 1.043747
       },
       {
         "date": "2026-04-17",
-        "value": 1.032194
+        "value": 1.032587
       },
       {
         "date": "2026-04-24",
-        "value": 1.032195
+        "value": 1.032588
       },
       {
         "date": "2026-05-01",
-        "value": 1.032224
+        "value": 1.032617
       },
       {
         "date": "2026-05-08",
-        "value": 1.043688
+        "value": 1.044086
       },
       {
         "date": "2026-05-15",
-        "value": 1.036433
+        "value": 1.036828
       },
       {
         "date": "2026-05-22",
-        "value": 1.048324
+        "value": 1.048723
       },
       {
         "date": "2026-05-29",
-        "value": 1.056876
+        "value": 1.057278
       },
       {
         "date": "2026-06-05",
-        "value": 1.047915
+        "value": 1.048314
       },
       {
         "date": "2026-06-12",
-        "value": 1.056501
+        "value": 1.056903
       },
       {
         "date": "2026-06-26",
-        "value": 1.058258
+        "value": 1.05866
       },
       {
         "date": "2026-07-10",
-        "value": 1.077554
+        "value": 1.077964
       },
       {
         "date": "2026-07-17",
-        "value": 1.06686
+        "value": 1.067267
       },
       {
         "date": "2026-07-24",
-        "value": 1.061755
+        "value": 1.062159
       },
       {
         "date": "2026-07-31",
-        "value": 1.066142
+        "value": 1.066548
       },
       {
         "date": "2026-08-07",
-        "value": 1.094453
+        "value": 1.09487
       },
       {
         "date": "2026-08-14",
-        "value": 1.098204
+        "value": 1.098622
       },
       {
         "date": "2026-08-21",
-        "value": 1.093102
+        "value": 1.093518
       },
       {
         "date": "2026-08-28",
-        "value": 1.092533
+        "value": 1.092949
       },
       {
         "date": "2026-09-04",
-        "value": 1.08848
+        "value": 1.088895
       },
       {
         "date": "2026-09-11",
-        "value": 1.069911
+        "value": 1.070319
       },
       {
         "date": "2026-09-18",
-        "value": 1.062284
+        "value": 1.062688
       },
       {
         "date": "2026-09-25",
-        "value": 1.054979
+        "value": 1.055381
       },
       {
         "date": "2026-10-02",
-        "value": 1.042146
+        "value": 1.042542
       },
       {
         "date": "2026-10-09",
-        "value": 1.049835
+        "value": 1.050234
       },
       {
         "date": "2026-10-16",
-        "value": 1.048639
+        "value": 1.049296
       },
       {
         "date": "2026-10-23",
-        "value": 1.050496
+        "value": 1.050356
       },
       {
         "date": "2026-10-30",
-        "value": 1.056962
+        "value": 1.056828
       },
       {
         "date": "2026-11-06",
-        "value": 1.069621
+        "value": 1.069485
+      },
+      {
+        "date": "2026-11-13",
+        "value": 1.057669
       }
     ],
-    "cagr": 0.0891,
-    "sharpe": 1.2523,
+    "cagr": 0.0719,
+    "sharpe": 1.0162,
     "max_drawdown": -0.051,
-    "calmar": 1.7457,
-    "total_return": 0.0696
+    "calmar": 1.4082,
+    "total_return": 0.0577
   },
   "tfm25XgbBaseBacktest": {
     "series": [
@@ -1317,174 +1347,178 @@ export const MOCK_DATA: any = {
       },
       {
         "date": "2026-01-09",
-        "value": 1.014837
+        "value": 1.014879
       },
       {
         "date": "2026-01-16",
-        "value": 1.021033
+        "value": 1.020523
       },
       {
         "date": "2026-01-23",
-        "value": 1.019084
+        "value": 1.018486
       },
       {
         "date": "2026-01-30",
-        "value": 1.020889
+        "value": 1.02029
       },
       {
         "date": "2026-02-06",
-        "value": 1.028173
+        "value": 1.02757
       },
       {
         "date": "2026-02-13",
-        "value": 1.039443
+        "value": 1.038834
       },
       {
         "date": "2026-02-20",
-        "value": 1.039537
+        "value": 1.038928
       },
       {
         "date": "2026-02-27",
-        "value": 1.041531
+        "value": 1.040921
       },
       {
         "date": "2026-03-06",
-        "value": 1.057771
+        "value": 1.057151
       },
       {
         "date": "2026-03-13",
-        "value": 1.059349
+        "value": 1.058727
       },
       {
         "date": "2026-03-20",
-        "value": 1.064001
+        "value": 1.063377
       },
       {
         "date": "2026-03-27",
-        "value": 1.071727
+        "value": 1.071099
       },
       {
         "date": "2026-04-10",
-        "value": 1.048405
+        "value": 1.047791
       },
       {
         "date": "2026-04-17",
-        "value": 1.037195
+        "value": 1.036587
       },
       {
         "date": "2026-04-24",
-        "value": 1.037197
+        "value": 1.036588
       },
       {
         "date": "2026-05-01",
-        "value": 1.039625
+        "value": 1.039329
       },
       {
         "date": "2026-05-08",
-        "value": 1.053861
+        "value": 1.053474
       },
       {
         "date": "2026-05-15",
-        "value": 1.043545
+        "value": 1.042928
       },
       {
         "date": "2026-05-22",
-        "value": 1.05879
+        "value": 1.058184
       },
       {
         "date": "2026-05-29",
-        "value": 1.067602
+        "value": 1.067205
       },
       {
         "date": "2026-06-05",
-        "value": 1.060535
+        "value": 1.05652
       },
       {
         "date": "2026-06-12",
-        "value": 1.073175
+        "value": 1.06855
       },
       {
         "date": "2026-06-26",
-        "value": 1.070424
+        "value": 1.06556
       },
       {
         "date": "2026-07-10",
-        "value": 1.071366
+        "value": 1.065581
       },
       {
         "date": "2026-07-17",
-        "value": 1.068953
+        "value": 1.063181
       },
       {
         "date": "2026-07-24",
-        "value": 1.066128
+        "value": 1.060142
       },
       {
         "date": "2026-07-31",
-        "value": 1.075145
+        "value": 1.069107
       },
       {
         "date": "2026-08-07",
-        "value": 1.090891
+        "value": 1.084519
       },
       {
         "date": "2026-08-14",
-        "value": 1.094187
+        "value": 1.087796
       },
       {
         "date": "2026-08-21",
-        "value": 1.096079
+        "value": 1.089566
       },
       {
         "date": "2026-08-28",
-        "value": 1.092401
+        "value": 1.085943
       },
       {
         "date": "2026-09-04",
-        "value": 1.09368
+        "value": 1.087215
       },
       {
         "date": "2026-09-11",
-        "value": 1.077477
+        "value": 1.071107
       },
       {
         "date": "2026-09-18",
-        "value": 1.076298
+        "value": 1.069869
       },
       {
         "date": "2026-09-25",
-        "value": 1.086139
+        "value": 1.07965
       },
       {
         "date": "2026-10-02",
-        "value": 1.084784
+        "value": 1.078268
       },
       {
         "date": "2026-10-09",
-        "value": 1.094424
+        "value": 1.087901
       },
       {
         "date": "2026-10-16",
-        "value": 1.078738
+        "value": 1.073567
       },
       {
         "date": "2026-10-23",
-        "value": 1.081991
+        "value": 1.076764
       },
       {
         "date": "2026-10-30",
-        "value": 1.085626
+        "value": 1.080384
       },
       {
         "date": "2026-11-06",
-        "value": 1.098629
+        "value": 1.093324
+      },
+      {
+        "date": "2026-11-13",
+        "value": 1.081244
       }
     ],
-    "cagr": 0.1267,
-    "sharpe": 1.9549,
+    "cagr": 0.1015,
+    "sharpe": 1.5584,
     "max_drawdown": -0.0322,
-    "calmar": 3.9325,
-    "total_return": 0.0986
+    "calmar": 3.1514,
+    "total_return": 0.0812
   },
   "timestralXgbOptunaBacktest": {
     "series": [
@@ -1498,170 +1532,174 @@ export const MOCK_DATA: any = {
       },
       {
         "date": "2026-01-16",
-        "value": 1.021811
+        "value": 1.021635
       },
       {
         "date": "2026-01-23",
-        "value": 1.022413
+        "value": 1.022132
       },
       {
         "date": "2026-01-30",
-        "value": 1.0261
+        "value": 1.025819
       },
       {
         "date": "2026-02-06",
-        "value": 1.026402
+        "value": 1.026491
       },
       {
         "date": "2026-02-13",
-        "value": 1.028162
+        "value": 1.027977
       },
       {
         "date": "2026-02-20",
-        "value": 1.033373
+        "value": 1.033186
       },
       {
         "date": "2026-02-27",
-        "value": 1.035355
+        "value": 1.035168
       },
       {
         "date": "2026-03-06",
-        "value": 1.051498
+        "value": 1.051309
       },
       {
         "date": "2026-03-13",
-        "value": 1.053066
+        "value": 1.052877
       },
       {
         "date": "2026-03-20",
-        "value": 1.057691
+        "value": 1.057501
       },
       {
         "date": "2026-03-27",
-        "value": 1.065372
+        "value": 1.06518
       },
       {
         "date": "2026-04-10",
-        "value": 1.042188
+        "value": 1.042
       },
       {
         "date": "2026-04-17",
-        "value": 1.031045
+        "value": 1.030859
       },
       {
         "date": "2026-04-24",
-        "value": 1.031046
+        "value": 1.03086
       },
       {
         "date": "2026-05-01",
-        "value": 1.032086
+        "value": 1.031901
       },
       {
         "date": "2026-05-08",
-        "value": 1.042594
+        "value": 1.042406
       },
       {
         "date": "2026-05-15",
-        "value": 1.033602
+        "value": 1.033946
       },
       {
         "date": "2026-05-22",
-        "value": 1.048588
+        "value": 1.048937
       },
       {
         "date": "2026-05-29",
-        "value": 1.060201
+        "value": 1.060554
       },
       {
         "date": "2026-06-05",
-        "value": 1.044731
+        "value": 1.045079
       },
       {
         "date": "2026-06-12",
-        "value": 1.056605
+        "value": 1.057058
       },
       {
         "date": "2026-06-26",
-        "value": 1.059748
+        "value": 1.060203
       },
       {
         "date": "2026-07-10",
-        "value": 1.069521
+        "value": 1.070367
       },
       {
         "date": "2026-07-17",
-        "value": 1.05569
+        "value": 1.056172
       },
       {
         "date": "2026-07-24",
-        "value": 1.055127
+        "value": 1.055609
       },
       {
         "date": "2026-07-31",
-        "value": 1.059395
+        "value": 1.059879
       },
       {
         "date": "2026-08-07",
-        "value": 1.079189
+        "value": 1.079781
       },
       {
         "date": "2026-08-14",
-        "value": 1.084632
+        "value": 1.085488
       },
       {
         "date": "2026-08-21",
-        "value": 1.075035
+        "value": 1.075883
       },
       {
         "date": "2026-08-28",
-        "value": 1.077874
+        "value": 1.078809
       },
       {
         "date": "2026-09-04",
-        "value": 1.076173
+        "value": 1.077108
       },
       {
         "date": "2026-09-11",
-        "value": 1.062393
+        "value": 1.063315
       },
       {
         "date": "2026-09-18",
-        "value": 1.057656
+        "value": 1.058576
       },
       {
         "date": "2026-09-25",
-        "value": 1.05671
+        "value": 1.05763
       },
       {
         "date": "2026-10-02",
-        "value": 1.04735
+        "value": 1.048261
       },
       {
         "date": "2026-10-09",
-        "value": 1.053195
+        "value": 1.054112
       },
       {
         "date": "2026-10-16",
-        "value": 1.052012
+        "value": 1.052927
       },
       {
         "date": "2026-10-23",
-        "value": 1.057497
+        "value": 1.058424
       },
       {
         "date": "2026-10-30",
-        "value": 1.063807
+        "value": 1.064159
       },
       {
         "date": "2026-11-06",
-        "value": 1.076548
+        "value": 1.076904
+      },
+      {
+        "date": "2026-11-13",
+        "value": 1.065006
       }
     ],
-    "cagr": 0.0981,
-    "sharpe": 1.4785,
-    "max_drawdown": -0.0344,
-    "calmar": 2.8529,
-    "total_return": 0.0765
+    "cagr": 0.0811,
+    "sharpe": 1.2222,
+    "max_drawdown": -0.0343,
+    "calmar": 2.3647,
+    "total_return": 0.065
   },
   "timestralXgbBaseBacktest": {
     "series": [
@@ -1675,170 +1713,174 @@ export const MOCK_DATA: any = {
       },
       {
         "date": "2026-01-16",
-        "value": 1.021811
+        "value": 1.021635
       },
       {
         "date": "2026-01-23",
-        "value": 1.022413
+        "value": 1.022132
       },
       {
         "date": "2026-01-30",
-        "value": 1.0261
+        "value": 1.025819
       },
       {
         "date": "2026-02-06",
-        "value": 1.026402
+        "value": 1.026491
       },
       {
         "date": "2026-02-13",
-        "value": 1.028162
+        "value": 1.027977
       },
       {
         "date": "2026-02-20",
-        "value": 1.033373
+        "value": 1.033186
       },
       {
         "date": "2026-02-27",
-        "value": 1.035355
+        "value": 1.035168
       },
       {
         "date": "2026-03-06",
-        "value": 1.051498
+        "value": 1.051309
       },
       {
         "date": "2026-03-13",
-        "value": 1.053066
+        "value": 1.052877
       },
       {
         "date": "2026-03-20",
-        "value": 1.057691
+        "value": 1.057501
       },
       {
         "date": "2026-03-27",
-        "value": 1.065372
+        "value": 1.06518
       },
       {
         "date": "2026-04-10",
-        "value": 1.042188
+        "value": 1.042
       },
       {
         "date": "2026-04-17",
-        "value": 1.031045
+        "value": 1.030859
       },
       {
         "date": "2026-04-24",
-        "value": 1.031046
+        "value": 1.03086
       },
       {
         "date": "2026-05-01",
-        "value": 1.032086
+        "value": 1.031901
       },
       {
         "date": "2026-05-08",
-        "value": 1.042594
+        "value": 1.042406
       },
       {
         "date": "2026-05-15",
-        "value": 1.033602
+        "value": 1.033946
       },
       {
         "date": "2026-05-22",
-        "value": 1.048588
+        "value": 1.048937
       },
       {
         "date": "2026-05-29",
-        "value": 1.060201
+        "value": 1.060554
       },
       {
         "date": "2026-06-05",
-        "value": 1.044731
+        "value": 1.045079
       },
       {
         "date": "2026-06-12",
-        "value": 1.056605
+        "value": 1.057058
       },
       {
         "date": "2026-06-26",
-        "value": 1.059748
+        "value": 1.060203
       },
       {
         "date": "2026-07-10",
-        "value": 1.069521
+        "value": 1.070367
       },
       {
         "date": "2026-07-17",
-        "value": 1.05569
+        "value": 1.056172
       },
       {
         "date": "2026-07-24",
-        "value": 1.055127
+        "value": 1.055609
       },
       {
         "date": "2026-07-31",
-        "value": 1.059395
+        "value": 1.059879
       },
       {
         "date": "2026-08-07",
-        "value": 1.079189
+        "value": 1.079781
       },
       {
         "date": "2026-08-14",
-        "value": 1.084632
+        "value": 1.085488
       },
       {
         "date": "2026-08-21",
-        "value": 1.075035
+        "value": 1.075883
       },
       {
         "date": "2026-08-28",
-        "value": 1.077874
+        "value": 1.078809
       },
       {
         "date": "2026-09-04",
-        "value": 1.076173
+        "value": 1.077108
       },
       {
         "date": "2026-09-11",
-        "value": 1.062393
+        "value": 1.063315
       },
       {
         "date": "2026-09-18",
-        "value": 1.057656
+        "value": 1.058576
       },
       {
         "date": "2026-09-25",
-        "value": 1.05671
+        "value": 1.05763
       },
       {
         "date": "2026-10-02",
-        "value": 1.04735
+        "value": 1.048261
       },
       {
         "date": "2026-10-09",
-        "value": 1.053195
+        "value": 1.054112
       },
       {
         "date": "2026-10-16",
-        "value": 1.052012
+        "value": 1.052927
       },
       {
         "date": "2026-10-23",
-        "value": 1.057497
+        "value": 1.058424
       },
       {
         "date": "2026-10-30",
-        "value": 1.063807
+        "value": 1.064159
       },
       {
         "date": "2026-11-06",
-        "value": 1.076548
+        "value": 1.076904
+      },
+      {
+        "date": "2026-11-13",
+        "value": 1.065006
       }
     ],
-    "cagr": 0.0981,
-    "sharpe": 1.4785,
-    "max_drawdown": -0.0344,
-    "calmar": 2.8529,
-    "total_return": 0.0765
+    "cagr": 0.0811,
+    "sharpe": 1.2222,
+    "max_drawdown": -0.0343,
+    "calmar": 2.3647,
+    "total_return": 0.065
   },
   "timestralChrXgbOptunaBacktest": {
     "series": [
@@ -1852,177 +1894,181 @@ export const MOCK_DATA: any = {
       },
       {
         "date": "2026-01-16",
-        "value": 1.021811
+        "value": 1.021635
       },
       {
         "date": "2026-01-23",
-        "value": 1.022413
+        "value": 1.022132
       },
       {
         "date": "2026-01-30",
-        "value": 1.0261
+        "value": 1.025819
       },
       {
         "date": "2026-02-06",
-        "value": 1.026402
+        "value": 1.026491
       },
       {
         "date": "2026-02-13",
-        "value": 1.028162
+        "value": 1.027977
       },
       {
         "date": "2026-02-20",
-        "value": 1.033373
+        "value": 1.033186
       },
       {
         "date": "2026-02-27",
-        "value": 1.035355
+        "value": 1.035168
       },
       {
         "date": "2026-03-06",
-        "value": 1.051498
+        "value": 1.051309
       },
       {
         "date": "2026-03-13",
-        "value": 1.053066
+        "value": 1.052877
       },
       {
         "date": "2026-03-20",
-        "value": 1.057691
+        "value": 1.057501
       },
       {
         "date": "2026-03-27",
-        "value": 1.065372
+        "value": 1.06518
       },
       {
         "date": "2026-04-10",
-        "value": 1.042188
+        "value": 1.042
       },
       {
         "date": "2026-04-17",
-        "value": 1.031045
+        "value": 1.030859
       },
       {
         "date": "2026-04-24",
-        "value": 1.031046
+        "value": 1.03086
       },
       {
         "date": "2026-05-01",
-        "value": 1.032086
+        "value": 1.031901
       },
       {
         "date": "2026-05-08",
-        "value": 1.042594
+        "value": 1.042406
       },
       {
         "date": "2026-05-15",
-        "value": 1.033602
+        "value": 1.033946
       },
       {
         "date": "2026-05-22",
-        "value": 1.048588
+        "value": 1.048937
       },
       {
         "date": "2026-05-29",
-        "value": 1.060201
+        "value": 1.060554
       },
       {
         "date": "2026-06-05",
-        "value": 1.044731
+        "value": 1.045079
       },
       {
         "date": "2026-06-12",
-        "value": 1.056605
+        "value": 1.057058
       },
       {
         "date": "2026-06-26",
-        "value": 1.059748
+        "value": 1.060203
       },
       {
         "date": "2026-07-10",
-        "value": 1.069521
+        "value": 1.070367
       },
       {
         "date": "2026-07-17",
-        "value": 1.05569
+        "value": 1.056172
       },
       {
         "date": "2026-07-24",
-        "value": 1.055127
+        "value": 1.055609
       },
       {
         "date": "2026-07-31",
-        "value": 1.059395
+        "value": 1.059879
       },
       {
         "date": "2026-08-07",
-        "value": 1.079189
+        "value": 1.079781
       },
       {
         "date": "2026-08-14",
-        "value": 1.084632
+        "value": 1.085488
       },
       {
         "date": "2026-08-21",
-        "value": 1.075035
+        "value": 1.075883
       },
       {
         "date": "2026-08-28",
-        "value": 1.077874
+        "value": 1.078809
       },
       {
         "date": "2026-09-04",
-        "value": 1.076173
+        "value": 1.077108
       },
       {
         "date": "2026-09-11",
-        "value": 1.062371
+        "value": 1.063353
       },
       {
         "date": "2026-09-18",
-        "value": 1.057634
+        "value": 1.058614
       },
       {
         "date": "2026-09-25",
-        "value": 1.056689
+        "value": 1.057667
       },
       {
         "date": "2026-10-02",
-        "value": 1.047328
+        "value": 1.048298
       },
       {
         "date": "2026-10-09",
-        "value": 1.053174
+        "value": 1.054149
       },
       {
         "date": "2026-10-16",
-        "value": 1.051991
+        "value": 1.052965
       },
       {
         "date": "2026-10-23",
-        "value": 1.057475
+        "value": 1.058461
       },
       {
         "date": "2026-10-30",
-        "value": 1.063785
+        "value": 1.064196
       },
       {
         "date": "2026-11-06",
-        "value": 1.076526
+        "value": 1.076942
+      },
+      {
+        "date": "2026-11-13",
+        "value": 1.065043
       }
     ],
-    "cagr": 0.098,
-    "sharpe": 1.478,
-    "max_drawdown": -0.0344,
-    "calmar": 2.8504,
-    "total_return": 0.0765
+    "cagr": 0.0811,
+    "sharpe": 1.223,
+    "max_drawdown": -0.0343,
+    "calmar": 2.3684,
+    "total_return": 0.065
   },
   "currentRegime": {
     "regime_id": 4,
     "regime_name": "Crisis State",
     "is_crisis": true,
     "decay_value": 1.0,
-    "last_friday": "2026-11-06",
+    "last_friday": "2026-11-13",
     "prob_crisis": 0.0
   },
   "marketSnapshot": {
@@ -2030,416 +2076,812 @@ export const MOCK_DATA: any = {
       {
         "name": "S&P 500",
         "ticker": "SPY",
-        "last_price": 735.29,
-        "change_1d_pct": 0.31,
-        "change_1w_pct": -2.7,
-        "change_1m_pct": -4.99,
-        "change_1y_pct": 10.77,
-        "change_ytd_pct": 8.67
+        "last_price": 754.37,
+        "change_1d_pct": -0.36,
+        "change_1w_pct": 2.59,
+        "change_1m_pct": -2.26,
+        "change_1y_pct": 13.48,
+        "change_ytd_pct": 11.49
       },
       {
         "name": "Nasdaq 100",
         "ticker": "QQQ",
-        "last_price": 656.1,
-        "change_1d_pct": 1.4,
-        "change_1w_pct": -4.98,
-        "change_1m_pct": -12.24,
-        "change_1y_pct": 8.11,
-        "change_ytd_pct": 7.17
+        "last_price": 679.89,
+        "change_1d_pct": -1.2,
+        "change_1w_pct": 3.63,
+        "change_1m_pct": -6.61,
+        "change_1y_pct": 12.19,
+        "change_ytd_pct": 11.05
       },
       {
         "name": "Russell 2000",
         "ticker": "IWM",
-        "last_price": 273.67,
-        "change_1d_pct": 0.99,
-        "change_1w_pct": -2.03,
-        "change_1m_pct": -1.41,
-        "change_1y_pct": 14.42,
-        "change_ytd_pct": 11.93
+        "last_price": 277.54,
+        "change_1d_pct": -0.32,
+        "change_1w_pct": 1.41,
+        "change_1m_pct": 0.89,
+        "change_1y_pct": 18.06,
+        "change_ytd_pct": 13.51
       },
       {
         "name": "Treasury 20Y",
         "ticker": "TLT",
-        "last_price": 81.92,
-        "change_1d_pct": -0.01,
-        "change_1w_pct": 0.1,
-        "change_1m_pct": 5.2,
-        "change_1y_pct": -5.03,
-        "change_ytd_pct": -3.12
+        "last_price": 79.38,
+        "change_1d_pct": -0.43,
+        "change_1w_pct": -3.1,
+        "change_1m_pct": -0.74,
+        "change_1y_pct": -7.25,
+        "change_ytd_pct": -6.13
       },
       {
         "name": "Oro",
         "ticker": "GLD",
-        "last_price": 372.52,
-        "change_1d_pct": -0.79,
-        "change_1w_pct": 4.71,
-        "change_1m_pct": -1.61,
-        "change_1y_pct": 1.14,
-        "change_ytd_pct": -6.0
+        "last_price": 355.45,
+        "change_1d_pct": 0.16,
+        "change_1w_pct": -4.58,
+        "change_1m_pct": -7.12,
+        "change_1y_pct": -5.46,
+        "change_ytd_pct": -10.31
       },
       {
         "name": "VIX",
         "ticker": "^VIX",
-        "last_price": 25.64,
-        "change_1d_pct": -9.01,
-        "change_1w_pct": 32.03,
-        "change_1m_pct": 66.39,
-        "change_1y_pct": 34.38,
-        "change_ytd_pct": 71.51
+        "last_price": 19.3,
+        "change_1d_pct": 3.21,
+        "change_1w_pct": -24.73,
+        "change_1m_pct": 17.25,
+        "change_1y_pct": -2.67,
+        "change_ytd_pct": 29.1
       }
     ],
     "assets": [
       {
         "ticker": "SPY",
-        "last_price": 735.29,
-        "change_1d_pct": 0.31,
-        "change_1w_pct": -2.7,
-        "change_1m_pct": -4.99,
-        "change_1y_pct": 10.77,
-        "change_ytd_pct": 8.67,
-        "volume": 58848000.0,
+        "last_price": 754.37,
+        "change_1d_pct": -0.36,
+        "change_1w_pct": 2.59,
+        "change_1m_pct": -2.26,
+        "change_1y_pct": 13.48,
+        "change_ytd_pct": 11.49,
+        "volume": 38391200.0,
         "is_etf": true
       },
       {
         "ticker": "QQQ",
-        "last_price": 656.1,
-        "change_1d_pct": 1.4,
-        "change_1w_pct": -4.98,
-        "change_1m_pct": -12.24,
-        "change_1y_pct": 8.11,
-        "change_ytd_pct": 7.17,
-        "volume": 70469100.0,
+        "last_price": 679.89,
+        "change_1d_pct": -1.2,
+        "change_1w_pct": 3.63,
+        "change_1m_pct": -6.61,
+        "change_1y_pct": 12.19,
+        "change_ytd_pct": 11.05,
+        "volume": 41798500.0,
         "is_etf": true
       },
       {
         "ticker": "IWM",
-        "last_price": 273.67,
-        "change_1d_pct": 0.99,
-        "change_1w_pct": -2.03,
-        "change_1m_pct": -1.41,
-        "change_1y_pct": 14.42,
-        "change_ytd_pct": 11.93,
-        "volume": 25515300.0,
+        "last_price": 277.54,
+        "change_1d_pct": -0.32,
+        "change_1w_pct": 1.41,
+        "change_1m_pct": 0.89,
+        "change_1y_pct": 18.06,
+        "change_ytd_pct": 13.51,
+        "volume": 17667200.0,
         "is_etf": true
       },
       {
         "ticker": "MDY",
         "last_price": 657.82,
         "change_1d_pct": 0.63,
-        "change_1w_pct": -1.65,
-        "change_1m_pct": -1.27,
-        "change_1y_pct": 12.19,
+        "change_1w_pct": 0.0,
+        "change_1m_pct": -1.24,
+        "change_1y_pct": 13.46,
         "change_ytd_pct": 9.84,
         "volume": 946900.0,
         "is_etf": true
       },
       {
         "ticker": "DIA",
-        "last_price": 512.22,
-        "change_1d_pct": -0.4,
-        "change_1w_pct": -0.95,
-        "change_1m_pct": 0.13,
-        "change_1y_pct": 10.59,
-        "change_ytd_pct": 7.75,
-        "volume": 4281400.0,
+        "last_price": 523.15,
+        "change_1d_pct": 0.13,
+        "change_1w_pct": 2.13,
+        "change_1m_pct": 0.4,
+        "change_1y_pct": 12.48,
+        "change_ytd_pct": 10.05,
+        "volume": 2522200.0,
         "is_etf": true
       },
       {
         "ticker": "EFA",
-        "last_price": 101.89,
-        "change_1d_pct": -0.79,
-        "change_1w_pct": -1.43,
-        "change_1m_pct": -0.79,
-        "change_1y_pct": 11.75,
-        "change_ytd_pct": 7.78,
-        "volume": 19512000.0,
+        "last_price": 104.17,
+        "change_1d_pct": 0.15,
+        "change_1w_pct": 2.24,
+        "change_1m_pct": 0.48,
+        "change_1y_pct": 13.1,
+        "change_ytd_pct": 10.19,
+        "volume": 8812200.0,
         "is_etf": true
       },
       {
         "ticker": "EEM",
-        "last_price": 59.33,
-        "change_1d_pct": 2.21,
-        "change_1w_pct": -2.8,
-        "change_1m_pct": -10.24,
-        "change_1y_pct": 10.89,
-        "change_ytd_pct": 9.01,
-        "volume": 41694300.0,
+        "last_price": 60.92,
+        "change_1d_pct": -0.36,
+        "change_1w_pct": 2.68,
+        "change_1m_pct": -4.75,
+        "change_1y_pct": 13.01,
+        "change_ytd_pct": 11.93,
+        "volume": 27816100.0,
         "is_etf": true
       },
       {
         "ticker": "XLB",
-        "last_price": 51.95,
-        "change_1d_pct": -0.73,
-        "change_1w_pct": -1.5,
-        "change_1m_pct": 5.44,
-        "change_1y_pct": 23.26,
-        "change_ytd_pct": 16.02,
-        "volume": 15361500.0,
+        "last_price": 52.23,
+        "change_1d_pct": -0.21,
+        "change_1w_pct": 0.54,
+        "change_1m_pct": 3.3,
+        "change_1y_pct": 22.56,
+        "change_ytd_pct": 16.65,
+        "volume": 7241900.0,
         "is_etf": true
       },
       {
         "ticker": "XLE",
-        "last_price": 61.62,
-        "change_1d_pct": -0.02,
-        "change_1w_pct": -12.0,
-        "change_1m_pct": -5.55,
-        "change_1y_pct": 41.56,
-        "change_ytd_pct": 40.55,
-        "volume": 41377100.0,
+        "last_price": 64.96,
+        "change_1d_pct": 0.98,
+        "change_1w_pct": 5.42,
+        "change_1m_pct": -2.4,
+        "change_1y_pct": 45.21,
+        "change_ytd_pct": 48.17,
+        "volume": 18593200.0,
         "is_etf": true
       },
       {
         "ticker": "XLF",
-        "last_price": 57.16,
-        "change_1d_pct": -0.59,
-        "change_1w_pct": 1.15,
-        "change_1m_pct": 5.4,
-        "change_1y_pct": 10.01,
-        "change_ytd_pct": 5.64,
-        "volume": 34719800.0,
+        "last_price": 58.68,
+        "change_1d_pct": 0.81,
+        "change_1w_pct": 2.66,
+        "change_1m_pct": 6.17,
+        "change_1y_pct": 13.64,
+        "change_ytd_pct": 8.45,
+        "volume": 29926400.0,
         "is_etf": true
       },
       {
         "ticker": "XLI",
-        "last_price": 162.67,
-        "change_1d_pct": 0.12,
-        "change_1w_pct": -2.83,
-        "change_1m_pct": -3.4,
-        "change_1y_pct": 7.3,
-        "change_ytd_pct": 5.7,
-        "volume": 8053000.0,
+        "last_price": 168.78,
+        "change_1d_pct": -0.39,
+        "change_1w_pct": 3.76,
+        "change_1m_pct": 0.53,
+        "change_1y_pct": 12.3,
+        "change_ytd_pct": 9.67,
+        "volume": 6766700.0,
         "is_etf": true
       },
       {
         "ticker": "XLK",
-        "last_price": 164.74,
-        "change_1d_pct": 1.45,
-        "change_1w_pct": -8.23,
-        "change_1m_pct": -16.71,
-        "change_1y_pct": 14.93,
-        "change_ytd_pct": 14.84,
-        "volume": 20002100.0,
+        "last_price": 170.28,
+        "change_1d_pct": -2.01,
+        "change_1w_pct": 3.36,
+        "change_1m_pct": -10.0,
+        "change_1y_pct": 18.79,
+        "change_ytd_pct": 18.7,
+        "volume": 10018700.0,
         "is_etf": true
       },
       {
         "ticker": "XLP",
-        "last_price": 90.08,
-        "change_1d_pct": -1.28,
-        "change_1w_pct": 0.74,
-        "change_1m_pct": 7.98,
-        "change_1y_pct": 20.65,
-        "change_ytd_pct": 18.2,
-        "volume": 24449500.0,
+        "last_price": 92.35,
+        "change_1d_pct": 1.42,
+        "change_1w_pct": 2.52,
+        "change_1m_pct": 6.54,
+        "change_1y_pct": 22.81,
+        "change_ytd_pct": 21.18,
+        "volume": 18382300.0,
         "is_etf": true
       },
       {
         "ticker": "XLU",
-        "last_price": 43.13,
-        "change_1d_pct": -0.39,
-        "change_1w_pct": -0.69,
-        "change_1m_pct": 5.02,
-        "change_1y_pct": -1.08,
-        "change_ytd_pct": 3.14,
-        "volume": 27250800.0,
+        "last_price": 44.04,
+        "change_1d_pct": 0.52,
+        "change_1w_pct": 2.11,
+        "change_1m_pct": 5.74,
+        "change_1y_pct": 2.06,
+        "change_ytd_pct": 5.32,
+        "volume": 14272500.0,
         "is_etf": true
       },
       {
         "ticker": "XLV",
-        "last_price": 184.8,
-        "change_1d_pct": -0.06,
-        "change_1w_pct": -0.04,
-        "change_1m_pct": 9.9,
-        "change_1y_pct": 28.57,
-        "change_ytd_pct": 20.86,
-        "volume": 14997700.0,
+        "last_price": 188.85,
+        "change_1d_pct": 0.54,
+        "change_1w_pct": 2.19,
+        "change_1m_pct": 6.58,
+        "change_1y_pct": 26.46,
+        "change_ytd_pct": 23.51,
+        "volume": 5830200.0,
         "is_etf": true
       },
       {
         "ticker": "XLY",
-        "last_price": 117.58,
-        "change_1d_pct": -0.05,
-        "change_1w_pct": 1.91,
-        "change_1m_pct": 5.25,
-        "change_1y_pct": 0.52,
-        "change_ytd_pct": -0.92,
-        "volume": 10832200.0,
+        "last_price": 119.98,
+        "change_1d_pct": -0.4,
+        "change_1w_pct": 2.04,
+        "change_1m_pct": 5.79,
+        "change_1y_pct": 4.78,
+        "change_ytd_pct": 1.1,
+        "volume": 6197700.0,
         "is_etf": true
       },
       {
         "ticker": "IYR",
-        "last_price": 101.62,
-        "change_1d_pct": -0.61,
-        "change_1w_pct": 1.97,
-        "change_1m_pct": 7.34,
-        "change_1y_pct": 8.82,
-        "change_ytd_pct": 9.88,
-        "volume": 5439100.0,
+        "last_price": 102.22,
+        "change_1d_pct": 0.09,
+        "change_1w_pct": 0.59,
+        "change_1m_pct": 5.34,
+        "change_1y_pct": 10.37,
+        "change_ytd_pct": 10.53,
+        "volume": 3710300.0,
         "is_etf": true
       },
       {
         "ticker": "VNQ",
-        "last_price": 95.73,
-        "change_1d_pct": -0.52,
-        "change_1w_pct": 1.91,
-        "change_1m_pct": 7.14,
-        "change_1y_pct": 10.11,
-        "change_ytd_pct": 11.26,
-        "volume": 3642500.0,
+        "last_price": 96.47,
+        "change_1d_pct": 0.03,
+        "change_1w_pct": 0.77,
+        "change_1m_pct": 5.5,
+        "change_1y_pct": 11.75,
+        "change_ytd_pct": 12.12,
+        "volume": 2333900.0,
         "is_etf": true
       },
       {
         "ticker": "SOXX",
-        "last_price": 136.53,
-        "change_1d_pct": 3.51,
-        "change_1w_pct": -13.13,
-        "change_1m_pct": -75.76,
-        "change_1y_pct": -53.47,
-        "change_ytd_pct": -54.58,
-        "volume": 59135600.0,
+        "last_price": 149.3,
+        "change_1d_pct": -3.67,
+        "change_1w_pct": 9.35,
+        "change_1m_pct": -70.99,
+        "change_1y_pct": -48.09,
+        "change_ytd_pct": -50.34,
+        "volume": 47793700.0,
         "is_etf": true
       },
       {
         "ticker": "TLT",
-        "last_price": 81.92,
-        "change_1d_pct": -0.01,
-        "change_1w_pct": 0.1,
-        "change_1m_pct": 5.2,
-        "change_1y_pct": -5.03,
-        "change_ytd_pct": -3.12,
-        "volume": 38200900.0,
+        "last_price": 79.38,
+        "change_1d_pct": -0.43,
+        "change_1w_pct": -3.1,
+        "change_1m_pct": -0.74,
+        "change_1y_pct": -7.25,
+        "change_ytd_pct": -6.13,
+        "volume": 31840900.0,
         "is_etf": true
       },
       {
         "ticker": "IEF",
-        "last_price": 91.86,
-        "change_1d_pct": -0.12,
-        "change_1w_pct": 0.11,
-        "change_1m_pct": 2.69,
-        "change_1y_pct": -1.84,
-        "change_ytd_pct": -1.91,
-        "volume": 8613800.0,
+        "last_price": 90.04,
+        "change_1d_pct": -0.19,
+        "change_1w_pct": -1.98,
+        "change_1m_pct": -0.34,
+        "change_1y_pct": -3.54,
+        "change_ytd_pct": -3.86,
+        "volume": 9982300.0,
         "is_etf": true
       },
       {
         "ticker": "SHY",
-        "last_price": 81.63,
-        "change_1d_pct": -0.05,
-        "change_1w_pct": -0.09,
-        "change_1m_pct": 0.53,
-        "change_1y_pct": 1.52,
-        "change_ytd_pct": 0.91,
-        "volume": 7281400.0,
+        "last_price": 81.17,
+        "change_1d_pct": 0.04,
+        "change_1w_pct": -0.56,
+        "change_1m_pct": -0.15,
+        "change_1y_pct": 0.94,
+        "change_ytd_pct": 0.34,
+        "volume": 3510500.0,
         "is_etf": true
       },
       {
         "ticker": "LQD",
-        "last_price": 104.53,
-        "change_1d_pct": -0.12,
-        "change_1w_pct": 0.25,
-        "change_1m_pct": 2.01,
-        "change_1y_pct": -1.87,
-        "change_ytd_pct": -2.16,
-        "volume": 28227900.0,
+        "last_price": 102.81,
+        "change_1d_pct": -0.23,
+        "change_1w_pct": -1.65,
+        "change_1m_pct": -0.67,
+        "change_1y_pct": -3.08,
+        "change_ytd_pct": -3.77,
+        "volume": 17958500.0,
         "is_etf": true
       },
       {
         "ticker": "SH",
-        "last_price": 33.74,
-        "change_1d_pct": -0.27,
-        "change_1w_pct": 2.68,
-        "change_1m_pct": 5.54,
-        "change_1y_pct": -5.22,
-        "change_ytd_pct": -4.13,
-        "volume": 12139700.0,
+        "last_price": 32.92,
+        "change_1d_pct": 0.43,
+        "change_1w_pct": -2.43,
+        "change_1m_pct": 2.59,
+        "change_1y_pct": -7.42,
+        "change_ytd_pct": -6.46,
+        "volume": 7252700.0,
         "is_etf": true
       },
       {
         "ticker": "PSQ",
-        "last_price": 27.95,
-        "change_1d_pct": -1.17,
-        "change_1w_pct": 4.96,
-        "change_1m_pct": 13.66,
-        "change_1y_pct": -5.42,
-        "change_ytd_pct": -5.19,
-        "volume": 18327900.0,
+        "last_price": 26.96,
+        "change_1d_pct": 1.28,
+        "change_1w_pct": -3.54,
+        "change_1m_pct": 6.73,
+        "change_1y_pct": -8.98,
+        "change_ytd_pct": -8.55,
+        "volume": 21466900.0,
         "is_etf": true
       },
       {
         "ticker": "RWM",
-        "last_price": 14.67,
-        "change_1d_pct": -0.81,
-        "change_1w_pct": 2.09,
-        "change_1m_pct": 1.66,
-        "change_1y_pct": -10.15,
-        "change_ytd_pct": -8.48,
-        "volume": 40438900.0,
+        "last_price": 14.46,
+        "change_1d_pct": 0.35,
+        "change_1w_pct": -1.43,
+        "change_1m_pct": -0.75,
+        "change_1y_pct": -12.98,
+        "change_ytd_pct": -9.79,
+        "volume": 61980900.0,
         "is_etf": true
       },
       {
         "ticker": "VIXY",
-        "last_price": 21.03,
-        "change_1d_pct": -0.9,
-        "change_1w_pct": 14.23,
-        "change_1m_pct": 27.45,
-        "change_1y_pct": -37.58,
-        "change_ytd_pct": -17.98,
-        "volume": 10075400.0,
+        "last_price": 17.94,
+        "change_1d_pct": 2.46,
+        "change_1w_pct": -14.69,
+        "change_1m_pct": 9.39,
+        "change_1y_pct": -46.59,
+        "change_ytd_pct": -30.03,
+        "volume": 3553400.0,
         "is_etf": true
       },
       {
         "ticker": "UUP",
-        "last_price": 29.13,
-        "change_1d_pct": 0.73,
-        "change_1w_pct": 0.45,
-        "change_1m_pct": 0.52,
-        "change_1y_pct": 6.98,
-        "change_ytd_pct": 7.77,
-        "volume": 1917700.0,
+        "last_price": 29.5,
+        "change_1d_pct": 0.27,
+        "change_1w_pct": 1.27,
+        "change_1m_pct": 1.72,
+        "change_1y_pct": 8.53,
+        "change_ytd_pct": 9.14,
+        "volume": 1585300.0,
         "is_etf": true
       },
       {
         "ticker": "GLD",
-        "last_price": 372.52,
-        "change_1d_pct": -0.79,
-        "change_1w_pct": 4.71,
-        "change_1m_pct": -1.61,
-        "change_1y_pct": 1.14,
-        "change_ytd_pct": -6.0,
-        "volume": 7398000.0,
+        "last_price": 355.45,
+        "change_1d_pct": 0.16,
+        "change_1w_pct": -4.58,
+        "change_1m_pct": -7.12,
+        "change_1y_pct": -5.46,
+        "change_ytd_pct": -10.31,
+        "volume": 11863900.0,
         "is_etf": true
       },
       {
         "ticker": "SLV",
-        "last_price": 46.87,
-        "change_1d_pct": -0.13,
-        "change_1w_pct": 5.09,
-        "change_1m_pct": -12.31,
-        "change_1y_pct": 6.72,
-        "change_ytd_pct": -27.24,
-        "volume": 12152700.0,
+        "last_price": 44.13,
+        "change_1d_pct": -2.19,
+        "change_1w_pct": -5.85,
+        "change_1m_pct": -15.0,
+        "change_1y_pct": -3.98,
+        "change_ytd_pct": -31.5,
+        "volume": 16640500.0,
         "is_etf": true
       },
       {
         "ticker": "FXE",
-        "last_price": 102.77,
-        "change_1d_pct": -0.71,
-        "change_1w_pct": -0.33,
-        "change_1m_pct": -0.71,
-        "change_1y_pct": -3.03,
-        "change_ytd_pct": -4.69,
-        "volume": 124900.0,
+        "last_price": 101.71,
+        "change_1d_pct": -0.32,
+        "change_1w_pct": -1.03,
+        "change_1m_pct": -1.71,
+        "change_1y_pct": -4.51,
+        "change_ytd_pct": -5.67,
+        "volume": 43700.0,
         "is_etf": true
       }
     ],
     "last_updated": "2026-09-28T13:12:57.712930",
     "market_open": false,
-    "next_friday": "2026-11-13",
-    "seconds_to_friday_close": 554874
+    "next_friday": "2026-11-20",
+    "seconds_to_friday_close": 581481
   },
   "weeklySignals": {
+    "2026-11-13": {
+      "friday_date": "2026-11-13",
+      "available_fridays": [
+        "2026-11-13",
+        "2026-11-06",
+        "2026-10-30",
+        "2026-10-23",
+        "2026-10-16",
+        "2026-10-09",
+        "2026-10-02",
+        "2026-09-25",
+        "2026-09-18",
+        "2026-09-11",
+        "2026-09-04",
+        "2026-08-28",
+        "2026-08-21",
+        "2026-08-14",
+        "2026-08-07",
+        "2026-07-31",
+        "2026-07-24",
+        "2026-07-17",
+        "2026-07-10",
+        "2026-06-26",
+        "2026-06-12",
+        "2026-06-05",
+        "2026-05-29",
+        "2026-05-22",
+        "2026-05-15",
+        "2026-05-08",
+        "2026-05-01",
+        "2026-04-24",
+        "2026-04-17",
+        "2026-04-10",
+        "2026-03-27",
+        "2026-03-20",
+        "2026-03-13",
+        "2026-03-06",
+        "2026-02-27",
+        "2026-02-20",
+        "2026-02-13",
+        "2026-02-06",
+        "2026-01-30",
+        "2026-01-23",
+        "2026-01-16",
+        "2026-01-09",
+        "2026-01-02"
+      ],
+      "regime_id": 4,
+      "regime_name": "Crisis State",
+      "is_crisis": true,
+      "n_active": 0,
+      "n_filtered": 19,
+      "signals": [
+        {
+          "ratio_id": "R05",
+          "numerator": "LQD",
+          "denominator": "IEF",
+          "direction": "LONG_NUM",
+          "long_ticker": "LQD",
+          "short_ticker": "IEF",
+          "bet_quality": 0.9948,
+          "is_active": false,
+          "status": "crisis",
+          "tfm_t5": 0.13321,
+          "tfm_projection": "BULLISH",
+          "current_ratio": 0.132629,
+          "chr_median_t5": 0.13321,
+          "chr_width_t5": 0.005155,
+          "realized_return": null
+        },
+        {
+          "ratio_id": "R06",
+          "numerator": "TLT",
+          "denominator": "SHY",
+          "direction": "LONG_DEN",
+          "long_ticker": "SHY",
+          "short_ticker": "TLT",
+          "bet_quality": 0.9827,
+          "is_active": false,
+          "status": "crisis",
+          "tfm_t5": -0.022721,
+          "tfm_projection": "BEARISH",
+          "current_ratio": -0.022299,
+          "chr_median_t5": -0.022721,
+          "chr_width_t5": 0.017258,
+          "realized_return": null
+        },
+        {
+          "ratio_id": "R07",
+          "numerator": "XLF",
+          "denominator": "XLU",
+          "direction": "LONG_NUM",
+          "long_ticker": "XLF",
+          "short_ticker": "XLU",
+          "bet_quality": 0.9819,
+          "is_active": false,
+          "status": "crisis",
+          "tfm_t5": 0.294504,
+          "tfm_projection": "BULLISH",
+          "current_ratio": 0.287001,
+          "chr_median_t5": 0.294504,
+          "chr_width_t5": 0.018127,
+          "realized_return": null
+        },
+        {
+          "ratio_id": "R04",
+          "numerator": "UUP",
+          "denominator": "FXE",
+          "direction": "LONG_NUM",
+          "long_ticker": "UUP",
+          "short_ticker": "FXE",
+          "bet_quality": 0.9781,
+          "is_active": false,
+          "status": "crisis",
+          "tfm_t5": -1.230978,
+          "tfm_projection": "BULLISH",
+          "current_ratio": -1.237735,
+          "chr_median_t5": -1.230978,
+          "chr_width_t5": 0.021876,
+          "realized_return": null
+        },
+        {
+          "ratio_id": "R12",
+          "numerator": "XLY",
+          "denominator": "XLP",
+          "direction": "LONG_NUM",
+          "long_ticker": "XLY",
+          "short_ticker": "XLP",
+          "bet_quality": 0.9745,
+          "is_active": false,
+          "status": "crisis",
+          "tfm_t5": 0.272822,
+          "tfm_projection": "BULLISH",
+          "current_ratio": 0.261739,
+          "chr_median_t5": 0.272822,
+          "chr_width_t5": 0.025545,
+          "realized_return": null
+        },
+        {
+          "ratio_id": "R15",
+          "numerator": "XLI",
+          "denominator": "SPY",
+          "direction": "LONG_NUM",
+          "long_ticker": "XLI",
+          "short_ticker": "SPY",
+          "bet_quality": 0.9708,
+          "is_active": false,
+          "status": "crisis",
+          "tfm_t5": -1.488899,
+          "tfm_projection": "BULLISH",
+          "current_ratio": -1.497287,
+          "chr_median_t5": -1.488899,
+          "chr_width_t5": 0.029231,
+          "realized_return": null
+        },
+        {
+          "ratio_id": "R09",
+          "numerator": "IWM",
+          "denominator": "SPY",
+          "direction": "LONG_NUM",
+          "long_ticker": "IWM",
+          "short_ticker": "SPY",
+          "bet_quality": 0.9687,
+          "is_active": false,
+          "status": "crisis",
+          "tfm_t5": -0.986171,
+          "tfm_projection": "BULLISH",
+          "current_ratio": -0.999918,
+          "chr_median_t5": -0.986171,
+          "chr_width_t5": 0.031338,
+          "realized_return": null
+        },
+        {
+          "ratio_id": "R08",
+          "numerator": "QQQ",
+          "denominator": "SPY",
+          "direction": "LONG_DEN",
+          "long_ticker": "SPY",
+          "short_ticker": "QQQ",
+          "bet_quality": 0.9635,
+          "is_active": false,
+          "status": "crisis",
+          "tfm_t5": -0.113563,
+          "tfm_projection": "BEARISH",
+          "current_ratio": -0.103952,
+          "chr_median_t5": -0.113563,
+          "chr_width_t5": 0.036502,
+          "realized_return": null
+        },
+        {
+          "ratio_id": "R01",
+          "numerator": "SPY",
+          "denominator": "TLT",
+          "direction": "LONG_NUM",
+          "long_ticker": "SPY",
+          "short_ticker": "TLT",
+          "bet_quality": 0.9592,
+          "is_active": false,
+          "status": "crisis",
+          "tfm_t5": 2.254377,
+          "tfm_projection": "BULLISH",
+          "current_ratio": 2.251637,
+          "chr_median_t5": 2.254377,
+          "chr_width_t5": 0.040788,
+          "realized_return": null
+        },
+        {
+          "ratio_id": "R20",
+          "numerator": "VNQ",
+          "denominator": "IEF",
+          "direction": "LONG_NUM",
+          "long_ticker": "VNQ",
+          "short_ticker": "IEF",
+          "bet_quality": 0.9589,
+          "is_active": false,
+          "status": "crisis",
+          "tfm_t5": 0.089467,
+          "tfm_projection": "BULLISH",
+          "current_ratio": 0.068978,
+          "chr_median_t5": 0.089467,
+          "chr_width_t5": 0.041076,
+          "realized_return": null
+        },
+        {
+          "ratio_id": "R17",
+          "numerator": "EEM",
+          "denominator": "EFA",
+          "direction": "LONG_DEN",
+          "long_ticker": "EFA",
+          "short_ticker": "EEM",
+          "bet_quality": 0.9569,
+          "is_active": false,
+          "status": "crisis",
+          "tfm_t5": -0.547805,
+          "tfm_projection": "BEARISH",
+          "current_ratio": -0.536463,
+          "chr_median_t5": -0.547805,
+          "chr_width_t5": 0.043114,
+          "realized_return": null
+        },
+        {
+          "ratio_id": "R02",
+          "numerator": "GLD",
+          "denominator": "TLT",
+          "direction": "LONG_DEN",
+          "long_ticker": "TLT",
+          "short_ticker": "GLD",
+          "bet_quality": 0.9555,
+          "is_active": false,
+          "status": "crisis",
+          "tfm_t5": 1.490393,
+          "tfm_projection": "BEARISH",
+          "current_ratio": 1.499138,
+          "chr_median_t5": 1.490393,
+          "chr_width_t5": 0.044482,
+          "realized_return": null
+        },
+        {
+          "ratio_id": "R03",
+          "numerator": "GLD",
+          "denominator": "SPY",
+          "direction": "LONG_DEN",
+          "long_ticker": "SPY",
+          "short_ticker": "GLD",
+          "bet_quality": 0.9532,
+          "is_active": false,
+          "status": "crisis",
+          "tfm_t5": -0.763985,
+          "tfm_projection": "BEARISH",
+          "current_ratio": -0.752498,
+          "chr_median_t5": -0.763985,
+          "chr_width_t5": 0.046849,
+          "realized_return": null
+        },
+        {
+          "ratio_id": "R13",
+          "numerator": "XLK",
+          "denominator": "XLE",
+          "direction": "LONG_NUM",
+          "long_ticker": "XLK",
+          "short_ticker": "XLE",
+          "bet_quality": 0.9516,
+          "is_active": false,
+          "status": "crisis",
+          "tfm_t5": 0.972018,
+          "tfm_projection": "BULLISH",
+          "current_ratio": 0.963672,
+          "chr_median_t5": 0.972018,
+          "chr_width_t5": 0.048385,
+          "realized_return": null
+        },
+        {
+          "ratio_id": "R11",
+          "numerator": "DIA",
+          "denominator": "QQQ",
+          "direction": "LONG_NUM",
+          "long_ticker": "DIA",
+          "short_ticker": "QQQ",
+          "bet_quality": 0.9446,
+          "is_active": false,
+          "status": "crisis",
+          "tfm_t5": -0.248655,
+          "tfm_projection": "BULLISH",
+          "current_ratio": -0.262063,
+          "chr_median_t5": -0.248655,
+          "chr_width_t5": 0.055355,
+          "realized_return": null
+        },
+        {
+          "ratio_id": "R14",
+          "numerator": "XLV",
+          "denominator": "SPY",
+          "direction": "LONG_NUM",
+          "long_ticker": "XLV",
+          "short_ticker": "SPY",
+          "bet_quality": 0.9358,
+          "is_active": false,
+          "status": "crisis",
+          "tfm_t5": -1.366232,
+          "tfm_projection": "BULLISH",
+          "current_ratio": -1.38493,
+          "chr_median_t5": -1.366232,
+          "chr_width_t5": 0.064228,
+          "realized_return": null
+        },
+        {
+          "ratio_id": "R18",
+          "numerator": "GLD",
+          "denominator": "SLV",
+          "direction": "LONG_NUM",
+          "long_ticker": "GLD",
+          "short_ticker": "SLV",
+          "bet_quality": 0.9332,
+          "is_active": false,
+          "status": "crisis",
+          "tfm_t5": 2.103298,
+          "tfm_projection": "BULLISH",
+          "current_ratio": 2.086245,
+          "chr_median_t5": 2.103298,
+          "chr_width_t5": 0.066815,
+          "realized_return": null
+        },
+        {
+          "ratio_id": "R16",
+          "numerator": "XLE",
+          "denominator": "XLB",
+          "direction": "LONG_DEN",
+          "long_ticker": "XLB",
+          "short_ticker": "XLE",
+          "bet_quality": 0.8958,
+          "is_active": false,
+          "status": "crisis",
+          "tfm_t5": 0.180904,
+          "tfm_projection": "BEARISH",
+          "current_ratio": 0.218115,
+          "chr_median_t5": 0.180904,
+          "chr_width_t5": 0.104188,
+          "realized_return": null
+        },
+        {
+          "ratio_id": "R19",
+          "numerator": "SOXX",
+          "denominator": "SPY",
+          "direction": "LONG_DEN",
+          "long_ticker": "SPY",
+          "short_ticker": "SOXX",
+          "bet_quality": 0.8807,
+          "is_active": false,
+          "status": "crisis",
+          "tfm_t5": -1.638078,
+          "tfm_projection": "BEARISH",
+          "current_ratio": -1.619925,
+          "chr_median_t5": -1.638078,
+          "chr_width_t5": 0.11931,
+          "realized_return": null
+        },
+        {
+          "ratio_id": "R10",
+          "numerator": "MDY",
+          "denominator": "SPY",
+          "direction": "N/A",
+          "long_ticker": "",
+          "short_ticker": "",
+          "bet_quality": 0.0,
+          "is_active": false,
+          "status": "no_data",
+          "tfm_t5": null,
+          "tfm_projection": null,
+          "current_ratio": null,
+          "chr_median_t5": null,
+          "chr_width_t5": null,
+          "realized_return": null
+        }
+      ]
+    },
     "2026-11-06": {
       "friday_date": "2026-11-06",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -2834,6 +3276,7 @@ export const MOCK_DATA: any = {
     "2026-10-30": {
       "friday_date": "2026-10-30",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -2887,15 +3330,15 @@ export const MOCK_DATA: any = {
           "ratio_id": "R05",
           "numerator": "LQD",
           "denominator": "IEF",
-          "direction": "LONG_DEN",
-          "long_ticker": "IEF",
-          "short_ticker": "LQD",
+          "direction": "LONG_NUM",
+          "long_ticker": "LQD",
+          "short_ticker": "IEF",
           "bet_quality": 0.9958,
           "is_active": false,
           "status": "crisis",
           "tfm_t5": 0.12766,
-          "tfm_projection": "BEARISH",
-          "current_ratio": 0.127807,
+          "tfm_projection": "BULLISH",
+          "current_ratio": 0.127359,
           "chr_median_t5": 0.12766,
           "chr_width_t5": 0.004174,
           "realized_return": null
@@ -2912,7 +3355,7 @@ export const MOCK_DATA: any = {
           "status": "crisis",
           "tfm_t5": -1.266773,
           "tfm_projection": "BULLISH",
-          "current_ratio": -1.268501,
+          "current_ratio": -1.26755,
           "chr_median_t5": -1.266773,
           "chr_width_t5": 0.010189,
           "realized_return": null
@@ -2963,7 +3406,7 @@ export const MOCK_DATA: any = {
           "status": "crisis",
           "tfm_t5": 0.032059,
           "tfm_projection": "BULLISH",
-          "current_ratio": 0.02348,
+          "current_ratio": 0.026875,
           "chr_median_t5": 0.032059,
           "chr_width_t5": 0.016486,
           "realized_return": null
@@ -3048,7 +3491,7 @@ export const MOCK_DATA: any = {
           "status": "crisis",
           "tfm_t5": 0.016435,
           "tfm_projection": "BULLISH",
-          "current_ratio": 0.001712,
+          "current_ratio": 0.000626,
           "chr_median_t5": 0.016435,
           "chr_width_t5": 0.037973,
           "realized_return": null
@@ -3099,7 +3542,7 @@ export const MOCK_DATA: any = {
           "status": "crisis",
           "tfm_t5": 2.210895,
           "tfm_projection": "BEARISH",
-          "current_ratio": 2.222905,
+          "current_ratio": 2.227105,
           "chr_median_t5": 2.210895,
           "chr_width_t5": 0.055677,
           "realized_return": null
@@ -3150,7 +3593,7 @@ export const MOCK_DATA: any = {
           "status": "crisis",
           "tfm_t5": 1.441127,
           "tfm_projection": "BEARISH",
-          "current_ratio": 1.469546,
+          "current_ratio": 1.473746,
           "chr_median_t5": 1.441127,
           "chr_width_t5": 0.073861,
           "realized_return": null
@@ -3228,6 +3671,7 @@ export const MOCK_DATA: any = {
     "2026-10-23": {
       "friday_date": "2026-10-23",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -3289,7 +3733,7 @@ export const MOCK_DATA: any = {
           "status": "attivo",
           "tfm_t5": 0.131927,
           "tfm_projection": "BULLISH",
-          "current_ratio": 0.131539,
+          "current_ratio": 0.13109,
           "chr_median_t5": 0.131927,
           "chr_width_t5": 0.002624,
           "realized_return": 0.004044
@@ -3340,7 +3784,7 @@ export const MOCK_DATA: any = {
           "status": "attivo",
           "tfm_t5": 0.02296,
           "tfm_projection": "BULLISH",
-          "current_ratio": 0.017852,
+          "current_ratio": 0.021247,
           "chr_median_t5": 0.02296,
           "chr_width_t5": 0.014965,
           "realized_return": 0.013486
@@ -3357,7 +3801,7 @@ export const MOCK_DATA: any = {
           "status": "attivo",
           "tfm_t5": -1.268201,
           "tfm_projection": "BULLISH",
-          "current_ratio": -1.272206,
+          "current_ratio": -1.271255,
           "chr_median_t5": -1.268201,
           "chr_width_t5": 0.016301,
           "realized_return": 0.001381
@@ -3425,7 +3869,7 @@ export const MOCK_DATA: any = {
           "status": "attivo",
           "tfm_t5": 0.008664,
           "tfm_projection": "BULLISH",
-          "current_ratio": -0.001965,
+          "current_ratio": -0.003051,
           "chr_median_t5": 0.008664,
           "chr_width_t5": 0.031591,
           "realized_return": 0.006147
@@ -3476,7 +3920,7 @@ export const MOCK_DATA: any = {
           "status": "attivo",
           "tfm_t5": 2.227621,
           "tfm_projection": "BEARISH",
-          "current_ratio": 2.234641,
+          "current_ratio": 2.238841,
           "chr_median_t5": 2.227621,
           "chr_width_t5": 0.044431,
           "realized_return": 0.006147
@@ -3510,7 +3954,7 @@ export const MOCK_DATA: any = {
           "status": "attivo",
           "tfm_t5": 1.488504,
           "tfm_projection": "BEARISH",
-          "current_ratio": 1.505661,
+          "current_ratio": 1.509861,
           "chr_median_t5": 1.488504,
           "chr_width_t5": 0.052509,
           "realized_return": 0.006147
@@ -3622,6 +4066,7 @@ export const MOCK_DATA: any = {
     "2026-10-16": {
       "friday_date": "2026-10-16",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -3686,7 +4131,7 @@ export const MOCK_DATA: any = {
           "current_ratio": 0.13414,
           "chr_median_t5": 0.133187,
           "chr_width_t5": 0.004792,
-          "realized_return": 0.006968
+          "realized_return": 0.003555
         },
         {
           "ratio_id": "R10",
@@ -3737,7 +4182,7 @@ export const MOCK_DATA: any = {
           "current_ratio": 0.014711,
           "chr_median_t5": 0.013124,
           "chr_width_t5": 0.01609,
-          "realized_return": 0.006968
+          "realized_return": 0.003555
         },
         {
           "ratio_id": "R08",
@@ -3771,7 +4216,7 @@ export const MOCK_DATA: any = {
           "current_ratio": 1.562795,
           "chr_median_t5": 1.55694,
           "chr_width_t5": 0.023798,
-          "realized_return": 0.016115
+          "realized_return": 0.011856
         },
         {
           "ratio_id": "R04",
@@ -3822,7 +4267,7 @@ export const MOCK_DATA: any = {
           "current_ratio": -0.016232,
           "chr_median_t5": -0.022217,
           "chr_width_t5": 0.033171,
-          "realized_return": 0.001721
+          "realized_return": -0.001394
         },
         {
           "ratio_id": "R12",
@@ -4016,6 +4461,7 @@ export const MOCK_DATA: any = {
     "2026-10-09": {
       "friday_date": "2026-10-09",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -4410,6 +4856,7 @@ export const MOCK_DATA: any = {
     "2026-10-02": {
       "friday_date": "2026-10-02",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -4804,6 +5251,7 @@ export const MOCK_DATA: any = {
     "2026-09-25": {
       "friday_date": "2026-09-25",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -5198,6 +5646,7 @@ export const MOCK_DATA: any = {
     "2026-09-18": {
       "friday_date": "2026-09-18",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -5592,6 +6041,7 @@ export const MOCK_DATA: any = {
     "2026-09-11": {
       "friday_date": "2026-09-11",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -5986,6 +6436,7 @@ export const MOCK_DATA: any = {
     "2026-09-04": {
       "friday_date": "2026-09-04",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -6380,6 +6831,7 @@ export const MOCK_DATA: any = {
     "2026-08-28": {
       "friday_date": "2026-08-28",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -6774,6 +7226,7 @@ export const MOCK_DATA: any = {
     "2026-08-21": {
       "friday_date": "2026-08-21",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -7168,6 +7621,7 @@ export const MOCK_DATA: any = {
     "2026-08-14": {
       "friday_date": "2026-08-14",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -7562,6 +8016,7 @@ export const MOCK_DATA: any = {
     "2026-08-07": {
       "friday_date": "2026-08-07",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -7956,6 +8411,7 @@ export const MOCK_DATA: any = {
     "2026-07-31": {
       "friday_date": "2026-07-31",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -8350,6 +8806,7 @@ export const MOCK_DATA: any = {
     "2026-07-24": {
       "friday_date": "2026-07-24",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -8744,6 +9201,7 @@ export const MOCK_DATA: any = {
     "2026-07-17": {
       "friday_date": "2026-07-17",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -9138,6 +9596,7 @@ export const MOCK_DATA: any = {
     "2026-07-10": {
       "friday_date": "2026-07-10",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -9532,6 +9991,7 @@ export const MOCK_DATA: any = {
     "2026-06-26": {
       "friday_date": "2026-06-26",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -9926,6 +10386,7 @@ export const MOCK_DATA: any = {
     "2026-06-12": {
       "friday_date": "2026-06-12",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -10320,6 +10781,7 @@ export const MOCK_DATA: any = {
     "2026-06-05": {
       "friday_date": "2026-06-05",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -10714,6 +11176,7 @@ export const MOCK_DATA: any = {
     "2026-05-29": {
       "friday_date": "2026-05-29",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -11108,6 +11571,7 @@ export const MOCK_DATA: any = {
     "2026-05-22": {
       "friday_date": "2026-05-22",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -11502,6 +11966,7 @@ export const MOCK_DATA: any = {
     "2026-05-15": {
       "friday_date": "2026-05-15",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -11896,6 +12361,7 @@ export const MOCK_DATA: any = {
     "2026-05-08": {
       "friday_date": "2026-05-08",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -12290,6 +12756,7 @@ export const MOCK_DATA: any = {
     "2026-05-01": {
       "friday_date": "2026-05-01",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -12684,6 +13151,7 @@ export const MOCK_DATA: any = {
     "2026-04-24": {
       "friday_date": "2026-04-24",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -13078,6 +13546,7 @@ export const MOCK_DATA: any = {
     "2026-04-17": {
       "friday_date": "2026-04-17",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -13472,6 +13941,7 @@ export const MOCK_DATA: any = {
     "2026-04-10": {
       "friday_date": "2026-04-10",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -13866,6 +14336,7 @@ export const MOCK_DATA: any = {
     "2026-03-27": {
       "friday_date": "2026-03-27",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -14260,6 +14731,7 @@ export const MOCK_DATA: any = {
     "2026-03-20": {
       "friday_date": "2026-03-20",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -14654,6 +15126,7 @@ export const MOCK_DATA: any = {
     "2026-03-13": {
       "friday_date": "2026-03-13",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -15048,6 +15521,7 @@ export const MOCK_DATA: any = {
     "2026-03-06": {
       "friday_date": "2026-03-06",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -15442,6 +15916,7 @@ export const MOCK_DATA: any = {
     "2026-02-27": {
       "friday_date": "2026-02-27",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -15836,6 +16311,7 @@ export const MOCK_DATA: any = {
     "2026-02-20": {
       "friday_date": "2026-02-20",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -16230,6 +16706,7 @@ export const MOCK_DATA: any = {
     "2026-02-13": {
       "friday_date": "2026-02-13",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -16624,6 +17101,7 @@ export const MOCK_DATA: any = {
     "2026-02-06": {
       "friday_date": "2026-02-06",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -17018,6 +17496,7 @@ export const MOCK_DATA: any = {
     "2026-01-30": {
       "friday_date": "2026-01-30",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -17412,6 +17891,7 @@ export const MOCK_DATA: any = {
     "2026-01-23": {
       "friday_date": "2026-01-23",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -17806,6 +18286,7 @@ export const MOCK_DATA: any = {
     "2026-01-16": {
       "friday_date": "2026-01-16",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -18200,6 +18681,7 @@ export const MOCK_DATA: any = {
     "2026-01-09": {
       "friday_date": "2026-01-09",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -18594,6 +19076,7 @@ export const MOCK_DATA: any = {
     "2026-01-02": {
       "friday_date": "2026-01-02",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -18987,9 +19470,320 @@ export const MOCK_DATA: any = {
     }
   },
   "chronosBands": {
+    "2026-11-13": {
+      "friday_date": "2026-11-13",
+      "available_fridays": [
+        "2026-11-13",
+        "2026-11-06",
+        "2026-10-30",
+        "2026-10-23",
+        "2026-10-16",
+        "2026-10-09",
+        "2026-10-02",
+        "2026-09-25",
+        "2026-09-18",
+        "2026-09-11",
+        "2026-09-04",
+        "2026-08-28",
+        "2026-08-21",
+        "2026-08-14",
+        "2026-08-07",
+        "2026-07-31",
+        "2026-07-24",
+        "2026-07-17",
+        "2026-07-10",
+        "2026-06-26",
+        "2026-06-12",
+        "2026-06-05",
+        "2026-05-29",
+        "2026-05-22",
+        "2026-05-15",
+        "2026-05-08",
+        "2026-05-01",
+        "2026-04-24",
+        "2026-04-17",
+        "2026-04-10",
+        "2026-03-27",
+        "2026-03-20",
+        "2026-03-13",
+        "2026-03-06",
+        "2026-02-27",
+        "2026-02-20",
+        "2026-02-13",
+        "2026-02-06",
+        "2026-01-30",
+        "2026-01-23",
+        "2026-01-16",
+        "2026-01-09",
+        "2026-01-02"
+      ],
+      "bands": [
+        {
+          "ratio_id": "R01",
+          "numerator": "SPY",
+          "denominator": "TLT",
+          "current_value": 2.251637,
+          "median": 2.254377,
+          "upper_95": 2.287925,
+          "lower_5": 2.220829,
+          "tfm_t5": 2.254377,
+          "tfm_projection": "BULLISH",
+          "direction": "LONG_NUM",
+          "is_active": true
+        },
+        {
+          "ratio_id": "R02",
+          "numerator": "GLD",
+          "denominator": "TLT",
+          "current_value": 1.499138,
+          "median": 1.490393,
+          "upper_95": 1.526979,
+          "lower_5": 1.453806,
+          "tfm_t5": 1.490393,
+          "tfm_projection": "BEARISH",
+          "direction": "LONG_DEN",
+          "is_active": true
+        },
+        {
+          "ratio_id": "R03",
+          "numerator": "GLD",
+          "denominator": "SPY",
+          "current_value": -0.752498,
+          "median": -0.763985,
+          "upper_95": -0.725451,
+          "lower_5": -0.802518,
+          "tfm_t5": -0.763985,
+          "tfm_projection": "BEARISH",
+          "direction": "LONG_DEN",
+          "is_active": true
+        },
+        {
+          "ratio_id": "R04",
+          "numerator": "UUP",
+          "denominator": "FXE",
+          "current_value": -1.237735,
+          "median": -1.230978,
+          "upper_95": -1.212985,
+          "lower_5": -1.248971,
+          "tfm_t5": -1.230978,
+          "tfm_projection": "BULLISH",
+          "direction": "LONG_NUM",
+          "is_active": true
+        },
+        {
+          "ratio_id": "R05",
+          "numerator": "LQD",
+          "denominator": "IEF",
+          "current_value": 0.132629,
+          "median": 0.13321,
+          "upper_95": 0.137449,
+          "lower_5": 0.12897,
+          "tfm_t5": 0.13321,
+          "tfm_projection": "BULLISH",
+          "direction": "LONG_NUM",
+          "is_active": true
+        },
+        {
+          "ratio_id": "R06",
+          "numerator": "TLT",
+          "denominator": "SHY",
+          "current_value": -0.022299,
+          "median": -0.022721,
+          "upper_95": -0.008526,
+          "lower_5": -0.036915,
+          "tfm_t5": -0.022721,
+          "tfm_projection": "BEARISH",
+          "direction": "LONG_DEN",
+          "is_active": true
+        },
+        {
+          "ratio_id": "R07",
+          "numerator": "XLF",
+          "denominator": "XLU",
+          "current_value": 0.287001,
+          "median": 0.294504,
+          "upper_95": 0.309413,
+          "lower_5": 0.279595,
+          "tfm_t5": 0.294504,
+          "tfm_projection": "BULLISH",
+          "direction": "LONG_NUM",
+          "is_active": true
+        },
+        {
+          "ratio_id": "R08",
+          "numerator": "QQQ",
+          "denominator": "SPY",
+          "current_value": -0.103952,
+          "median": -0.113563,
+          "upper_95": -0.08354,
+          "lower_5": -0.143586,
+          "tfm_t5": -0.113563,
+          "tfm_projection": "BEARISH",
+          "direction": "LONG_DEN",
+          "is_active": true
+        },
+        {
+          "ratio_id": "R09",
+          "numerator": "IWM",
+          "denominator": "SPY",
+          "current_value": -0.999918,
+          "median": -0.986171,
+          "upper_95": -0.960396,
+          "lower_5": -1.011946,
+          "tfm_t5": -0.986171,
+          "tfm_projection": "BULLISH",
+          "direction": "LONG_NUM",
+          "is_active": true
+        },
+        {
+          "ratio_id": "R10",
+          "numerator": "MDY",
+          "denominator": "SPY",
+          "current_value": 0.0,
+          "median": 0.0,
+          "upper_95": 0.0,
+          "lower_5": 0.0,
+          "tfm_t5": null,
+          "tfm_projection": null,
+          "direction": "LONG_DEN",
+          "is_active": true
+        },
+        {
+          "ratio_id": "R11",
+          "numerator": "DIA",
+          "denominator": "QQQ",
+          "current_value": -0.262063,
+          "median": -0.248655,
+          "upper_95": -0.203125,
+          "lower_5": -0.294185,
+          "tfm_t5": -0.248655,
+          "tfm_projection": "BULLISH",
+          "direction": "LONG_NUM",
+          "is_active": true
+        },
+        {
+          "ratio_id": "R12",
+          "numerator": "XLY",
+          "denominator": "XLP",
+          "current_value": 0.261739,
+          "median": 0.272822,
+          "upper_95": 0.293833,
+          "lower_5": 0.251812,
+          "tfm_t5": 0.272822,
+          "tfm_projection": "BULLISH",
+          "direction": "LONG_NUM",
+          "is_active": true
+        },
+        {
+          "ratio_id": "R13",
+          "numerator": "XLK",
+          "denominator": "XLE",
+          "current_value": 0.963672,
+          "median": 0.972018,
+          "upper_95": 1.011814,
+          "lower_5": 0.932221,
+          "tfm_t5": 0.972018,
+          "tfm_projection": "BULLISH",
+          "direction": "LONG_NUM",
+          "is_active": true
+        },
+        {
+          "ratio_id": "R14",
+          "numerator": "XLV",
+          "denominator": "SPY",
+          "current_value": -1.38493,
+          "median": -1.366232,
+          "upper_95": -1.313404,
+          "lower_5": -1.419059,
+          "tfm_t5": -1.366232,
+          "tfm_projection": "BULLISH",
+          "direction": "LONG_NUM",
+          "is_active": true
+        },
+        {
+          "ratio_id": "R15",
+          "numerator": "XLI",
+          "denominator": "SPY",
+          "current_value": -1.497287,
+          "median": -1.488899,
+          "upper_95": -1.464856,
+          "lower_5": -1.512941,
+          "tfm_t5": -1.488899,
+          "tfm_projection": "BULLISH",
+          "direction": "LONG_NUM",
+          "is_active": true
+        },
+        {
+          "ratio_id": "R16",
+          "numerator": "XLE",
+          "denominator": "XLB",
+          "current_value": 0.218115,
+          "median": 0.180904,
+          "upper_95": 0.266599,
+          "lower_5": 0.095209,
+          "tfm_t5": 0.180904,
+          "tfm_projection": "BEARISH",
+          "direction": "LONG_DEN",
+          "is_active": true
+        },
+        {
+          "ratio_id": "R17",
+          "numerator": "EEM",
+          "denominator": "EFA",
+          "current_value": -0.536463,
+          "median": -0.547805,
+          "upper_95": -0.512344,
+          "lower_5": -0.583266,
+          "tfm_t5": -0.547805,
+          "tfm_projection": "BEARISH",
+          "direction": "LONG_DEN",
+          "is_active": true
+        },
+        {
+          "ratio_id": "R18",
+          "numerator": "GLD",
+          "denominator": "SLV",
+          "current_value": 2.086245,
+          "median": 2.103298,
+          "upper_95": 2.158253,
+          "lower_5": 2.048342,
+          "tfm_t5": 2.103298,
+          "tfm_projection": "BULLISH",
+          "direction": "LONG_NUM",
+          "is_active": true
+        },
+        {
+          "ratio_id": "R19",
+          "numerator": "SOXX",
+          "denominator": "SPY",
+          "current_value": -1.619925,
+          "median": -1.638078,
+          "upper_95": -1.539946,
+          "lower_5": -1.73621,
+          "tfm_t5": -1.638078,
+          "tfm_projection": "BEARISH",
+          "direction": "LONG_DEN",
+          "is_active": true
+        },
+        {
+          "ratio_id": "R20",
+          "numerator": "VNQ",
+          "denominator": "IEF",
+          "current_value": 0.068978,
+          "median": 0.089467,
+          "upper_95": 0.123252,
+          "lower_5": 0.055682,
+          "tfm_t5": 0.089467,
+          "tfm_projection": "BULLISH",
+          "direction": "LONG_NUM",
+          "is_active": true
+        }
+      ]
+    },
     "2026-11-06": {
       "friday_date": "2026-11-06",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -19299,6 +20093,7 @@ export const MOCK_DATA: any = {
     "2026-10-30": {
       "friday_date": "2026-10-30",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -19347,7 +20142,7 @@ export const MOCK_DATA: any = {
           "ratio_id": "R01",
           "numerator": "SPY",
           "denominator": "TLT",
-          "current_value": 2.222905,
+          "current_value": 2.227105,
           "median": 2.210895,
           "upper_95": 2.25669,
           "lower_5": 2.1651,
@@ -19360,7 +20155,7 @@ export const MOCK_DATA: any = {
           "ratio_id": "R02",
           "numerator": "GLD",
           "denominator": "TLT",
-          "current_value": 1.469546,
+          "current_value": 1.473746,
           "median": 1.441127,
           "upper_95": 1.501878,
           "lower_5": 1.380377,
@@ -19386,7 +20181,7 @@ export const MOCK_DATA: any = {
           "ratio_id": "R04",
           "numerator": "UUP",
           "denominator": "FXE",
-          "current_value": -1.268501,
+          "current_value": -1.26755,
           "median": -1.266773,
           "upper_95": -1.258393,
           "lower_5": -1.275154,
@@ -19399,20 +20194,20 @@ export const MOCK_DATA: any = {
           "ratio_id": "R05",
           "numerator": "LQD",
           "denominator": "IEF",
-          "current_value": 0.127807,
+          "current_value": 0.127359,
           "median": 0.12766,
           "upper_95": 0.131093,
           "lower_5": 0.124227,
           "tfm_t5": 0.12766,
-          "tfm_projection": "BEARISH",
-          "direction": "LONG_DEN",
+          "tfm_projection": "BULLISH",
+          "direction": "LONG_NUM",
           "is_active": true
         },
         {
           "ratio_id": "R06",
           "numerator": "TLT",
           "denominator": "SHY",
-          "current_value": 0.001712,
+          "current_value": 0.000626,
           "median": 0.016435,
           "upper_95": 0.047668,
           "lower_5": -0.014798,
@@ -19594,7 +20389,7 @@ export const MOCK_DATA: any = {
           "ratio_id": "R20",
           "numerator": "VNQ",
           "denominator": "IEF",
-          "current_value": 0.02348,
+          "current_value": 0.026875,
           "median": 0.032059,
           "upper_95": 0.04562,
           "lower_5": 0.018499,
@@ -19608,6 +20403,7 @@ export const MOCK_DATA: any = {
     "2026-10-23": {
       "friday_date": "2026-10-23",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -19656,7 +20452,7 @@ export const MOCK_DATA: any = {
           "ratio_id": "R01",
           "numerator": "SPY",
           "denominator": "TLT",
-          "current_value": 2.234641,
+          "current_value": 2.238841,
           "median": 2.227621,
           "upper_95": 2.264166,
           "lower_5": 2.191076,
@@ -19669,7 +20465,7 @@ export const MOCK_DATA: any = {
           "ratio_id": "R02",
           "numerator": "GLD",
           "denominator": "TLT",
-          "current_value": 1.505661,
+          "current_value": 1.509861,
           "median": 1.488504,
           "upper_95": 1.531692,
           "lower_5": 1.445315,
@@ -19695,7 +20491,7 @@ export const MOCK_DATA: any = {
           "ratio_id": "R04",
           "numerator": "UUP",
           "denominator": "FXE",
-          "current_value": -1.272206,
+          "current_value": -1.271255,
           "median": -1.268201,
           "upper_95": -1.254793,
           "lower_5": -1.281609,
@@ -19708,7 +20504,7 @@ export const MOCK_DATA: any = {
           "ratio_id": "R05",
           "numerator": "LQD",
           "denominator": "IEF",
-          "current_value": 0.131539,
+          "current_value": 0.13109,
           "median": 0.131927,
           "upper_95": 0.134086,
           "lower_5": 0.129769,
@@ -19721,7 +20517,7 @@ export const MOCK_DATA: any = {
           "ratio_id": "R06",
           "numerator": "TLT",
           "denominator": "SHY",
-          "current_value": -0.001965,
+          "current_value": -0.003051,
           "median": 0.008664,
           "upper_95": 0.034647,
           "lower_5": -0.01732,
@@ -19903,7 +20699,7 @@ export const MOCK_DATA: any = {
           "ratio_id": "R20",
           "numerator": "VNQ",
           "denominator": "IEF",
-          "current_value": 0.017852,
+          "current_value": 0.021247,
           "median": 0.02296,
           "upper_95": 0.035268,
           "lower_5": 0.010651,
@@ -19917,6 +20713,7 @@ export const MOCK_DATA: any = {
     "2026-10-16": {
       "friday_date": "2026-10-16",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -20226,6 +21023,7 @@ export const MOCK_DATA: any = {
     "2026-10-09": {
       "friday_date": "2026-10-09",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -20535,6 +21333,7 @@ export const MOCK_DATA: any = {
     "2026-10-02": {
       "friday_date": "2026-10-02",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -20844,6 +21643,7 @@ export const MOCK_DATA: any = {
     "2026-09-25": {
       "friday_date": "2026-09-25",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -21153,6 +21953,7 @@ export const MOCK_DATA: any = {
     "2026-09-18": {
       "friday_date": "2026-09-18",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -21462,6 +22263,7 @@ export const MOCK_DATA: any = {
     "2026-09-11": {
       "friday_date": "2026-09-11",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -21771,6 +22573,7 @@ export const MOCK_DATA: any = {
     "2026-09-04": {
       "friday_date": "2026-09-04",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -22080,6 +22883,7 @@ export const MOCK_DATA: any = {
     "2026-08-28": {
       "friday_date": "2026-08-28",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -22389,6 +23193,7 @@ export const MOCK_DATA: any = {
     "2026-08-21": {
       "friday_date": "2026-08-21",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -22698,6 +23503,7 @@ export const MOCK_DATA: any = {
     "2026-08-14": {
       "friday_date": "2026-08-14",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -23007,6 +23813,7 @@ export const MOCK_DATA: any = {
     "2026-08-07": {
       "friday_date": "2026-08-07",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -23316,6 +24123,7 @@ export const MOCK_DATA: any = {
     "2026-07-31": {
       "friday_date": "2026-07-31",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -23625,6 +24433,7 @@ export const MOCK_DATA: any = {
     "2026-07-24": {
       "friday_date": "2026-07-24",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -23934,6 +24743,7 @@ export const MOCK_DATA: any = {
     "2026-07-17": {
       "friday_date": "2026-07-17",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -24243,6 +25053,7 @@ export const MOCK_DATA: any = {
     "2026-07-10": {
       "friday_date": "2026-07-10",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -24552,6 +25363,7 @@ export const MOCK_DATA: any = {
     "2026-06-26": {
       "friday_date": "2026-06-26",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -24861,6 +25673,7 @@ export const MOCK_DATA: any = {
     "2026-06-12": {
       "friday_date": "2026-06-12",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -25170,6 +25983,7 @@ export const MOCK_DATA: any = {
     "2026-06-05": {
       "friday_date": "2026-06-05",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -25479,6 +26293,7 @@ export const MOCK_DATA: any = {
     "2026-05-29": {
       "friday_date": "2026-05-29",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -25788,6 +26603,7 @@ export const MOCK_DATA: any = {
     "2026-05-22": {
       "friday_date": "2026-05-22",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -26097,6 +26913,7 @@ export const MOCK_DATA: any = {
     "2026-05-15": {
       "friday_date": "2026-05-15",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -26406,6 +27223,7 @@ export const MOCK_DATA: any = {
     "2026-05-08": {
       "friday_date": "2026-05-08",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -26715,6 +27533,7 @@ export const MOCK_DATA: any = {
     "2026-05-01": {
       "friday_date": "2026-05-01",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -27024,6 +27843,7 @@ export const MOCK_DATA: any = {
     "2026-04-24": {
       "friday_date": "2026-04-24",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -27333,6 +28153,7 @@ export const MOCK_DATA: any = {
     "2026-04-17": {
       "friday_date": "2026-04-17",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -27642,6 +28463,7 @@ export const MOCK_DATA: any = {
     "2026-04-10": {
       "friday_date": "2026-04-10",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -27951,6 +28773,7 @@ export const MOCK_DATA: any = {
     "2026-03-27": {
       "friday_date": "2026-03-27",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -28260,6 +29083,7 @@ export const MOCK_DATA: any = {
     "2026-03-20": {
       "friday_date": "2026-03-20",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -28569,6 +29393,7 @@ export const MOCK_DATA: any = {
     "2026-03-13": {
       "friday_date": "2026-03-13",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -28878,6 +29703,7 @@ export const MOCK_DATA: any = {
     "2026-03-06": {
       "friday_date": "2026-03-06",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -29187,6 +30013,7 @@ export const MOCK_DATA: any = {
     "2026-02-27": {
       "friday_date": "2026-02-27",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -29496,6 +30323,7 @@ export const MOCK_DATA: any = {
     "2026-02-20": {
       "friday_date": "2026-02-20",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -29805,6 +30633,7 @@ export const MOCK_DATA: any = {
     "2026-02-13": {
       "friday_date": "2026-02-13",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -30114,6 +30943,7 @@ export const MOCK_DATA: any = {
     "2026-02-06": {
       "friday_date": "2026-02-06",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -30423,6 +31253,7 @@ export const MOCK_DATA: any = {
     "2026-01-30": {
       "friday_date": "2026-01-30",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -30732,6 +31563,7 @@ export const MOCK_DATA: any = {
     "2026-01-23": {
       "friday_date": "2026-01-23",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -31041,6 +31873,7 @@ export const MOCK_DATA: any = {
     "2026-01-16": {
       "friday_date": "2026-01-16",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -31350,6 +32183,7 @@ export const MOCK_DATA: any = {
     "2026-01-09": {
       "friday_date": "2026-01-09",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -31659,6 +32493,7 @@ export const MOCK_DATA: any = {
     "2026-01-02": {
       "friday_date": "2026-01-02",
       "available_fridays": [
+        "2026-11-13",
         "2026-11-06",
         "2026-10-30",
         "2026-10-23",
@@ -32210,8 +33045,14 @@ export const MOCK_DATA: any = {
       },
       {
         "date": "2026-10-30",
-        "decay_value": 0.9817,
-        "avg_correlation": 0.1531,
+        "decay_value": 0.9818,
+        "avg_correlation": 0.1503,
+        "regime": 4
+      },
+      {
+        "date": "2026-11-06",
+        "decay_value": 0.9799,
+        "avg_correlation": 0.1602,
         "regime": 4
       }
     ]
@@ -32267,10 +33108,10 @@ export const MOCK_DATA: any = {
           0.7577,
           0.7798,
           0.7849,
-          0.0567,
-          -0.1457,
-          -0.3674,
-          0.2133,
+          0.0602,
+          -0.1562,
+          -0.588,
+          0.2757,
           -1.0,
           -0.9674,
           -0.9919
@@ -32295,10 +33136,10 @@ export const MOCK_DATA: any = {
           0.5586,
           0.5875,
           0.9163,
-          -0.1043,
-          -0.2982,
-          -0.4064,
-          0.0896,
+          -0.126,
+          -0.3568,
+          -0.7429,
+          0.0828,
           -0.9633,
           -0.9998,
           -0.9778
@@ -32323,10 +33164,10 @@ export const MOCK_DATA: any = {
           0.7001,
           0.7248,
           0.8277,
-          0.0213,
-          -0.2217,
-          -0.4494,
-          0.0979,
+          0.0453,
+          -0.2143,
+          -0.6503,
+          0.1578,
           -0.9876,
           -0.9793,
           -0.9995
@@ -32351,10 +33192,10 @@ export const MOCK_DATA: any = {
           0.6511,
           0.6717,
           0.8259,
-          -0.145,
-          -0.4245,
-          -0.67,
-          -0.1475,
+          -0.0445,
+          -0.3428,
+          -0.7436,
+          -0.0475,
           -0.9318,
           -0.933,
           -0.9635
@@ -32379,10 +33220,10 @@ export const MOCK_DATA: any = {
           0.9573,
           0.9677,
           0.4532,
-          0.3824,
-          0.1616,
-          -0.2404,
-          0.371,
+          0.4273,
+          0.2367,
+          -0.2293,
+          0.5355,
           -0.9068,
           -0.7739,
           -0.8737
@@ -32407,10 +33248,10 @@ export const MOCK_DATA: any = {
           0.9826,
           0.9891,
           0.3591,
-          0.4296,
-          0.2203,
-          -0.2065,
-          0.4012,
+          0.4836,
+          0.3133,
+          -0.1408,
+          0.5868,
           -0.8592,
           -0.7033,
           -0.818
@@ -32435,10 +33276,10 @@ export const MOCK_DATA: any = {
           0.5445,
           0.5733,
           0.8862,
-          -0.0716,
-          -0.3491,
-          -0.5393,
-          -0.0779,
+          -0.0326,
+          -0.3365,
+          -0.7457,
+          -0.0446,
           -0.9239,
           -0.9654,
           -0.9652
@@ -32463,10 +33304,10 @@ export const MOCK_DATA: any = {
           0.9209,
           0.9218,
           0.1647,
-          0.513,
-          0.1984,
-          -0.3616,
-          0.1414,
+          0.6722,
+          0.4219,
+          -0.0218,
+          0.4049,
           -0.6728,
           -0.507,
           -0.6674
@@ -32491,10 +33332,10 @@ export const MOCK_DATA: any = {
           -0.6379,
           -0.6107,
           0.6167,
-          -0.6541,
-          -0.5824,
-          -0.1214,
-          -0.3345,
+          -0.7845,
+          -0.8101,
+          -0.6688,
+          -0.6104,
           -0.0178,
           -0.2678,
           -0.0811
@@ -32519,10 +33360,10 @@ export const MOCK_DATA: any = {
           0.9834,
           0.9853,
           0.2658,
-          0.436,
-          0.1789,
-          -0.3196,
-          0.2603,
+          0.5542,
+          0.3484,
+          -0.0988,
+          0.498,
           -0.7837,
           -0.6141,
           -0.7563
@@ -32547,10 +33388,10 @@ export const MOCK_DATA: any = {
           0.3882,
           0.4022,
           0.7953,
-          -0.5165,
-          -0.7576,
-          -0.8863,
-          -0.4963,
+          -0.3523,
+          -0.6322,
+          -0.8779,
+          -0.4028,
           -0.7164,
           -0.7645,
           -0.7705
@@ -32575,10 +33416,10 @@ export const MOCK_DATA: any = {
           0.4187,
           0.4493,
           0.9604,
-          -0.2357,
-          -0.3686,
-          -0.3595,
-          0.0806,
+          -0.2958,
+          -0.4835,
+          -0.8038,
+          0.0168,
           -0.9079,
           -0.9797,
           -0.9209
@@ -32603,10 +33444,10 @@ export const MOCK_DATA: any = {
           0.8564,
           0.8451,
           -0.2657,
-          0.7679,
-          0.5678,
-          0.013,
-          0.395,
+          0.8811,
+          0.7729,
+          0.4322,
+          0.6637,
           -0.3643,
           -0.1359,
           -0.32
@@ -32631,10 +33472,10 @@ export const MOCK_DATA: any = {
           0.8691,
           0.8624,
           0.0385,
-          0.4368,
-          0.1247,
-          -0.4517,
-          0.0013,
+          0.6517,
+          0.4101,
+          0.0263,
+          0.3046,
           -0.5399,
           -0.3615,
           -0.5393
@@ -32659,10 +33500,10 @@ export const MOCK_DATA: any = {
           0.9292,
           0.9416,
           0.4122,
-          0.4885,
-          0.3128,
-          -0.0493,
-          0.5371,
+          0.472,
+          0.327,
+          -0.1315,
+          0.6611,
           -0.8799,
           -0.7468,
           -0.833
@@ -32687,10 +33528,10 @@ export const MOCK_DATA: any = {
           0.961,
           0.9669,
           0.3566,
-          0.3982,
-          0.1163,
-          -0.3716,
-          0.2097,
+          0.5158,
+          0.2784,
+          -0.1868,
+          0.4327,
           -0.8297,
           -0.683,
           -0.8141
@@ -32715,10 +33556,10 @@ export const MOCK_DATA: any = {
           1.0,
           0.9992,
           0.1998,
-          0.4716,
-          0.2774,
-          -0.187,
-          0.4006,
+          0.5533,
+          0.4113,
+          -0.0106,
+          0.625,
           -0.7584,
           -0.5691,
           -0.7081
@@ -32743,10 +33584,10 @@ export const MOCK_DATA: any = {
           0.9992,
           1.0,
           0.2316,
-          0.4689,
-          0.2697,
-          -0.1898,
-          0.4027,
+          0.545,
+          0.3958,
+          -0.0348,
+          0.6198,
           -0.7805,
           -0.5975,
           -0.7322
@@ -32771,125 +33612,125 @@ export const MOCK_DATA: any = {
           0.1998,
           0.2316,
           1.0,
-          -0.439,
-          -0.5789,
-          -0.4905,
-          -0.165,
+          -0.472,
+          -0.6826,
+          -0.9257,
+          -0.258,
           -0.7839,
           -0.9128,
           -0.8264
         ],
         [
-          0.0567,
-          -0.1043,
-          0.0213,
-          -0.145,
-          0.3824,
-          0.4296,
-          -0.0716,
-          0.513,
-          -0.6541,
-          0.436,
-          -0.5165,
-          -0.2357,
-          0.7679,
-          0.4368,
-          0.4885,
-          0.3982,
-          0.4716,
-          0.4689,
-          -0.439,
-          1.0,
-          0.9131,
+          0.0602,
+          -0.126,
+          0.0453,
+          -0.0445,
+          0.4273,
+          0.4836,
+          -0.0326,
+          0.6722,
+          -0.7845,
+          0.5542,
+          -0.3523,
+          -0.2958,
+          0.8811,
+          0.6517,
+          0.472,
+          0.5158,
+          0.5533,
           0.545,
-          0.6562,
-          -0.0575,
-          0.1055,
-          -0.0111
+          -0.472,
+          1.0,
+          0.9221,
+          0.6654,
+          0.6169,
+          -0.0599,
+          0.1253,
+          -0.034
         ],
         [
-          -0.1457,
-          -0.2982,
-          -0.2217,
-          -0.4245,
-          0.1616,
-          0.2203,
-          -0.3491,
-          0.1984,
-          -0.5824,
-          0.1789,
-          -0.7576,
-          -0.3686,
-          0.5678,
-          0.1247,
-          0.3128,
-          0.1163,
-          0.2774,
-          0.2697,
-          -0.5789,
-          0.9131,
+          -0.1562,
+          -0.3568,
+          -0.2143,
+          -0.3428,
+          0.2367,
+          0.3133,
+          -0.3365,
+          0.4219,
+          -0.8101,
+          0.3484,
+          -0.6322,
+          -0.4835,
+          0.7729,
+          0.4101,
+          0.327,
+          0.2784,
+          0.4113,
+          0.3958,
+          -0.6826,
+          0.9221,
           1.0,
-          0.8203,
-          0.8254,
-          0.1434,
-          0.2977,
-          0.2239
+          0.8767,
+          0.7604,
+          0.1549,
+          0.354,
+          0.2182
         ],
         [
-          -0.3674,
-          -0.4064,
-          -0.4494,
-          -0.67,
-          -0.2404,
-          -0.2065,
-          -0.5393,
-          -0.3616,
-          -0.1214,
-          -0.3196,
-          -0.8863,
-          -0.3595,
-          0.013,
-          -0.4517,
-          -0.0493,
-          -0.3716,
-          -0.187,
-          -0.1898,
-          -0.4905,
-          0.545,
-          0.8203,
+          -0.588,
+          -0.7429,
+          -0.6503,
+          -0.7436,
+          -0.2293,
+          -0.1408,
+          -0.7457,
+          -0.0218,
+          -0.6688,
+          -0.0988,
+          -0.8779,
+          -0.8038,
+          0.4322,
+          0.0263,
+          -0.1315,
+          -0.1868,
+          -0.0106,
+          -0.0348,
+          -0.9257,
+          0.6654,
+          0.8767,
           1.0,
-          0.7996,
-          0.3641,
-          0.4089,
-          0.4472
+          0.5589,
+          0.5863,
+          0.7406,
+          0.6507
         ],
         [
-          0.2133,
-          0.0896,
-          0.0979,
-          -0.1475,
-          0.371,
-          0.4012,
-          -0.0779,
-          0.1414,
-          -0.3345,
-          0.2603,
-          -0.4963,
-          0.0806,
-          0.395,
-          0.0013,
-          0.5371,
-          0.2097,
-          0.4006,
-          0.4027,
-          -0.165,
-          0.6562,
-          0.8254,
-          0.7996,
+          0.2757,
+          0.0828,
+          0.1578,
+          -0.0475,
+          0.5355,
+          0.5868,
+          -0.0446,
+          0.4049,
+          -0.6104,
+          0.498,
+          -0.4028,
+          0.0168,
+          0.6637,
+          0.3046,
+          0.6611,
+          0.4327,
+          0.625,
+          0.6198,
+          -0.258,
+          0.6169,
+          0.7604,
+          0.5589,
           1.0,
-          -0.217,
-          -0.0934,
-          -0.1074
+          -0.279,
+          -0.0902,
+          -0.1683
         ],
         [
           -1.0,
@@ -32911,10 +33752,10 @@ export const MOCK_DATA: any = {
           -0.7584,
           -0.7805,
           -0.7839,
-          -0.0575,
-          0.1434,
-          0.3641,
-          -0.217,
+          -0.0599,
+          0.1549,
+          0.5863,
+          -0.279,
           1.0,
           0.9669,
           0.9913
@@ -32939,10 +33780,10 @@ export const MOCK_DATA: any = {
           -0.5691,
           -0.5975,
           -0.9128,
-          0.1055,
-          0.2977,
-          0.4089,
-          -0.0934,
+          0.1253,
+          0.354,
+          0.7406,
+          -0.0902,
           0.9669,
           1.0,
           0.9798
@@ -32967,20 +33808,20 @@ export const MOCK_DATA: any = {
           -0.7081,
           -0.7322,
           -0.8264,
-          -0.0111,
-          0.2239,
-          0.4472,
-          -0.1074,
+          -0.034,
+          0.2182,
+          0.6507,
+          -0.1683,
           0.9913,
           0.9798,
           1.0
         ]
       ],
-      "as_of_date": "2026-11-06",
+      "as_of_date": "2026-11-13",
       "window": "1w",
-      "avg_correlation": 0.2101,
+      "avg_correlation": 0.2237,
       "max_correlation": 1.0,
-      "n_high_pairs": 106
+      "n_high_pairs": 109
     },
     "1m": {
       "tickers": [
@@ -33032,10 +33873,10 @@ export const MOCK_DATA: any = {
           0.3759,
           0.4139,
           0.3709,
-          -0.1104,
-          -0.2784,
-          -0.4006,
-          0.038,
+          -0.1057,
+          -0.2699,
+          -0.3801,
+          0.0385,
           -0.9995,
           -0.945,
           -0.8946
@@ -33060,10 +33901,10 @@ export const MOCK_DATA: any = {
           0.1063,
           0.1488,
           0.4591,
-          -0.3126,
-          -0.4733,
-          -0.5065,
-          -0.1446,
+          -0.3226,
+          -0.4913,
+          -0.5691,
+          -0.172,
           -0.9493,
           -0.9994,
           -0.8227
@@ -33088,10 +33929,10 @@ export const MOCK_DATA: any = {
           0.5143,
           0.5483,
           0.4378,
-          0.0958,
-          -0.0595,
-          -0.2411,
-          0.2091,
+          0.098,
+          -0.05,
+          -0.2089,
+          0.2115,
           -0.8927,
           -0.8249,
           -0.9989
@@ -33116,10 +33957,10 @@ export const MOCK_DATA: any = {
           0.4986,
           0.5325,
           0.3674,
-          0.0045,
-          -0.1924,
-          -0.4138,
-          0.0152,
+          0.04,
+          -0.1358,
+          -0.2533,
+          0.0693,
           -0.8825,
           -0.8129,
           -0.9339
@@ -33144,10 +33985,10 @@ export const MOCK_DATA: any = {
           0.6469,
           0.6676,
           0.1773,
-          0.2617,
-          0.0906,
-          -0.1745,
-          0.341,
+          0.2941,
+          0.1484,
+          -0.0001,
+          0.3945,
           -0.8384,
           -0.6486,
           -0.778
@@ -33172,10 +34013,10 @@ export const MOCK_DATA: any = {
           0.6782,
           0.7032,
           0.1388,
-          0.2041,
-          0.0667,
-          -0.1573,
-          0.2605,
+          0.2209,
+          0.0996,
+          -0.0547,
+          0.2894,
           -0.8096,
           -0.6334,
           -0.7787
@@ -33200,10 +34041,10 @@ export const MOCK_DATA: any = {
           0.1189,
           0.1571,
           0.3837,
-          -0.4187,
-          -0.5592,
+          -0.4101,
+          -0.5536,
           -0.5855,
-          -0.3006,
+          -0.3008,
           -0.8782,
           -0.9333,
           -0.7858
@@ -33228,10 +34069,10 @@ export const MOCK_DATA: any = {
           0.6785,
           0.6915,
           -0.052,
-          0.442,
-          0.3431,
-          -0.0057,
-          0.3102,
+          0.4898,
+          0.4256,
+          0.2479,
+          0.3975,
           -0.5233,
           -0.2974,
           -0.5852
@@ -33256,10 +34097,10 @@ export const MOCK_DATA: any = {
           -0.2253,
           -0.2254,
           -0.2563,
-          -0.1401,
-          -0.1271,
-          0.051,
-          -0.295,
+          -0.2364,
+          -0.2704,
+          -0.3583,
+          -0.4411,
           0.0746,
           0.0093,
           0.1373
@@ -33284,10 +34125,10 @@ export const MOCK_DATA: any = {
           0.8428,
           0.8564,
           0.0039,
-          0.4168,
-          0.2896,
-          -0.0252,
-          0.4083,
+          0.4748,
+          0.3871,
+          0.2674,
+          0.5071,
           -0.6043,
           -0.3516,
           -0.6654
@@ -33312,10 +34153,10 @@ export const MOCK_DATA: any = {
           0.2847,
           0.3153,
           0.185,
-          -0.1251,
-          -0.3432,
-          -0.5406,
-          -0.1317,
+          -0.0572,
+          -0.2423,
+          -0.2622,
+          -0.0304,
           -0.729,
           -0.6933,
           -0.7082
@@ -33340,10 +34181,10 @@ export const MOCK_DATA: any = {
           0.0355,
           0.0793,
           0.4476,
-          -0.3379,
-          -0.4829,
-          -0.4464,
-          -0.1561,
+          -0.3673,
+          -0.53,
+          -0.593,
+          -0.2141,
           -0.9019,
           -0.9796,
           -0.7875
@@ -33368,10 +34209,10 @@ export const MOCK_DATA: any = {
           0.6293,
           0.6082,
           -0.2479,
-          0.6961,
-          0.6816,
-          0.3663,
-          0.5409,
+          0.7416,
+          0.765,
+          0.6313,
+          0.6315,
           0.0501,
           0.3322,
           -0.0252
@@ -33396,10 +34237,10 @@ export const MOCK_DATA: any = {
           0.6146,
           0.6014,
           -0.3195,
-          0.6352,
-          0.5626,
-          0.319,
-          0.4865,
+          0.654,
+          0.6073,
+          0.4697,
+          0.5344,
           0.0244,
           0.2395,
           -0.1716
@@ -33424,10 +34265,10 @@ export const MOCK_DATA: any = {
           0.7391,
           0.7317,
           0.1072,
-          0.5516,
-          0.4473,
-          0.1775,
-          0.5356,
+          0.5529,
+          0.4655,
+          0.2524,
+          0.5511,
           -0.4141,
           -0.1853,
           -0.5176
@@ -33452,10 +34293,10 @@ export const MOCK_DATA: any = {
           0.6015,
           0.6245,
           0.2467,
-          0.1573,
-          0.0162,
-          -0.2805,
-          0.1705,
+          0.2273,
+          0.1251,
+          0.0348,
+          0.281,
           -0.7753,
           -0.6153,
           -0.7539
@@ -33480,10 +34321,10 @@ export const MOCK_DATA: any = {
           1.0,
           0.9983,
           -0.0306,
-          0.5172,
-          0.4445,
-          0.1549,
-          0.4615,
+          0.529,
+          0.4761,
+          0.2676,
+          0.4932,
           -0.3595,
           -0.096,
           -0.5173
@@ -33508,10 +34349,10 @@ export const MOCK_DATA: any = {
           0.9983,
           1.0,
           -0.0184,
-          0.5021,
-          0.4281,
-          0.1444,
-          0.4566,
+          0.5128,
+          0.4578,
+          0.251,
+          0.486,
           -0.3979,
           -0.1388,
           -0.5506
@@ -33536,125 +34377,125 @@ export const MOCK_DATA: any = {
           -0.0306,
           -0.0184,
           1.0,
-          -0.0719,
-          -0.131,
-          -0.2497,
-          0.0287,
+          -0.078,
+          -0.1402,
+          -0.2744,
+          0.0147,
           -0.3809,
           -0.4679,
           -0.4381
         ],
         [
-          -0.1104,
-          -0.3126,
-          0.0958,
-          0.0045,
-          0.2617,
-          0.2041,
-          -0.4187,
-          0.442,
-          -0.1401,
-          0.4168,
-          -0.1251,
-          -0.3379,
-          0.6961,
-          0.6352,
-          0.5516,
-          0.1573,
-          0.5172,
-          0.5021,
-          -0.0719,
+          -0.1057,
+          -0.3226,
+          0.098,
+          0.04,
+          0.2941,
+          0.2209,
+          -0.4101,
+          0.4898,
+          -0.2364,
+          0.4748,
+          -0.0572,
+          -0.3673,
+          0.7416,
+          0.654,
+          0.5529,
+          0.2273,
+          0.529,
+          0.5128,
+          -0.078,
           1.0,
-          0.9202,
-          0.6152,
-          0.8441,
-          0.1167,
-          0.3168,
-          -0.0955
+          0.9323,
+          0.7161,
+          0.8618,
+          0.1104,
+          0.3251,
+          -0.0965
         ],
         [
-          -0.2784,
-          -0.4733,
-          -0.0595,
-          -0.1924,
-          0.0906,
-          0.0667,
-          -0.5592,
-          0.3431,
-          -0.1271,
-          0.2896,
-          -0.3432,
-          -0.4829,
-          0.6816,
-          0.5626,
-          0.4473,
-          0.0162,
-          0.4445,
-          0.4281,
-          -0.131,
-          0.9202,
+          -0.2699,
+          -0.4913,
+          -0.05,
+          -0.1358,
+          0.1484,
+          0.0996,
+          -0.5536,
+          0.4256,
+          -0.2704,
+          0.3871,
+          -0.2423,
+          -0.53,
+          0.765,
+          0.6073,
+          0.4655,
+          0.1251,
+          0.4761,
+          0.4578,
+          -0.1402,
+          0.9323,
           1.0,
-          0.8269,
-          0.8529,
-          0.2846,
-          0.4766,
-          0.0532
+          0.857,
+          0.8607,
+          0.2739,
+          0.4925,
+          0.0455
         ],
         [
-          -0.4006,
-          -0.5065,
-          -0.2411,
-          -0.4138,
-          -0.1745,
-          -0.1573,
+          -0.3801,
+          -0.5691,
+          -0.2089,
+          -0.2533,
+          -0.0001,
+          -0.0547,
           -0.5855,
-          -0.0057,
-          0.051,
-          -0.0252,
-          -0.5406,
-          -0.4464,
-          0.3663,
-          0.319,
-          0.1775,
-          -0.2805,
-          0.1549,
-          0.1444,
-          -0.2497,
-          0.6152,
-          0.8269,
+          0.2479,
+          -0.3583,
+          0.2674,
+          -0.2622,
+          -0.593,
+          0.6313,
+          0.4697,
+          0.2524,
+          0.0348,
+          0.2676,
+          0.251,
+          -0.2744,
+          0.7161,
+          0.857,
           1.0,
-          0.6933,
-          0.4038,
-          0.5074,
-          0.2312
+          0.7369,
+          0.3776,
+          0.5643,
+          0.2042
         ],
         [
-          0.038,
-          -0.1446,
-          0.2091,
-          0.0152,
-          0.341,
-          0.2605,
-          -0.3006,
-          0.3102,
-          -0.295,
-          0.4083,
-          -0.1317,
-          -0.1561,
-          0.5409,
-          0.4865,
-          0.5356,
-          0.1705,
-          0.4615,
-          0.4566,
-          0.0287,
-          0.8441,
-          0.8529,
-          0.6933,
+          0.0385,
+          -0.172,
+          0.2115,
+          0.0693,
+          0.3945,
+          0.2894,
+          -0.3008,
+          0.3975,
+          -0.4411,
+          0.5071,
+          -0.0304,
+          -0.2141,
+          0.6315,
+          0.5344,
+          0.5511,
+          0.281,
+          0.4932,
+          0.486,
+          0.0147,
+          0.8618,
+          0.8607,
+          0.7369,
           1.0,
-          -0.0371,
-          0.1439,
-          -0.2185
+          -0.0397,
+          0.1691,
+          -0.2188
         ],
         [
           -0.9995,
@@ -33676,10 +34517,10 @@ export const MOCK_DATA: any = {
           -0.3595,
           -0.3979,
           -0.3809,
-          0.1167,
-          0.2846,
-          0.4038,
-          -0.0371,
+          0.1104,
+          0.2739,
+          0.3776,
+          -0.0397,
           1.0,
           0.9485,
           0.8901
@@ -33704,10 +34545,10 @@ export const MOCK_DATA: any = {
           -0.096,
           -0.1388,
           -0.4679,
-          0.3168,
-          0.4766,
-          0.5074,
-          0.1439,
+          0.3251,
+          0.4925,
+          0.5643,
+          0.1691,
           0.9485,
           1.0,
           0.819
@@ -33732,18 +34573,18 @@ export const MOCK_DATA: any = {
           -0.5173,
           -0.5506,
           -0.4381,
-          -0.0955,
-          0.0532,
-          0.2312,
-          -0.2185,
+          -0.0965,
+          0.0455,
+          0.2042,
+          -0.2188,
           0.8901,
           0.819,
           1.0
         ]
       ],
-      "as_of_date": "2026-11-06",
+      "as_of_date": "2026-11-13",
       "window": "1m",
-      "avg_correlation": 0.166,
+      "avg_correlation": 0.1761,
       "max_correlation": 0.9995,
       "n_high_pairs": 51
     },
@@ -33797,10 +34638,10 @@ export const MOCK_DATA: any = {
           0.3709,
           0.3976,
           0.381,
-          0.0872,
-          0.023,
-          -0.108,
-          0.1982,
+          0.0867,
+          0.0235,
+          -0.1038,
+          0.197,
           -0.999,
           -0.926,
           -0.8068
@@ -33825,10 +34666,10 @@ export const MOCK_DATA: any = {
           0.1097,
           0.1408,
           0.4963,
-          -0.1077,
-          -0.1563,
-          -0.2174,
-          0.0328,
+          -0.1162,
+          -0.1695,
+          -0.2579,
+          0.0175,
           -0.9275,
           -0.9992,
           -0.7282
@@ -33853,10 +34694,10 @@ export const MOCK_DATA: any = {
           0.4767,
           0.5057,
           0.3776,
-          0.2567,
-          0.2165,
-          0.0827,
-          0.3418,
+          0.2563,
+          0.2184,
+          0.093,
+          0.3424,
           -0.8099,
           -0.7306,
           -0.9979
@@ -33881,10 +34722,10 @@ export const MOCK_DATA: any = {
           0.4718,
           0.4937,
           0.3251,
-          0.1563,
-          0.1186,
-          0.0046,
-          0.21,
+          0.1701,
+          0.1409,
+          0.0756,
+          0.232,
           -0.7978,
           -0.7137,
           -0.8833
@@ -33909,10 +34750,10 @@ export const MOCK_DATA: any = {
           0.6169,
           0.6274,
           0.1384,
-          0.3402,
-          0.275,
-          0.0653,
-          0.3827,
+          0.3557,
+          0.3016,
+          0.1525,
+          0.4088,
           -0.8178,
           -0.5811,
           -0.7213
@@ -33937,10 +34778,10 @@ export const MOCK_DATA: any = {
           0.6462,
           0.6622,
           0.1485,
-          0.3304,
-          0.3003,
-          0.0971,
-          0.3726,
+          0.3365,
+          0.3124,
+          0.1405,
+          0.3842,
           -0.761,
           -0.6062,
           -0.7594
@@ -33965,10 +34806,10 @@ export const MOCK_DATA: any = {
           0.1605,
           0.1882,
           0.4091,
-          -0.0609,
-          -0.0875,
-          -0.1596,
-          0.0408,
+          -0.0626,
+          -0.0903,
+          -0.1677,
+          0.0367,
           -0.7727,
           -0.8522,
           -0.702
@@ -33993,10 +34834,10 @@ export const MOCK_DATA: any = {
           0.539,
           0.5453,
           -0.0678,
-          0.4209,
-          0.3729,
-          0.1616,
-          0.37,
+          0.4403,
+          0.4058,
+          0.2691,
+          0.4037,
           -0.4117,
           -0.1995,
           -0.5655
@@ -34021,10 +34862,10 @@ export const MOCK_DATA: any = {
           -0.1952,
           -0.1987,
           -0.1781,
-          -0.1553,
-          -0.1256,
-          0.069,
-          -0.2039,
+          -0.1973,
+          -0.1899,
+          -0.1313,
+          -0.2694,
           0.1279,
           0.1104,
           0.1614
@@ -34049,10 +34890,10 @@ export const MOCK_DATA: any = {
           0.7058,
           0.7105,
           -0.0599,
-          0.3637,
-          0.3262,
-          0.1222,
-          0.3605,
+          0.3911,
+          0.3705,
+          0.2639,
+          0.4057,
           -0.5293,
           -0.2292,
           -0.5161
@@ -34077,10 +34918,10 @@ export const MOCK_DATA: any = {
           0.3226,
           0.3363,
           0.1907,
-          0.0457,
-          -0.0161,
-          -0.1446,
-          0.0725,
+          0.0717,
+          0.0238,
+          -0.0212,
+          0.1128,
           -0.6424,
           -0.588,
           -0.6458
@@ -34105,10 +34946,10 @@ export const MOCK_DATA: any = {
           0.0031,
           0.0339,
           0.4967,
-          -0.1729,
-          -0.1943,
-          -0.1801,
-          -0.014,
+          -0.1897,
+          -0.2208,
+          -0.2628,
+          -0.043,
           -0.8482,
           -0.9628,
           -0.6626
@@ -34133,10 +34974,10 @@ export const MOCK_DATA: any = {
           0.6006,
           0.5833,
           -0.2827,
-          0.5623,
-          0.5119,
-          0.2836,
-          0.4374,
+          0.5862,
+          0.5528,
+          0.4172,
+          0.48,
           0.0097,
           0.3068,
           -0.0843
@@ -34161,10 +35002,10 @@ export const MOCK_DATA: any = {
           0.5296,
           0.5276,
           -0.1754,
-          0.5195,
-          0.5699,
-          0.4559,
-          0.5123,
+          0.5266,
+          0.5843,
+          0.5073,
+          0.5273,
           -0.0973,
           0.0536,
           -0.2033
@@ -34189,10 +35030,10 @@ export const MOCK_DATA: any = {
           0.5361,
           0.537,
           -0.0189,
-          0.4692,
-          0.386,
-          0.1749,
-          0.4136,
+          0.472,
+          0.3948,
+          0.2091,
+          0.4221,
           -0.3071,
           -0.0638,
           -0.3884
@@ -34217,10 +35058,10 @@ export const MOCK_DATA: any = {
           0.6076,
           0.6182,
           0.1402,
-          0.3653,
-          0.2697,
-          -0.0008,
-          0.3506,
+          0.3941,
+          0.3167,
+          0.1497,
+          0.3982,
           -0.7069,
           -0.4972,
           -0.6478
@@ -34245,10 +35086,10 @@ export const MOCK_DATA: any = {
           1.0,
           0.9978,
           -0.0754,
-          0.5635,
-          0.5185,
-          0.2543,
-          0.5091,
+          0.5698,
+          0.5328,
+          0.3076,
+          0.5237,
           -0.362,
           -0.1063,
           -0.4676
@@ -34273,10 +35114,10 @@ export const MOCK_DATA: any = {
           0.9978,
           1.0,
           -0.0627,
-          0.554,
-          0.5104,
-          0.2507,
-          0.5046,
+          0.5599,
+          0.524,
+          0.3016,
+          0.5184,
           -0.3888,
           -0.1371,
           -0.4961
@@ -34301,125 +35142,125 @@ export const MOCK_DATA: any = {
           -0.0754,
           -0.0627,
           1.0,
-          -0.0963,
-          -0.1137,
-          -0.17,
-          -0.0079,
+          -0.0999,
+          -0.1198,
+          -0.1887,
+          -0.0151,
           -0.3882,
           -0.5015,
           -0.3761
         ],
         [
-          0.0872,
-          -0.1077,
-          0.2567,
-          0.1563,
-          0.3402,
-          0.3304,
-          -0.0609,
-          0.4209,
-          -0.1553,
-          0.3637,
-          0.0457,
-          -0.1729,
-          0.5623,
-          0.5195,
-          0.4692,
-          0.3653,
-          0.5635,
-          0.554,
-          -0.0963,
+          0.0867,
+          -0.1162,
+          0.2563,
+          0.1701,
+          0.3557,
+          0.3365,
+          -0.0626,
+          0.4403,
+          -0.1973,
+          0.3911,
+          0.0717,
+          -0.1897,
+          0.5862,
+          0.5266,
+          0.472,
+          0.3941,
+          0.5698,
+          0.5599,
+          -0.0999,
           1.0,
-          0.9139,
-          0.586,
-          0.9065,
-          -0.087,
-          0.1045,
-          -0.2586
+          0.9183,
+          0.6245,
+          0.9111,
+          -0.0871,
+          0.1123,
+          -0.2577
         ],
         [
-          0.023,
-          -0.1563,
-          0.2165,
-          0.1186,
-          0.275,
-          0.3003,
-          -0.0875,
-          0.3729,
-          -0.1256,
-          0.3262,
-          -0.0161,
-          -0.1943,
-          0.5119,
-          0.5699,
-          0.386,
-          0.2697,
-          0.5185,
-          0.5104,
-          -0.1137,
-          0.9139,
+          0.0235,
+          -0.1695,
+          0.2184,
+          0.1409,
+          0.3016,
+          0.3124,
+          -0.0903,
+          0.4058,
+          -0.1899,
+          0.3705,
+          0.0238,
+          -0.2208,
+          0.5528,
+          0.5843,
+          0.3948,
+          0.3167,
+          0.5328,
+          0.524,
+          -0.1198,
+          0.9183,
           1.0,
-          0.8141,
-          0.9226,
-          -0.022,
-          0.1515,
-          -0.2222
+          0.8256,
+          0.924,
+          -0.0235,
+          0.1636,
+          -0.2232
         ],
         [
-          -0.108,
-          -0.2174,
-          0.0827,
-          0.0046,
-          0.0653,
-          0.0971,
-          -0.1596,
-          0.1616,
-          0.069,
-          0.1222,
-          -0.1446,
-          -0.1801,
-          0.2836,
-          0.4559,
-          0.1749,
-          -0.0008,
-          0.2543,
-          0.2507,
-          -0.17,
-          0.586,
-          0.8141,
+          -0.1038,
+          -0.2579,
+          0.093,
+          0.0756,
+          0.1525,
+          0.1405,
+          -0.1677,
+          0.2691,
+          -0.1313,
+          0.2639,
+          -0.0212,
+          -0.2628,
+          0.4172,
+          0.5073,
+          0.2091,
+          0.1497,
+          0.3076,
+          0.3016,
+          -0.1887,
+          0.6245,
+          0.8256,
           1.0,
-          0.7269,
-          0.1078,
-          0.2123,
-          -0.091
+          0.7421,
+          0.1008,
+          0.2495,
+          -0.0986
         ],
         [
-          0.1982,
-          0.0328,
-          0.3418,
-          0.21,
-          0.3827,
-          0.3726,
-          0.0408,
-          0.37,
-          -0.2039,
-          0.3605,
-          0.0725,
-          -0.014,
-          0.4374,
-          0.5123,
-          0.4136,
-          0.3506,
-          0.5091,
-          0.5046,
-          -0.0079,
-          0.9065,
-          0.9226,
-          0.7269,
+          0.197,
+          0.0175,
+          0.3424,
+          0.232,
+          0.4088,
+          0.3842,
+          0.0367,
+          0.4037,
+          -0.2694,
+          0.4057,
+          0.1128,
+          -0.043,
+          0.48,
+          0.5273,
+          0.4221,
+          0.3982,
+          0.5237,
+          0.5184,
+          -0.0151,
+          0.9111,
+          0.924,
+          0.7421,
           1.0,
-          -0.2013,
-          -0.0394,
-          -0.3491
+          -0.201,
+          -0.0251,
+          -0.3487
         ],
         [
           -0.999,
@@ -34441,10 +35282,10 @@ export const MOCK_DATA: any = {
           -0.362,
           -0.3888,
           -0.3882,
-          -0.087,
-          -0.022,
-          0.1078,
-          -0.2013,
+          -0.0871,
+          -0.0235,
+          0.1008,
+          -0.201,
           1.0,
           0.9276,
           0.8021
@@ -34469,10 +35310,10 @@ export const MOCK_DATA: any = {
           -0.1063,
           -0.1371,
           -0.5015,
-          0.1045,
-          0.1515,
-          0.2123,
-          -0.0394,
+          0.1123,
+          0.1636,
+          0.2495,
+          -0.0251,
           0.9276,
           1.0,
           0.7249
@@ -34497,18 +35338,18 @@ export const MOCK_DATA: any = {
           -0.4676,
           -0.4961,
           -0.3761,
-          -0.2586,
-          -0.2222,
-          -0.091,
-          -0.3491,
+          -0.2577,
+          -0.2232,
+          -0.0986,
+          -0.3487,
           0.8021,
           0.7249,
           1.0
         ]
       ],
-      "as_of_date": "2026-11-06",
+      "as_of_date": "2026-11-13",
       "window": "3m",
-      "avg_correlation": 0.1686,
+      "avg_correlation": 0.1728,
       "max_correlation": 0.9992,
       "n_high_pairs": 32
     },
@@ -34562,10 +35403,10 @@ export const MOCK_DATA: any = {
           0.1034,
           0.1246,
           0.4678,
-          0.2316,
-          0.2447,
-          0.1566,
-          0.3695,
+          0.2304,
+          0.2438,
+          0.1563,
+          0.3678,
           -0.9986,
           -0.9224,
           -0.8089
@@ -34590,10 +35431,10 @@ export const MOCK_DATA: any = {
           -0.145,
           -0.1217,
           0.5845,
-          0.1063,
-          0.1251,
-          0.0817,
-          0.2551,
+          0.1009,
+          0.1174,
+          0.059,
+          0.2462,
           -0.9202,
           -0.9993,
           -0.7607
@@ -34618,10 +35459,10 @@ export const MOCK_DATA: any = {
           0.2739,
           0.3004,
           0.4577,
-          0.4105,
-          0.434,
-          0.3142,
-          0.5146,
+          0.4091,
+          0.4337,
+          0.317,
+          0.5136,
           -0.8025,
           -0.7532,
           -0.995
@@ -34646,10 +35487,10 @@ export const MOCK_DATA: any = {
           0.2982,
           0.318,
           0.4273,
-          0.369,
-          0.3826,
-          0.2679,
-          0.4402,
+          0.3747,
+          0.3928,
+          0.3027,
+          0.4503,
           -0.7957,
           -0.7419,
           -0.8938
@@ -34674,10 +35515,10 @@ export const MOCK_DATA: any = {
           0.4062,
           0.4187,
           0.2133,
-          0.4338,
-          0.4101,
-          0.2429,
-          0.5011,
+          0.4416,
+          0.4239,
+          0.2896,
+          0.5148,
           -0.8058,
           -0.5779,
           -0.7179
@@ -34702,10 +35543,10 @@ export const MOCK_DATA: any = {
           0.2736,
           0.2923,
           0.3155,
-          0.3939,
-          0.4364,
-          0.324,
-          0.4947,
+          0.3961,
+          0.4413,
+          0.3427,
+          0.4993,
           -0.7733,
           -0.7021,
           -0.7739
@@ -34730,10 +35571,10 @@ export const MOCK_DATA: any = {
           -0.1408,
           -0.117,
           0.5188,
-          0.1748,
-          0.197,
-          0.1401,
-          0.2808,
+          0.1727,
+          0.1944,
+          0.1339,
+          0.2776,
           -0.7673,
           -0.8798,
           -0.7299
@@ -34758,10 +35599,10 @@ export const MOCK_DATA: any = {
           0.4416,
           0.445,
           0.0481,
-          0.4614,
-          0.4604,
-          0.3088,
-          0.4545,
+          0.4698,
+          0.4752,
+          0.3586,
+          0.4698,
           -0.4453,
           -0.2741,
           -0.5643
@@ -34786,10 +35627,10 @@ export const MOCK_DATA: any = {
           -0.1334,
           -0.1445,
           -0.1746,
-          -0.3764,
-          -0.3576,
-          -0.1565,
+          -0.3968,
           -0.39,
+          -0.2605,
+          -0.4235,
           0.2278,
           0.2064,
           0.2935
@@ -34814,10 +35655,10 @@ export const MOCK_DATA: any = {
           0.5872,
           0.5932,
           -0.0798,
-          0.3238,
-          0.3151,
-          0.1697,
-          0.3431,
+          0.3397,
+          0.3405,
+          0.2515,
+          0.3694,
           -0.4195,
           -0.1208,
           -0.4076
@@ -34842,10 +35683,10 @@ export const MOCK_DATA: any = {
           0.1612,
           0.1723,
           0.3205,
-          0.2789,
-          0.2271,
-          0.0701,
-          0.3016,
+          0.2898,
+          0.2451,
+          0.1284,
+          0.3199,
           -0.6566,
           -0.611,
           -0.6781
@@ -34870,10 +35711,10 @@ export const MOCK_DATA: any = {
           -0.24,
           -0.2162,
           0.5897,
+          0.0531,
           0.0624,
-          0.0762,
-          0.0578,
-          0.203,
+          0.0158,
+          0.1878,
           -0.8397,
           -0.9617,
           -0.7079
@@ -34898,10 +35739,10 @@ export const MOCK_DATA: any = {
           0.5991,
           0.5836,
           -0.3681,
-          0.3332,
-          0.3139,
-          0.2102,
-          0.2367,
+          0.3477,
+          0.3373,
+          0.2853,
+          0.2615,
           0.17,
           0.4237,
           0.127
@@ -34926,10 +35767,10 @@ export const MOCK_DATA: any = {
           0.5755,
           0.5754,
           -0.1387,
-          0.3843,
-          0.3966,
-          0.2896,
-          0.3278,
+          0.3886,
+          0.4048,
+          0.318,
+          0.3365,
           -0.0121,
           0.1252,
           -0.1364
@@ -34954,10 +35795,10 @@ export const MOCK_DATA: any = {
           0.5753,
           0.5676,
           -0.1338,
-          0.3049,
-          0.263,
-          0.1529,
-          0.2573,
+          0.3073,
+          0.2682,
+          0.1717,
+          0.2627,
           -0.0767,
           0.1663,
           -0.1704
@@ -34982,10 +35823,10 @@ export const MOCK_DATA: any = {
           0.3651,
           0.3789,
           0.1752,
-          0.39,
-          0.4114,
-          0.2672,
-          0.4523,
+          0.404,
+          0.4341,
+          0.3409,
+          0.4756,
           -0.6993,
           -0.514,
           -0.6089
@@ -35010,10 +35851,10 @@ export const MOCK_DATA: any = {
           1.0,
           0.9979,
           -0.1625,
-          0.3905,
-          0.4179,
-          0.2877,
-          0.362,
+          0.3946,
+          0.4256,
+          0.3152,
+          0.3702,
           -0.1034,
           0.1474,
           -0.2621
@@ -35038,10 +35879,10 @@ export const MOCK_DATA: any = {
           0.9979,
           1.0,
           -0.1495,
-          0.3987,
-          0.4252,
-          0.2914,
-          0.3712,
+          0.4025,
+          0.4326,
+          0.3178,
+          0.379,
           -0.1248,
           0.1245,
           -0.2882
@@ -35066,125 +35907,125 @@ export const MOCK_DATA: any = {
           -0.1625,
           -0.1495,
           1.0,
-          0.0071,
-          0.0018,
-          -0.0555,
-          0.0969,
+          0.0038,
+          -0.0031,
+          -0.0699,
+          0.0913,
           -0.4696,
           -0.5876,
           -0.4606
         ],
         [
-          0.2316,
-          0.1063,
-          0.4105,
-          0.369,
-          0.4338,
-          0.3939,
-          0.1748,
-          0.4614,
-          -0.3764,
-          0.3238,
-          0.2789,
-          0.0624,
-          0.3332,
-          0.3843,
-          0.3049,
-          0.39,
-          0.3905,
-          0.3987,
-          0.0071,
+          0.2304,
+          0.1009,
+          0.4091,
+          0.3747,
+          0.4416,
+          0.3961,
+          0.1727,
+          0.4698,
+          -0.3968,
+          0.3397,
+          0.2898,
+          0.0531,
+          0.3477,
+          0.3886,
+          0.3073,
+          0.404,
+          0.3946,
+          0.4025,
+          0.0038,
           1.0,
-          0.9076,
-          0.5791,
-          0.903,
-          -0.2292,
-          -0.1065,
-          -0.412
+          0.9102,
+          0.6015,
+          0.9057,
+          -0.2283,
+          -0.1014,
+          -0.4103
         ],
         [
-          0.2447,
-          0.1251,
-          0.434,
-          0.3826,
-          0.4101,
-          0.4364,
-          0.197,
-          0.4604,
-          -0.3576,
-          0.3151,
-          0.2271,
-          0.0762,
-          0.3139,
-          0.3966,
-          0.263,
-          0.4114,
-          0.4179,
-          0.4252,
-          0.0018,
-          0.9076,
-          1.0,
-          0.8295,
-          0.9312,
-          -0.2434,
-          -0.1253,
-          -0.4338
-        ],
-        [
-          0.1566,
-          0.0817,
-          0.3142,
-          0.2679,
-          0.2429,
-          0.324,
-          0.1401,
-          0.3088,
-          -0.1565,
-          0.1697,
-          0.0701,
-          0.0578,
-          0.2102,
-          0.2896,
-          0.1529,
-          0.2672,
-          0.2877,
-          0.2914,
-          -0.0555,
-          0.5791,
-          0.8295,
-          1.0,
-          0.7405,
-          -0.1571,
-          -0.0804,
-          -0.3115
-        ],
-        [
-          0.3695,
-          0.2551,
-          0.5146,
-          0.4402,
-          0.5011,
-          0.4947,
-          0.2808,
-          0.4545,
+          0.2438,
+          0.1174,
+          0.4337,
+          0.3928,
+          0.4239,
+          0.4413,
+          0.1944,
+          0.4752,
           -0.39,
-          0.3431,
-          0.3016,
-          0.203,
-          0.2367,
-          0.3278,
-          0.2573,
-          0.4523,
-          0.362,
-          0.3712,
-          0.0969,
-          0.903,
-          0.9312,
-          0.7405,
+          0.3405,
+          0.2451,
+          0.0624,
+          0.3373,
+          0.4048,
+          0.2682,
+          0.4341,
+          0.4256,
+          0.4326,
+          -0.0031,
+          0.9102,
           1.0,
-          -0.3699,
-          -0.2576,
-          -0.5203
+          0.836,
+          0.932,
+          -0.2431,
+          -0.1181,
+          -0.4331
+        ],
+        [
+          0.1563,
+          0.059,
+          0.317,
+          0.3027,
+          0.2896,
+          0.3427,
+          0.1339,
+          0.3586,
+          -0.2605,
+          0.2515,
+          0.1284,
+          0.0158,
+          0.2853,
+          0.318,
+          0.1717,
+          0.3409,
+          0.3152,
+          0.3178,
+          -0.0699,
+          0.6015,
+          0.836,
+          1.0,
+          0.7493,
+          -0.1583,
+          -0.0594,
+          -0.313
+        ],
+        [
+          0.3678,
+          0.2462,
+          0.5136,
+          0.4503,
+          0.5148,
+          0.4993,
+          0.2776,
+          0.4698,
+          -0.4235,
+          0.3694,
+          0.3199,
+          0.1878,
+          0.2615,
+          0.3365,
+          0.2627,
+          0.4756,
+          0.3702,
+          0.379,
+          0.0913,
+          0.9057,
+          0.932,
+          0.7493,
+          1.0,
+          -0.3687,
+          -0.2493,
+          -0.5188
         ],
         [
           -0.9986,
@@ -35206,10 +36047,10 @@ export const MOCK_DATA: any = {
           -0.1034,
           -0.1248,
           -0.4696,
-          -0.2292,
-          -0.2434,
-          -0.1571,
-          -0.3699,
+          -0.2283,
+          -0.2431,
+          -0.1583,
+          -0.3687,
           1.0,
           0.9203,
           0.8082
@@ -35234,10 +36075,10 @@ export const MOCK_DATA: any = {
           0.1474,
           0.1245,
           -0.5876,
-          -0.1065,
-          -0.1253,
-          -0.0804,
-          -0.2576,
+          -0.1014,
+          -0.1181,
+          -0.0594,
+          -0.2493,
           0.9203,
           1.0,
           0.7598
@@ -35262,18 +36103,18 @@ export const MOCK_DATA: any = {
           -0.2621,
           -0.2882,
           -0.4606,
-          -0.412,
-          -0.4338,
-          -0.3115,
-          -0.5203,
+          -0.4103,
+          -0.4331,
+          -0.313,
+          -0.5188,
           0.8082,
           0.7598,
           1.0
         ]
       ],
-      "as_of_date": "2026-11-06",
+      "as_of_date": "2026-11-13",
       "window": "6m",
-      "avg_correlation": 0.1513,
+      "avg_correlation": 0.1534,
       "max_correlation": 0.9993,
       "n_high_pairs": 28
     },
@@ -35327,10 +36168,10 @@ export const MOCK_DATA: any = {
           0.2701,
           0.2849,
           0.4984,
-          0.255,
-          0.2556,
-          0.1917,
-          0.4305,
+          0.2542,
+          0.2551,
+          0.1912,
+          0.4294,
           -0.9989,
           -0.9287,
           -0.8267
@@ -35355,10 +36196,10 @@ export const MOCK_DATA: any = {
           0.0348,
           0.0521,
           0.6105,
-          0.158,
-          0.1542,
-          0.1116,
-          0.3253,
+          0.1547,
+          0.1495,
+          0.0976,
+          0.3201,
           -0.9277,
           -0.9994,
           -0.7437
@@ -35383,10 +36224,10 @@ export const MOCK_DATA: any = {
           0.412,
           0.4304,
           0.4644,
-          0.3273,
-          0.3427,
-          0.2795,
-          0.4902,
+          0.3268,
+          0.3426,
+          0.2808,
+          0.4896,
           -0.8236,
           -0.7394,
           -0.9971
@@ -35411,10 +36252,10 @@ export const MOCK_DATA: any = {
           0.456,
           0.4704,
           0.436,
-          0.3276,
-          0.3426,
-          0.2789,
-          0.4711,
+          0.3302,
+          0.3475,
+          0.2956,
+          0.4755,
           -0.8065,
           -0.7041,
           -0.9176
@@ -35439,10 +36280,10 @@ export const MOCK_DATA: any = {
           0.4765,
           0.4857,
           0.2824,
-          0.367,
-          0.3582,
-          0.2621,
-          0.4896,
+          0.3711,
+          0.3654,
+          0.2866,
+          0.4964,
           -0.8317,
           -0.6303,
           -0.7824
@@ -35467,10 +36308,10 @@ export const MOCK_DATA: any = {
           0.4245,
           0.4359,
           0.3561,
-          0.3898,
-          0.4385,
-          0.3842,
-          0.5292,
+          0.3906,
+          0.4406,
+          0.3925,
+          0.531,
           -0.7829,
           -0.6838,
           -0.7609
@@ -35495,10 +36336,10 @@ export const MOCK_DATA: any = {
           0.0785,
           0.0934,
           0.5456,
-          0.2283,
-          0.2627,
-          0.2421,
-          0.3676,
+          0.2269,
+          0.261,
+          0.2378,
+          0.3656,
           -0.7746,
           -0.8402,
           -0.7078
@@ -35523,10 +36364,10 @@ export const MOCK_DATA: any = {
           0.4818,
           0.4855,
           0.1409,
-          0.3654,
-          0.386,
-          0.2985,
-          0.4178,
+          0.3701,
+          0.394,
+          0.3254,
+          0.4257,
           -0.5071,
           -0.3399,
           -0.6129
@@ -35551,10 +36392,10 @@ export const MOCK_DATA: any = {
           -0.0723,
           -0.0807,
           -0.149,
-          -0.2947,
-          -0.2975,
-          -0.1741,
-          -0.2916,
+          -0.3058,
+          -0.3154,
+          -0.2324,
+          -0.3096,
           0.1956,
           0.2109,
           0.1409
@@ -35579,10 +36420,10 @@ export const MOCK_DATA: any = {
           0.5161,
           0.5227,
           0.0195,
-          0.234,
-          0.2261,
-          0.1408,
-          0.319,
+          0.2422,
+          0.2392,
+          0.1837,
+          0.3318,
           -0.5274,
           -0.27,
           -0.5397
@@ -35607,10 +36448,10 @@ export const MOCK_DATA: any = {
           0.3712,
           0.3789,
           0.3697,
-          0.2524,
-          0.2507,
-          0.176,
-          0.3604,
+          0.2579,
+          0.2599,
+          0.2062,
+          0.3692,
           -0.6965,
           -0.5977,
           -0.7469
@@ -35635,10 +36476,10 @@ export const MOCK_DATA: any = {
           -0.0585,
           -0.0409,
           0.6186,
-          0.105,
-          0.0912,
-          0.0682,
-          0.265,
+          0.0994,
+          0.0828,
+          0.0424,
+          0.2561,
           -0.8556,
           -0.9609,
           -0.7016
@@ -35663,10 +36504,10 @@ export const MOCK_DATA: any = {
           0.5614,
           0.5484,
           -0.2728,
-          0.2838,
-          0.3155,
-          0.2886,
-          0.2418,
+          0.2923,
+          0.3293,
+          0.3332,
+          0.2557,
           0.0505,
           0.275,
           -0.0309
@@ -35691,10 +36532,10 @@ export const MOCK_DATA: any = {
           0.5574,
           0.5532,
           -0.0528,
-          0.3743,
-          0.3805,
-          0.3059,
-          0.3333,
+          0.3765,
+          0.3848,
+          0.3211,
+          0.3377,
           -0.0905,
           0.026,
           -0.1866
@@ -35719,10 +36560,10 @@ export const MOCK_DATA: any = {
           0.5229,
           0.5172,
           -0.0616,
-          0.3142,
-          0.3269,
-          0.2562,
-          0.3281,
+          0.3156,
+          0.3298,
+          0.2668,
+          0.331,
           -0.2357,
           -0.0009,
           -0.303
@@ -35747,10 +36588,10 @@ export const MOCK_DATA: any = {
           0.3964,
           0.4069,
           0.2459,
-          0.3243,
-          0.3437,
-          0.2556,
-          0.4363,
+          0.3319,
+          0.3561,
+          0.2965,
+          0.4484,
           -0.7634,
           -0.6226,
           -0.6612
@@ -35775,10 +36616,10 @@ export const MOCK_DATA: any = {
           1.0,
           0.9974,
           -0.0597,
-          0.4034,
-          0.45,
-          0.3775,
-          0.4289,
+          0.4056,
+          0.4542,
+          0.3926,
+          0.4331,
           -0.267,
           -0.0321,
           -0.4038
@@ -35803,10 +36644,10 @@ export const MOCK_DATA: any = {
           0.9974,
           1.0,
           -0.0489,
-          0.4089,
-          0.4547,
-          0.3803,
-          0.4348,
+          0.4109,
+          0.4587,
+          0.3947,
+          0.4388,
           -0.2818,
           -0.0492,
           -0.4221
@@ -35831,125 +36672,125 @@ export const MOCK_DATA: any = {
           -0.0597,
           -0.0489,
           1.0,
-          0.0384,
-          0.0294,
-          -0.0137,
-          0.1425,
+          0.0361,
+          0.0259,
+          -0.0244,
+          0.1387,
           -0.4995,
           -0.6123,
           -0.4671
         ],
         [
-          0.255,
-          0.158,
-          0.3273,
-          0.3276,
-          0.367,
-          0.3898,
-          0.2283,
-          0.3654,
-          -0.2947,
-          0.234,
-          0.2524,
-          0.105,
-          0.2838,
-          0.3743,
-          0.3142,
-          0.3243,
-          0.4034,
-          0.4089,
-          0.0384,
+          0.2542,
+          0.1547,
+          0.3268,
+          0.3302,
+          0.3711,
+          0.3906,
+          0.2269,
+          0.3701,
+          -0.3058,
+          0.2422,
+          0.2579,
+          0.0994,
+          0.2923,
+          0.3765,
+          0.3156,
+          0.3319,
+          0.4056,
+          0.4109,
+          0.0361,
           1.0,
-          0.9072,
-          0.6055,
-          0.8978,
-          -0.2525,
-          -0.1591,
-          -0.3307
+          0.9086,
+          0.6178,
+          0.8993,
+          -0.2519,
+          -0.1561,
+          -0.33
         ],
         [
-          0.2556,
-          0.1542,
-          0.3427,
+          0.2551,
+          0.1495,
           0.3426,
-          0.3582,
-          0.4385,
-          0.2627,
-          0.386,
-          -0.2975,
-          0.2261,
-          0.2507,
-          0.0912,
-          0.3155,
-          0.3805,
-          0.3269,
-          0.3437,
-          0.45,
-          0.4547,
-          0.0294,
-          0.9072,
+          0.3475,
+          0.3654,
+          0.4406,
+          0.261,
+          0.394,
+          -0.3154,
+          0.2392,
+          0.2599,
+          0.0828,
+          0.3293,
+          0.3848,
+          0.3298,
+          0.3561,
+          0.4542,
+          0.4587,
+          0.0259,
+          0.9086,
           1.0,
-          0.8443,
-          0.9003,
-          -0.2525,
-          -0.1549,
-          -0.3446
+          0.8479,
+          0.9009,
+          -0.2523,
+          -0.1506,
+          -0.3444
         ],
         [
-          0.1917,
-          0.1116,
-          0.2795,
-          0.2789,
-          0.2621,
-          0.3842,
-          0.2421,
-          0.2985,
-          -0.1741,
-          0.1408,
-          0.176,
-          0.0682,
-          0.2886,
-          0.3059,
-          0.2562,
-          0.2556,
-          0.3775,
-          0.3803,
-          -0.0137,
-          0.6055,
-          0.8443,
+          0.1912,
+          0.0976,
+          0.2808,
+          0.2956,
+          0.2866,
+          0.3925,
+          0.2378,
+          0.3254,
+          -0.2324,
+          0.1837,
+          0.2062,
+          0.0424,
+          0.3332,
+          0.3211,
+          0.2668,
+          0.2965,
+          0.3926,
+          0.3947,
+          -0.0244,
+          0.6178,
+          0.8479,
           1.0,
-          0.7162,
-          -0.1888,
-          -0.1108,
-          -0.2777
+          0.7212,
+          -0.1892,
+          -0.0979,
+          -0.2784
         ],
         [
-          0.4305,
-          0.3253,
-          0.4902,
-          0.4711,
+          0.4294,
+          0.3201,
           0.4896,
-          0.5292,
-          0.3676,
-          0.4178,
-          -0.2916,
-          0.319,
-          0.3604,
-          0.265,
-          0.2418,
-          0.3333,
-          0.3281,
-          0.4363,
-          0.4289,
-          0.4348,
-          0.1425,
-          0.8978,
-          0.9003,
-          0.7162,
+          0.4755,
+          0.4964,
+          0.531,
+          0.3656,
+          0.4257,
+          -0.3096,
+          0.3318,
+          0.3692,
+          0.2561,
+          0.2557,
+          0.3377,
+          0.331,
+          0.4484,
+          0.4331,
+          0.4388,
+          0.1387,
+          0.8993,
+          0.9009,
+          0.7212,
           1.0,
-          -0.4299,
-          -0.3282,
-          -0.4961
+          -0.4291,
+          -0.3234,
+          -0.4954
         ],
         [
           -0.9989,
@@ -35971,10 +36812,10 @@ export const MOCK_DATA: any = {
           -0.267,
           -0.2818,
           -0.4995,
-          -0.2525,
-          -0.2525,
-          -0.1888,
-          -0.4299,
+          -0.2519,
+          -0.2523,
+          -0.1892,
+          -0.4291,
           1.0,
           0.9277,
           0.8259
@@ -35999,10 +36840,10 @@ export const MOCK_DATA: any = {
           -0.0321,
           -0.0492,
           -0.6123,
-          -0.1591,
-          -0.1549,
-          -0.1108,
-          -0.3282,
+          -0.1561,
+          -0.1506,
+          -0.0979,
+          -0.3234,
           0.9277,
           1.0,
           0.7433
@@ -36027,18 +36868,18 @@ export const MOCK_DATA: any = {
           -0.4038,
           -0.4221,
           -0.4671,
-          -0.3307,
-          -0.3446,
-          -0.2777,
-          -0.4961,
+          -0.33,
+          -0.3444,
+          -0.2784,
+          -0.4954,
           0.8259,
           0.7433,
           1.0
         ]
       ],
-      "as_of_date": "2026-11-06",
+      "as_of_date": "2026-11-13",
       "window": "52w",
-      "avg_correlation": 0.1787,
+      "avg_correlation": 0.1797,
       "max_correlation": 0.9994,
       "n_high_pairs": 30
     }
@@ -36053,22 +36894,22 @@ export const MOCK_DATA: any = {
       "current_value": 1.021516
     },
     "crisis": {
-      "current_drawdown_pct": -2.57,
-      "max_drawdown_pct": -3.22,
-      "days_since_peak": 224,
+      "current_drawdown_pct": -3.65,
+      "max_drawdown_pct": -3.65,
+      "days_since_peak": 231,
       "peak_date": "2026-03-20",
       "peak_value": 1.061073,
-      "current_value": 1.033751
+      "current_value": 1.022329
     },
     "combined": {
-      "current_drawdown_pct": -4.55,
+      "current_drawdown_pct": -5.61,
       "max_drawdown_pct": -6.67,
-      "days_since_peak": 161,
+      "days_since_peak": 168,
       "peak_date": "2026-05-22",
       "peak_value": 1.083059,
-      "current_value": 1.033751
+      "current_value": 1.022329
     },
-    "as_of_date": "2026-10-30",
+    "as_of_date": "2026-11-06",
     "history": [
       {
         "date": "2026-01-02",
@@ -36233,6 +37074,10 @@ export const MOCK_DATA: any = {
       {
         "date": "2026-10-30",
         "drawdown_pct": -4.55
+      },
+      {
+        "date": "2026-11-06",
+        "drawdown_pct": -5.61
       }
     ]
   },
@@ -36240,84 +37085,84 @@ export const MOCK_DATA: any = {
     "years": [
       {
         "year": 2026,
-        "cagr": 0.0299,
-        "sharpe": 0.5159,
+        "cagr": 0.0151,
+        "sharpe": 0.3506,
         "max_drawdown": -0.0667,
-        "total_return": 0.0235,
-        "n_weeks": 41,
-        "spy_cagr": 0.1478,
-        "spy_sharpe": 1.0798,
+        "total_return": 0.0122,
+        "n_weeks": 42,
+        "spy_cagr": 0.1059,
+        "spy_sharpe": 0.7949,
         "spy_max_drawdown": -0.0839,
-        "spy_total_return": 0.1148
+        "spy_total_return": 0.0847
       }
     ]
   },
   "etfPerformance": {
     "start_date": "2026-01-02",
-    "end_date": "2026-11-06",
+    "end_date": "2026-11-13",
     "etfs": [
       {
         "ticker": "XLE",
         "algo_return": 0.878481,
-        "bh_return": 0.376588,
-        "alpha": 0.501893,
+        "bh_return": 0.451203,
+        "alpha": 0.427278,
         "n_trades": 48
-      },
-      {
-        "ticker": "SPY",
-        "algo_return": 0.305074,
-        "bh_return": 0.084698,
-        "alpha": 0.220376,
-        "n_trades": 148
       },
       {
         "ticker": "GLD",
         "algo_return": 0.116812,
-        "bh_return": -0.064678,
-        "alpha": 0.18149,
+        "bh_return": -0.107537,
+        "alpha": 0.224349,
         "n_trades": 38
+      },
+      {
+        "ticker": "SPY",
+        "algo_return": 0.305074,
+        "bh_return": 0.112845,
+        "alpha": 0.192229,
+        "n_trades": 148
       },
       {
         "ticker": "XLU",
         "algo_return": 0.118241,
-        "bh_return": 0.019691,
-        "alpha": 0.09855,
+        "bh_return": 0.041205,
+        "alpha": 0.077036,
         "n_trades": 15
+      },
+      {
+        "ticker": "SLV",
+        "algo_return": -0.260378,
+        "bh_return": -0.328821,
+        "alpha": 0.068443,
+        "n_trades": 19
+      },
+      {
+        "ticker": "IEF",
+        "algo_return": 0.021396,
+        "bh_return": -0.037766,
+        "alpha": 0.059162,
+        "n_trades": 17
       },
       {
         "ticker": "XLI",
         "algo_return": 0.131592,
-        "bh_return": 0.037903,
-        "alpha": 0.093689,
+        "bh_return": 0.076888,
+        "alpha": 0.054704,
         "n_trades": 11
       },
       {
         "ticker": "EFA",
         "algo_return": 0.125423,
-        "bh_return": 0.066595,
-        "alpha": 0.058828,
+        "bh_return": 0.090462,
+        "alpha": 0.034961,
         "n_trades": 14
       },
       {
-        "ticker": "IEF",
-        "algo_return": 0.028355,
-        "bh_return": -0.018317,
-        "alpha": 0.046672,
-        "n_trades": 17
-      },
-      {
-        "ticker": "SLV",
-        "algo_return": -0.260378,
-        "bh_return": -0.287148,
-        "alpha": 0.02677,
-        "n_trades": 19
-      },
-      {
-        "ticker": "QQQ",
-        "algo_return": 0.095165,
-        "bh_return": 0.073745,
-        "alpha": 0.02142,
-        "n_trades": 26
+        "ticker": "FXE",
+        "algo_return": -0.037395,
+        "bh_return": -0.054081,
+        "alpha": 0.016686,
+        "n_trades": 16
       },
       {
         "ticker": "MDY",
@@ -36327,150 +37172,150 @@ export const MOCK_DATA: any = {
         "n_trades": 9
       },
       {
-        "ticker": "XLY",
-        "algo_return": 0.007685,
-        "bh_return": -0.00033,
-        "alpha": 0.008015,
-        "n_trades": 4
-      },
-      {
-        "ticker": "FXE",
-        "algo_return": -0.037395,
-        "bh_return": -0.044223,
-        "alpha": 0.006828,
-        "n_trades": 16
+        "ticker": "LQD",
+        "algo_return": -0.026761,
+        "bh_return": -0.037389,
+        "alpha": 0.010628,
+        "n_trades": 22
       },
       {
         "ticker": "SHY",
-        "algo_return": 0.009821,
-        "bh_return": 0.008639,
-        "alpha": 0.001182,
+        "algo_return": 0.006682,
+        "bh_return": 0.002955,
+        "alpha": 0.003727,
         "n_trades": 17
       },
       {
         "ticker": "IYR",
         "algo_return": 0.0,
-        "bh_return": 0.097615,
+        "bh_return": 0.104096,
         "alpha": 0.0,
         "n_trades": 0
       },
       {
         "ticker": "PSQ",
         "algo_return": 0.0,
-        "bh_return": -0.05414,
+        "bh_return": -0.087643,
         "alpha": 0.0,
         "n_trades": 0
       },
       {
         "ticker": "RWM",
         "algo_return": 0.0,
-        "bh_return": -0.076378,
+        "bh_return": -0.0896,
         "alpha": 0.0,
         "n_trades": 0
       },
       {
         "ticker": "SH",
         "algo_return": 0.0,
-        "bh_return": -0.040265,
+        "bh_return": -0.06359,
         "alpha": 0.0,
         "n_trades": 0
       },
       {
         "ticker": "VIXY",
         "algo_return": 0.0,
-        "bh_return": -0.165807,
+        "bh_return": -0.288378,
         "alpha": 0.0,
         "n_trades": 0
       },
       {
-        "ticker": "LQD",
-        "algo_return": -0.026761,
-        "bh_return": -0.021284,
-        "alpha": -0.005477,
-        "n_trades": 22
+        "ticker": "XLY",
+        "algo_return": 0.007685,
+        "bh_return": 0.020075,
+        "alpha": -0.01239,
+        "n_trades": 4
+      },
+      {
+        "ticker": "TLT",
+        "algo_return": -0.072749,
+        "bh_return": -0.059872,
+        "alpha": -0.012877,
+        "n_trades": 46
+      },
+      {
+        "ticker": "QQQ",
+        "algo_return": 0.095165,
+        "bh_return": 0.112679,
+        "alpha": -0.017514,
+        "n_trades": 26
       },
       {
         "ticker": "VNQ",
         "algo_return": 0.094468,
-        "bh_return": 0.112208,
-        "alpha": -0.01774,
+        "bh_return": 0.120806,
+        "alpha": -0.026338,
         "n_trades": 25
       },
       {
         "ticker": "XLP",
         "algo_return": 0.161111,
-        "bh_return": 0.181819,
-        "alpha": -0.020708,
+        "bh_return": 0.2116,
+        "alpha": -0.050489,
         "n_trades": 28
       },
       {
         "ticker": "DIA",
         "algo_return": 0.04184,
-        "bh_return": 0.070698,
-        "alpha": -0.028858,
+        "bh_return": 0.093545,
+        "alpha": -0.051705,
         "n_trades": 19
-      },
-      {
-        "ticker": "TLT",
-        "algo_return": -0.068847,
-        "bh_return": -0.029789,
-        "alpha": -0.039058,
-        "n_trades": 46
-      },
-      {
-        "ticker": "EEM",
-        "algo_return": 0.013285,
-        "bh_return": 0.060426,
-        "alpha": -0.047141,
-        "n_trades": 18
       },
       {
         "ticker": "IWM",
         "algo_return": 0.051754,
-        "bh_return": 0.107511,
-        "alpha": -0.055757,
+        "bh_return": 0.123172,
+        "alpha": -0.071418,
         "n_trades": 9
+      },
+      {
+        "ticker": "EEM",
+        "algo_return": 0.013285,
+        "bh_return": 0.088845,
+        "alpha": -0.07556,
+        "n_trades": 18
       },
       {
         "ticker": "XLV",
         "algo_return": 0.145926,
-        "bh_return": 0.203083,
-        "alpha": -0.057157,
+        "bh_return": 0.229449,
+        "alpha": -0.083523,
         "n_trades": 22
+      },
+      {
+        "ticker": "UUP",
+        "algo_return": 0.002311,
+        "bh_return": 0.088159,
+        "alpha": -0.085848,
+        "n_trades": 16
+      },
+      {
+        "ticker": "XLF",
+        "algo_return": -0.016281,
+        "bh_return": 0.081335,
+        "alpha": -0.097616,
+        "n_trades": 17
       },
       {
         "ticker": "SOXX",
         "algo_return": -0.621961,
-        "bh_return": -0.564002,
-        "alpha": -0.057959,
+        "bh_return": -0.523221,
+        "alpha": -0.09874,
         "n_trades": 20
       },
       {
         "ticker": "XLK",
         "algo_return": 0.080647,
-        "bh_return": 0.145767,
-        "alpha": -0.06512,
+        "bh_return": 0.184298,
+        "alpha": -0.103651,
         "n_trades": 11
-      },
-      {
-        "ticker": "XLF",
-        "algo_return": -0.016281,
-        "bh_return": 0.053325,
-        "alpha": -0.069606,
-        "n_trades": 17
-      },
-      {
-        "ticker": "UUP",
-        "algo_return": 0.002311,
-        "bh_return": 0.074511,
-        "alpha": -0.0722,
-        "n_trades": 16
       },
       {
         "ticker": "XLB",
         "algo_return": 0.023323,
-        "bh_return": 0.140875,
-        "alpha": -0.117552,
+        "bh_return": 0.147024,
+        "alpha": -0.123701,
         "n_trades": 5
       }
     ]
@@ -36513,16 +37358,16 @@ export const MOCK_DATA: any = {
       {
         "regime_id": 4,
         "regime_name": "Crisis",
-        "n_weeks": 9,
-        "win_rate": 0.7778,
-        "avg_return": 0.001131,
-        "total_trades": 36
+        "n_weeks": 10,
+        "win_rate": 0.7,
+        "avg_return": -8.7e-05,
+        "total_trades": 40
       }
     ]
   },
   "weeklyDecomposition": {
-    "friday_date": "2026-10-30",
-    "next_friday": "2026-11-06",
+    "friday_date": "2026-11-06",
+    "next_friday": "2026-11-13",
     "contributions": [],
     "total_return": 0.0
   },
@@ -36531,7 +37376,7 @@ export const MOCK_DATA: any = {
     "regime_name": "Crisis",
     "regime_id": 4,
     "is_crisis": true,
-    "decay_value": 0.9817,
-    "last_friday": "2026-10-30"
+    "decay_value": 0.9799,
+    "last_friday": "2026-11-06"
   }
 };
