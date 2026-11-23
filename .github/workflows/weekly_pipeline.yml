@@ -70,5 +70,6 @@ jobs:
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
         run: |
           npm install -g vercel@latest
-          cd trading_dashboard/frontend
-          vercel --prod --yes --token $VERCEL_TOKEN
+          # Vercel CLI legge VERCEL_ORG_ID e VERCEL_PROJECT_ID automaticamente
+          # --cwd punta alla cartella frontend che contiene vercel.json / package.json
+          vercel --prod --yes --token "$VERCEL_TOKEN" --cwd trading_dashboard/frontend
