@@ -51,13 +51,14 @@ jobs:
           git add trading_dashboard/frontend/src/app/core/utils/mock-data.ts
           git add trading_dashboard/backend/database/trading.db
           
-          # Se ci sono cambiamenti, fai commit e push
+          # Se ci sono cambiamenti, fai commit e push con rebase per gestire eventuali commit concorrenti
           if git diff --staged --quiet; then
             echo "Nessuna nuova variazione da committare."
             echo "has_changes=false" >> $GITHUB_OUTPUT
           else
             echo "Nuove variazioni rilevate. Esecuzione commit e push..."
             git commit -m "chore(auto): weekly pipeline update $(date +'%Y-%m-%d')"
+            git pull --rebase origin main
             git push origin main
             echo "has_changes=true" >> $GITHUB_OUTPUT
           fi
