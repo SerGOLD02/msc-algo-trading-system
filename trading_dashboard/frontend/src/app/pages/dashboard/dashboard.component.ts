@@ -90,6 +90,13 @@ export class DashboardComponent implements OnInit, OnDestroy {
   secondsToFriday = 0;
   selectedPeriod: string = '2026-01-02';
 
+  /**
+   * Pipeline AI primaria selezionata dall'utente tramite le pillole dell'equity chart.
+   * Usata (in futuro) per filtrare le sezioni analytics.
+   * Chiavi valide: 'algo' | 'tfm25XgbBase' | 'tfm3XgbOptuna' | 'timestralXgb' | 'timestralChrXgb'
+   */
+  activePipeline: string = 'algo';
+
   // New panel data
   signalData: WeeklySignalResponse | null = null;
   decayData: DecayHistoryResponse | null = null;
@@ -166,6 +173,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this._sub(this.analyticsService.getEtfPerformance(), e => this.etfPerformance = e);
     this._sub(this.analyticsService.getRegimeStats(), r => this.regimeStats = r);
     this._sub(this.analyticsService.getWeeklyDecomposition(), w => this.weeklyDecomp = w);
+  }
+
+  onPrimaryPipelineChanged(key: string): void {
+    this.activePipeline = key;
+    this.cdr.markForCheck();
   }
 
   onPeriodChanged(startDate: string): void {

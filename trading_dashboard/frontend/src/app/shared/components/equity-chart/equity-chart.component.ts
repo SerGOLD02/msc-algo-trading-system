@@ -24,6 +24,14 @@ echarts.use([
 
 type HorizonKey = '1M' | '3M' | '6M' | '1A' | 'YTD' | 'MAX';
 
+/** Descrittore di ogni serie disponibile */
+interface SeriesDescriptor {
+  key: string;         // chiave interna
+  label: string;       // nome visualizzato
+  color: string;
+  isAIPipeline: boolean; // true = pipeline AI (può diventare primaria per analytics)
+}
+
 @Component({
   selector: 'app-equity-chart',
   standalone: true,
@@ -157,6 +165,31 @@ type HorizonKey = '1M' | '3M' | '6M' | '1A' | 'YTD' | 'MAX';
         </div>
       </div>
 
+      <!-- ═══════════════════════════════════════════
+           PILLOLE SELETTORE SERIE
+           Click = toggle visibilità linea
+           Click su [P] = imposta come pipeline primaria per le analytics
+           ═══════════════════════════════════════════ -->
+      <div *ngIf="hasData" class="series-selector">
+        <ng-container *ngFor="let s of availableSeries">
+          <div class="series-pill"
+               [class.pill-active]="isVisible(s.key)"
+               [class.pill-inactive]="!isVisible(s.key)"
+               [style.--pill-color]="s.color">
+            <!-- Dot colorato + label: click = toggle visibilità -->
+            <span class="pill-dot" [style.background]="isVisible(s.key) ? s.color : 'transparent'"
+                  [style.border-color]="s.color"></span>
+            <span class="pill-label" (click)="toggleSeries(s.key)">{{ s.label }}</span>
+            <!-- Badge [P]: solo per pipeline AI, click = imposta come primaria -->
+            <span *ngIf="s.isAIPipeline"
+                  class="pill-primary-btn"
+                  [class.pill-primary-active]="primarySeries === s.key"
+                  (click)="setPrimary(s.key)"
+                  title="Imposta come pipeline primaria per le analytics">P</span>
+          </div>
+        </ng-container>
+      </div>
+
       <div *ngIf="isLoadingCustom" class="loading-overlay">
         <span>{{ 'equity.loading' | translate }}</span>
       </div>
@@ -248,6 +281,76 @@ type HorizonKey = '1M' | '3M' | '6M' | '1A' | 'YTD' | 'MAX';
     .ret-val.positive { color: #10b981; }
     .ret-val.negative { color: #ef4444; }
 
+    /* ── PILLOLE SELETTORE ── */
+    .series-selector {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 10px;
+      padding: 8px 10px;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+    }
+    .series-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 8px 4px 6px;
+      border-radius: 20px;
+      border: 1.5px solid var(--pill-color, #888);
+      cursor: pointer;
+      transition: all 0.18s ease;
+      user-select: none;
+      font-size: 10.5px;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    .series-pill.pill-active {
+      background: color-mix(in srgb, var(--pill-color) 15%, transparent);
+      color: var(--color-text-secondary);
+    }
+    .series-pill.pill-inactive {
+      background: transparent;
+      color: var(--color-text-muted);
+      opacity: 0.55;
+    }
+    .pill-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      border: 1.5px solid;
+      flex-shrink: 0;
+      transition: background 0.18s;
+    }
+    .pill-label {
+      cursor: pointer;
+    }
+    .pill-primary-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 15px; height: 15px;
+      border-radius: 50%;
+      font-size: 8px;
+      font-weight: 800;
+      cursor: pointer;
+      border: 1.5px solid var(--pill-color, #888);
+      color: var(--color-text-muted);
+      background: transparent;
+      transition: all 0.15s;
+      flex-shrink: 0;
+      margin-left: 1px;
+    }
+    .pill-primary-btn:hover {
+      background: var(--pill-color);
+      color: #fff;
+    }
+    .pill-primary-btn.pill-primary-active {
+      background: var(--pill-color);
+      color: #fff;
+      border-color: var(--pill-color);
+    }
+
     .loading-overlay {
       position: absolute; top: 48px; left: 0; right: 0; bottom: 0;
       background: var(--color-surface, rgba(35,38,53,0.88));
@@ -275,6 +378,9 @@ export class EquityChartComponent implements OnChanges {
   @Input() timestralChrXgbOptunaBacktest: any = null;
   @Input() vwceBacktest: any = null;
   @Input() isLoadingCustom = false;
+
+  /** Emette la chiave della pipeline AI scelta come primaria per le analytics */
+  @Output() primaryChanged = new EventEmitter<string>();
 
   chartOptions: EChartsOption = {};
   hasData = false;
@@ -317,6 +423,26 @@ export class EquityChartComponent implements OnChanges {
     { key: 'MAX', label: 'MAX', weeks: 9999 },
   ];
 
+  // ── Descrittori fissi di tutte le serie (ordine = ordine pillole) ──
+  readonly allSeriesDescriptors: SeriesDescriptor[] = [
+    { key: 'algo',           label: 'TFM 2.5 + CHR + LGB (Algoritmo Tesi V1)', color: '#059669', isAIPipeline: true },
+    { key: 'spy',            label: 'S&P 500',                                  color: '#f97316', isAIPipeline: false },
+    { key: 'vwce',           label: 'VWCE (Acc) (Vanguard All-World)',           color: '#38bdf8', isAIPipeline: false },
+    { key: 'tfm25XgbBase',  label: 'TFM 2.5 + CHR + XGB (Base)',               color: '#06b6d4', isAIPipeline: true },
+    { key: 'tfm3XgbOptuna', label: 'TFM 3.0 + CHR + XGB (Opt)',                color: '#a855f7', isAIPipeline: true },
+    { key: 'timestralXgb',  label: 'Timestral + Timestral + XGB (Opt)',         color: '#ec4899', isAIPipeline: true },
+    { key: 'timestralChrXgb', label: 'Timestral + CHR + XGB (Opt)',             color: '#f59e0b', isAIPipeline: true },
+  ];
+
+  /** Serie disponibili (con dati presenti) */
+  availableSeries: SeriesDescriptor[] = [];
+
+  /** Set di chiavi visibili — default: algo + spy + vwce + tfm25XgbBase */
+  visibleSeries = new Set<string>(['algo', 'spy', 'vwce', 'tfm25XgbBase']);
+
+  /** Pipeline AI primaria per analytics (default: algo = Tesi V1) */
+  primarySeries = 'algo';
+
   constructor() {
     effect(() => {
       this.themeService.isDark();
@@ -335,6 +461,44 @@ export class EquityChartComponent implements OnChanges {
   setHorizon(key: HorizonKey): void {
     this.selectedHorizon = key;
     this.buildChart();
+  }
+
+  /** Toggle visibilità di una serie */
+  toggleSeries(key: string): void {
+    if (this.visibleSeries.has(key)) {
+      // Non permettiamo di nascondere tutto — almeno 1 serie deve restare
+      if (this.visibleSeries.size > 1) {
+        this.visibleSeries.delete(key);
+        // Se era la primaria, sposta la primaria su un'altra AI visibile
+        if (this.primarySeries === key) {
+          const nextAI = this.availableSeries.find(
+            s => s.isAIPipeline && s.key !== key && this.visibleSeries.has(s.key)
+          );
+          if (nextAI) this.setPrimary(nextAI.key);
+        }
+      }
+    } else {
+      this.visibleSeries.add(key);
+    }
+    // Trigger rebuild (new Set per change detection)
+    this.visibleSeries = new Set(this.visibleSeries);
+    this.buildChart();
+  }
+
+  isVisible(key: string): boolean {
+    return this.visibleSeries.has(key);
+  }
+
+  /** Imposta la pipeline primaria per le analytics e notifica il dashboard */
+  setPrimary(key: string): void {
+    this.primarySeries = key;
+    // Rende visibile la serie primaria se non lo è già
+    if (!this.visibleSeries.has(key)) {
+      this.visibleSeries.add(key);
+      this.visibleSeries = new Set(this.visibleSeries);
+      this.buildChart();
+    }
+    this.primaryChanged.emit(key);
   }
 
   private filterByHorizon<T extends { date: string }>(series: T[]): T[] {
@@ -450,10 +614,36 @@ export class EquityChartComponent implements OnChanges {
     if (timestralXgbValues.length > 0) this.metrics.timestralXgb      = this.computeMetrics(timestralXgbValues);
     if (timestralChrXgbValues.length > 0) this.metrics.timestralChrXgb = this.computeMetrics(timestralChrXgbValues);
 
+    // Mappa key → values per il rendering filtrato
+    const seriesDataMap: Record<string, number[]> = {
+      algo: defValues,
+      spy: spyValues,
+      vwce: vwceValues,
+      tfm25XgbBase: tfm25XgbBaseValues,
+      tfm3XgbOptuna: tfm3XgbOptunaValues,
+      timestralXgb: timestralXgbValues,
+      timestralChrXgb: timestralChrXgbValues,
+    };
+
+    // Aggiorna availableSeries (serie con dati presenti)
+    this.availableSeries = this.allSeriesDescriptors.filter(s => {
+      const vals = seriesDataMap[s.key];
+      return vals && vals.length > 0;
+    });
+
+    // Applica visibilità: le serie non visibili ricevono array vuoto
+    const visible = (key: string, vals: number[]) =>
+      this.visibleSeries.has(key) ? vals : [];
+
     const allValues = [
-      ...defValues, ...spyValues, ...vwceValues, ...custValues,
-      ...tfm25XgbBaseValues, ...tfm3XgbOptunaValues,
-      ...timestralXgbValues, ...timestralChrXgbValues
+      ...visible('algo', defValues),
+      ...visible('spy', spyValues),
+      ...visible('vwce', vwceValues),
+      ...visible('tfm25XgbBase', tfm25XgbBaseValues),
+      ...visible('tfm3XgbOptuna', tfm3XgbOptunaValues),
+      ...visible('timestralXgb', timestralXgbValues),
+      ...visible('timestralChrXgb', timestralChrXgbValues),
+      ...custValues,
     ].filter(v => !isNaN(v));
 
     const dataMin = Math.min(...allValues, 1.0);
@@ -501,22 +691,8 @@ export class EquityChartComponent implements OnChanges {
           return html;
         }
       },
-      legend: {
-        bottom: 4,
-        textStyle: { color: c.textSecondary, fontSize: 11, fontFamily: 'Inter, sans-serif' },
-        itemGap: 14,
-        data: [
-          t('equity.legend.system'),
-          'S&P 500',
-          ...(vwceValues.length > 0 ? ['VWCE (Acc) (Vanguard All-World)'] : []),
-          ...(tfm25XgbBaseValues.length > 0 ? ['TFM 2.5 + CHR + XGB (Base)'] : []),
-          ...(tfm3XgbOptunaValues.length > 0 ? ['TFM 3.0 + CHR + XGB (Opt)'] : []),
-          ...(timestralXgbValues.length > 0 ? ['Timestral + Timestral + XGB (Opt)'] : []),
-          ...(timestralChrXgbValues.length > 0 ? ['Timestral + CHR + XGB (Opt)'] : []),
-          ...(custValues.length > 0 ? [t('equity.legend.interactive')] : []),
-        ]
-      },
-      grid: { left: '4%', right: '4%', top: '6%', bottom: '13%', containLabel: true },
+      legend: { show: false }, // nascosta: le pillole fanno da legenda
+      grid: { left: '4%', right: '4%', top: '6%', bottom: '8%', containLabel: true },
       xAxis: {
         type: 'category',
         data: defaultSeries.map(p => p.date),
@@ -542,7 +718,7 @@ export class EquityChartComponent implements OnChanges {
         {
           name: 'S&P 500',
           type: 'line',
-          data: spyValues,
+          data: visible('spy', spyValues),
           lineStyle: { color: '#f97316', width: 2, type: 'dashed' },
           itemStyle: { color: '#f97316' },
           symbol: 'none',
@@ -551,7 +727,7 @@ export class EquityChartComponent implements OnChanges {
         ...(vwceValues.length > 0 ? [{
           name: 'VWCE (Acc) (Vanguard All-World)',
           type: 'line' as const,
-          data: vwceValues,
+          data: visible('vwce', vwceValues),
           lineStyle: { color: '#38bdf8', width: 2, type: 'dashed' as const },
           itemStyle: { color: '#38bdf8' },
           symbol: 'none',
@@ -560,17 +736,17 @@ export class EquityChartComponent implements OnChanges {
         {
           name: t('equity.legend.system'),
           type: 'line',
-          data: defValues,
+          data: visible('algo', defValues),
           lineStyle: { color: '#059669', width: 2.5 },
           itemStyle: { color: '#059669' },
           symbol: 'none',
           smooth: 0.3,
-          areaStyle: {
+          areaStyle: this.visibleSeries.has('algo') ? {
             color: new (echarts as any).graphic.LinearGradient(0, 0, 0, 1, [
               { offset: 0, color: 'rgba(5,150,105,0.12)' },
               { offset: 1, color: 'rgba(5,150,105,0.0)' }
             ])
-          },
+          } : undefined,
           markArea: markAreas.length > 0 ? {
             silent: true,
             itemStyle: { color: 'rgba(239, 68, 68, 0.08)' },
@@ -580,7 +756,7 @@ export class EquityChartComponent implements OnChanges {
         ...(tfm25XgbBaseValues.length > 0 ? [{
           name: 'TFM 2.5 + CHR + XGB (Base)',
           type: 'line' as const,
-          data: tfm25XgbBaseValues,
+          data: visible('tfm25XgbBase', tfm25XgbBaseValues),
           lineStyle: { color: '#06b6d4', width: 2, type: 'dashed' as const },
           itemStyle: { color: '#06b6d4' },
           symbol: 'none',
@@ -589,7 +765,7 @@ export class EquityChartComponent implements OnChanges {
         ...(tfm3XgbOptunaValues.length > 0 ? [{
           name: 'TFM 3.0 + CHR + XGB (Opt)',
           type: 'line' as const,
-          data: tfm3XgbOptunaValues,
+          data: visible('tfm3XgbOptuna', tfm3XgbOptunaValues),
           lineStyle: { color: '#a855f7', width: 2.5, type: 'solid' as const },
           itemStyle: { color: '#a855f7' },
           symbol: 'none',
@@ -598,7 +774,7 @@ export class EquityChartComponent implements OnChanges {
         ...(timestralXgbValues.length > 0 ? [{
           name: 'Timestral + Timestral + XGB (Opt)',
           type: 'line' as const,
-          data: timestralXgbValues,
+          data: visible('timestralXgb', timestralXgbValues),
           lineStyle: { color: '#ec4899', width: 2.5, type: 'solid' as const },
           itemStyle: { color: '#ec4899' },
           symbol: 'none',
@@ -607,7 +783,7 @@ export class EquityChartComponent implements OnChanges {
         ...(timestralChrXgbValues.length > 0 ? [{
           name: 'Timestral + CHR + XGB (Opt)',
           type: 'line' as const,
-          data: timestralChrXgbValues,
+          data: visible('timestralChrXgb', timestralChrXgbValues),
           lineStyle: { color: '#f59e0b', width: 2.5, type: 'solid' as const },
           itemStyle: { color: '#f59e0b' },
           symbol: 'none',

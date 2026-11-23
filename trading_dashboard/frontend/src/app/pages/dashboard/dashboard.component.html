@@ -59,7 +59,8 @@
           [timestralXgbOptunaBacktest]="timestralXgbOptunaBacktest || timestralXgbBaseBacktest"
           [timestralChrXgbOptunaBacktest]="timestralChrXgbOptunaBacktest"
           [vwceBacktest]="vwceBacktest"
-          [isLoadingCustom]="isLoadingCustom">
+          [isLoadingCustom]="isLoadingCustom"
+          (primaryChanged)="onPrimaryPipelineChanged($event)">
         </app-equity-chart>
       </section>
 

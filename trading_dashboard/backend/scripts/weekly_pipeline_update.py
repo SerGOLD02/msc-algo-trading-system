@@ -477,6 +477,29 @@ def main():
         for window in ["1w", "1m", "3m", "6m", "52w"]:
             correlation_heatmap[window] = jsonable_encoder(get_correlation_heatmap(db, window, "alphabetical"))
 
+        # Build vwceBacktest from price_cache (VWCE = IWDA proxy or vwce_series in defaultBacktest)
+        vwce_series_raw = default_backtest.get("vwce_series", [])
+        vwce_backtest = {"series": vwce_series_raw} if vwce_series_raw else None
+
+        # Fallback: build from PriceCache if defaultBacktest has no vwce_series
+        if not vwce_series_raw:
+            try:
+                from database.models import PriceCache
+                vwce_rows = db.query(PriceCache).filter(
+                    PriceCache.ticker == "VWCE"
+                ).order_by(PriceCache.date).all()
+                if not vwce_rows:
+                    # Try IWDA as VWCE proxy
+                    vwce_rows = db.query(PriceCache).filter(
+                        PriceCache.ticker == "IWDA"
+                    ).order_by(PriceCache.date).all()
+                if vwce_rows:
+                    vwce_series_raw = [{"date": str(r.date), "value": float(r.close)} for r in vwce_rows]
+                    vwce_backtest = {"series": vwce_series_raw}
+            except Exception as e:
+                print(f"[VWCE] Could not build VWCE series: {e}")
+                vwce_backtest = None
+
         mock_data = {
             "defaultBacktest": default_backtest,
             "timesfm3Backtest": default_backtest,
@@ -485,6 +508,7 @@ def main():
             "timestralXgbOptunaBacktest": timestral_xgb_optuna,
             "timestralXgbBaseBacktest": timestral_xgb_optuna,
             "timestralChrXgbOptunaBacktest": timestral_chr_xgb_optuna,
+            "vwceBacktest": vwce_backtest,
             "currentRegime": current_regime,
             "marketSnapshot": market_snapshot,
             "weeklySignals": weekly_signals,
