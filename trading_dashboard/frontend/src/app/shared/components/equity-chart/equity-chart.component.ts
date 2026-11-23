@@ -384,7 +384,7 @@ export class EquityChartComponent implements OnChanges {
 
   chartOptions: EChartsOption = {};
   hasData = false;
-  selectedHorizon: HorizonKey = 'MAX';
+  selectedHorizon: HorizonKey = 'YTD';
 
   algoReturn = 0;
   spyReturn = 0;
