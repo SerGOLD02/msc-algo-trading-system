@@ -547,7 +547,29 @@ export class EquityChartComponent implements OnChanges {
     const allDefault = this.defaultBacktest?.series ?? [];
     const allCustom  = this.customBacktest?.series  ?? [];
     const allSpy     = this.defaultBacktest?.spy_series ?? [];
-    const allVwce    = (this.vwceBacktest?.series ?? this.defaultBacktest?.vwce_series ?? []) as any[];
+    const rawVwce    = (this.vwceBacktest?.series ?? this.defaultBacktest?.vwce_series ?? []) as any[];
+
+    // Allinea VWCE (che può avere frequenza giornaliera/storico più lungo) alle date settimanali di defaultBacktest
+    const alignToDates = (source: any[], targetDates: string[]): any[] => {
+      if (source.length === 0 || targetDates.length === 0) return [];
+      const sorted = [...source].sort((a, b) => a.date.localeCompare(b.date));
+      const aligned: any[] = [];
+      let idx = 0;
+      for (const d of targetDates) {
+        while (idx + 1 < sorted.length && sorted[idx + 1].date <= d) {
+          idx++;
+        }
+        if (sorted[idx].date <= d) {
+          aligned.push({ date: d, value: sorted[idx].value });
+        } else {
+          // Se la prima data disponibile è successiva a d, usa il primo valore disponibile
+          aligned.push({ date: d, value: sorted[0].value });
+        }
+      }
+      return aligned;
+    };
+
+    const allVwce = alignToDates(rawVwce, allDefault.map(p => p.date));
 
     const defaultSeries = this.filterByHorizon(allDefault);
     const customSeries  = this.filterByHorizon(allCustom);
@@ -646,11 +668,11 @@ export class EquityChartComponent implements OnChanges {
       ...custValues,
     ].filter(v => !isNaN(v));
 
-    const dataMin = Math.min(...allValues, 1.0);
-    const dataMax = Math.max(...allValues, 1.0);
+    const dataMin = allValues.length > 0 ? Math.min(...allValues) : 1.0;
+    const dataMax = allValues.length > 0 ? Math.max(...allValues) : 1.0;
     const range = dataMax - dataMin || 0.01;
-    const yMin = dataMin - range * 0.15;
-    const yMax = dataMax + range * 0.15;
+    const yMin = dataMin - range * 0.06;
+    const yMax = dataMax + range * 0.06;
 
     const markAreas: [object, object][] = [];
     let start: string | null = null;
@@ -695,6 +717,7 @@ export class EquityChartComponent implements OnChanges {
       grid: { left: '4%', right: '4%', top: '6%', bottom: '8%', containLabel: true },
       xAxis: {
         type: 'category',
+        boundaryGap: false,
         data: defaultSeries.map(p => p.date),
         axisLine: { lineStyle: { color: c.axisLine } },
         axisLabel: { color: c.axisLabel, fontSize: 10, rotate: 30 },
