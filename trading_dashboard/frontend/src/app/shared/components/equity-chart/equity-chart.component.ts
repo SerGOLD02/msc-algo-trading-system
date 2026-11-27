@@ -671,8 +671,8 @@ export class EquityChartComponent implements OnChanges {
     const dataMin = allValues.length > 0 ? Math.min(...allValues) : 1.0;
     const dataMax = allValues.length > 0 ? Math.max(...allValues) : 1.0;
     const range = dataMax - dataMin || 0.01;
-    const yMin = dataMin - range * 0.06;
-    const yMax = dataMax + range * 0.06;
+    const yMin = dataMin - range * 0.03;
+    const yMax = dataMax + range * 0.03;
 
     const markAreas: [object, object][] = [];
     let start: string | null = null;
@@ -714,6 +714,9 @@ export class EquityChartComponent implements OnChanges {
         }
       },
       legend: { show: false }, // nascosta: le pillole fanno da legenda
+      dataZoom: [
+        { type: 'inside', xAxisIndex: 0, filterMode: 'none' }
+      ],
       grid: { left: '4%', right: '4%', top: '6%', bottom: '8%', containLabel: true },
       xAxis: {
         type: 'category',
